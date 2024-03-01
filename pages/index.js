@@ -32,15 +32,15 @@ const Home = () => (
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
-        Hello, I&apos;m an indie app developer based in Japan!
+        Hello, I&apos;m an software developer based in Danang, Vietnam.
       </Box>
 
       <Box display={{ md: 'flex' }}>
         <Box flexGrow={1}>
           <Heading as="h2" variant="page-title">
-            Takuya Matsuyama
+            Tony Tin Nguyen
           </Heading>
-          <p>Digital Craftsman ( Artist / Developer / Designer )</p>
+          <p>Digital Enthusiast (developer // designer)</p>
         </Box>
         <Box
           flexShrink={0}
@@ -59,7 +59,7 @@ const Home = () => (
             overflow="hidden"
           >
             <Image
-              src="/images/takuya.jpg"
+              src="/images/tony.png"
               alt="Profile image"
               width="100"
               height="100"
@@ -73,26 +73,24 @@ const Home = () => (
           Work
         </Heading>
         <Paragraph>
-          Takuya is a freelance and a full-stack developer based in Osaka with a
-          passion for building digital services/stuff he wants. He has a knack
-          for all things launching products, from planning and designing all the
-          way to solving real-life problems with code. When not online, he loves
-          hanging out with his camera. Currently, he is living off of his own
-          product called{' '}
-          <Link as={NextLink} href="/works/inkdrop" passHref scroll={false}>
-            Inkdrop
+          Tony is a highly skilled Web Development & Design Expert specializing
+          in WordPress, PHP, NodeJS, ReactJS, and VueJS. With a decade of
+          experience, they have successfully developed and designed websites for
+          renowned brands such as BreadTalk and CooperVision. His technical
+          strengths include hand-coding, e-commerce integration, and API
+          expertise. Passionate about JavaScript, he prioritize mobile
+          optimization and responsive design. Continual learning and
+          participation in hack days and meet-ups keep them at the forefront of
+          industry trends and innovative solutions. Tony is dedicated to
+          delivering exceptional web solutions and building strong client
+          relationships.
+        </Paragraph>
+        <Paragraph>
+          Whenever he has free time, he will help the local developer commnutity
+          as co-founder in
+          <Link href="https://gdgmientrung.com/" target="_blank">
+            Google Developer Group Mientrung
           </Link>
-          . He publishes content for marketing his products and his YouTube
-          channel called &quot;
-          <Link
-            as={NextLink}
-            href="https://www.youtube.com/devaslife"
-            passHref
-            target="_blank"
-          >
-            Dev as Life
-          </Link>
-          &quot; has more than 100k subscribers.
         </Paragraph>
         <Box align="center" my={4}>
           <Button
@@ -112,8 +110,8 @@ const Home = () => (
           Bio
         </Heading>
         <BioSection>
-          <BioYear>1984</BioYear>
-          Born in Osaka (大阪), Japan.
+          <BioYear>1987</BioYear>
+          Born in Buon Ho, Daklak, Vietnam.
         </BioSection>
         <BioSection>
           <BioYear>2010</BioYear>
