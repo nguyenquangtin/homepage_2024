@@ -40,7 +40,7 @@ const Home = () => (
           <Heading as="h2" variant="page-title">
             Tony Tin Nguyen
           </Heading>
-          <p>Digital Enthusiast (developer // designer)</p>
+          <p>Digital Enthusiast (developer // designer // entrepreneur)</p>
         </Box>
         <Box
           flexShrink={0}
@@ -85,9 +85,11 @@ const Home = () => (
           delivering exceptional web solutions and building strong client
           relationships.
         </Paragraph>
+        <br />
+        <br />
         <Paragraph>
           Whenever he has free time, he will help the local developer commnutity
-          as co-founder in
+          as co-founder in{' '}
           <Link href="https://gdgmientrung.com/" target="_blank">
             Google Developer Group Mientrung
           </Link>
