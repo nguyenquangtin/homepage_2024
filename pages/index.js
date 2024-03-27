@@ -136,15 +136,20 @@ const Home = () => (
 
       <Section delay={0.2}>
         <Heading as="h3" variant="section-title">
-          Bio
+          Resume
         </Heading>
         <BioSection>
-          <BioYear>1987</BioYear>
-          Born in Buon Ho, Daklak, Vietnam.
+          <BioYear>2022 to present</BioYear>
+          CTO at Ecomdy Media
         </BioSection>
         <BioSection>
-          <BioYear>2018</BioYear>
-          Completed the Bachelor of Computer Science at University of Greenwich
+          <BioYear>2020-2022</BioYear>
+          Frontend Technical Leader at NFQ Asia // Core Developer at Shopware{' '}
+          <br />
+          He leads the Shopware 6 core team at Shopware Asia - Danang branch.
+          The team collaborates with the German team on PHP Symfony and Vue.js
+          for back-end administration features and develope new premium themes
+          for Shopware 6.
         </BioSection>
         <BioSection>
           <BioYear>2010</BioYear>
@@ -153,6 +158,10 @@ const Home = () => (
         <BioSection>
           <BioYear>2012 to present</BioYear>
           Working as a freelancer
+        </BioSection>
+        <BioSection>
+          <BioYear>1987</BioYear>
+          Born in Buon Ho, Daklak, Vietnam.
         </BioSection>
       </Section>
 
