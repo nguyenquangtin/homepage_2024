@@ -74,24 +74,51 @@ const Home = () => (
         </Heading>
         <Paragraph>
           Tony is a highly skilled Web Development & Design Expert specializing
-          in WordPress, PHP, NodeJS, ReactJS, and VueJS. With a decade of
-          experience, they have successfully developed and designed websites for
-          renowned brands such as BreadTalk and CooperVision. His technical
-          strengths include hand-coding, e-commerce integration, and API
-          expertise. Passionate about JavaScript, he prioritize mobile
-          optimization and responsive design. Continual learning and
-          participation in hack days and meet-ups keep them at the forefront of
-          industry trends and innovative solutions. Tony is dedicated to
-          delivering exceptional web solutions and building strong client
-          relationships.
+          in WordPress,a PHP, NodeJS, ReactJS, and VueJS. With a decade of
+          experience, Tony has developed websites for renowned brands like
+          BreadTalk and CooperVision. Their strengths include hand-coding,
+          e-commerce integration, and API expertise. Passionate about
+          JavaScript, Tony prioritizes mobile optimization and responsive
+          design. Continual learning and industry participation keep them at the
+          forefront of trends and solutions. Dedicated to delivering exceptional
+          web solutions and building strong client relationships.
         </Paragraph>
         <br />
+        <Paragraph>
+          Nowadays he working as CTO with his wonderful colleges at{' '}
+          <Link href="https://ecomdymedia.com/" target="_blank">
+            Ecomdy
+          </Link>{' '}
+          -{' '}
+          <Link href="https://partners.tiktok.com/partner-details/7047014454382297089/pc/en?rid=472pckxp14b">
+            Tiktok Marketing Partner
+          </Link>
+          . Ecomdy was featured as{' '}
+          <Link
+            href="https://www.tiktok.com/business/en-US/inspiration/ecomdy-media?"
+            target="_blank"
+          >
+            API showcases
+          </Link>{' '}
+          and one of the{' '}
+          <Link href="https://www.tiktok.com/business/en/blog/badged-agency-marketing-partners">
+            top agency in APAC
+          </Link>
+          .
+        </Paragraph>
         <br />
         <Paragraph>
-          Whenever he has free time, he will help the local developer commnutity
-          as co-founder in{' '}
+          Whenever he has free time, he is busy with the local developer
+          commnutity as co-founder in{' '}
           <Link href="https://gdgmientrung.com/" target="_blank">
             Google Developer Group Mientrung
+          </Link>{' '}
+          in the beautiful sea city -
+          <Link
+            href="https://maps.app.goo.gl/8u2VrpY1XTDUELCf8"
+            target="_blank"
+          >
+            Danang, Vietnam.
           </Link>
         </Paragraph>
         <Box align="center" my={4}>
@@ -116,10 +143,8 @@ const Home = () => (
           Born in Buon Ho, Daklak, Vietnam.
         </BioSection>
         <BioSection>
-          <BioYear>2010</BioYear>
-          Completed the Master&apos;s Program in the Graduate School of
-          Information Science at Nara Institute of Science and Technology
-          (奈良先端科学技術大学院大学情報科学研究科修士課程)
+          <BioYear>2018</BioYear>
+          Completed the Bachelor of Computer Science at University of Greenwich
         </BioSection>
         <BioSection>
           <BioYear>2010</BioYear>
