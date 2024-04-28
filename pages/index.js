@@ -153,7 +153,7 @@ const Home = () => (
           <Link href="https://nfq.asia/" target="_blank">
             NFQ Asia
           </Link>
-          // Core Developer at {' '}
+          {'//'} Core Developer at {' '}
           <Link href="https://shopware.com/en/" target="_blank">
             Shopware
           </Link>
@@ -179,7 +179,7 @@ const Home = () => (
           Release product { ' ' }
           <Link href="https://vtv.vn/vtv-giai-tri.html" target='_blank'>VTV Giải Trí</Link>{' '}
            and ZAZU which TV platform for next Vietnamese generation.
-           We reached <strong>298k CCU</strong> for "Về nhà đi con" TV series and <strong>80k CCU</strong> for hot sport live streaming.
+           We reached <strong>298k CCU</strong> for &quot;Về nhà đi con&quot; TV series and <strong>80k CCU</strong> for hot sport live streaming.
         </BioSection>
 
         <BioSection>
