@@ -77,25 +77,14 @@ const Navbar = props => {
           flexGrow={1}
           mt={{ base: 4, md: 0 }}
         >
-          <LinkItem href="/works" path={path}>
+          {/* <LinkItem href="/works" path={path}>
             Works
           </LinkItem>
           <LinkItem href="/posts" path={path}>
             Posts
           </LinkItem>
           <LinkItem href="https://uses.craftz.dog/">Uses</LinkItem>
-          <LinkItem
-            target="_blank"
-            href="https://github.com/craftzdog/craftzdog-homepage"
-            path={path}
-            display="inline-flex"
-            alignItems="center"
-            style={{ gap: 4 }}
-            pl={2}
-          >
-            <IoLogoGithub />
-            Source
-          </LinkItem>
+  */}
         </Stack>
 
         <Box flex={1} align="right">
@@ -113,7 +102,7 @@ const Navbar = props => {
                 <MenuItem as={MenuLink} href="/">
                   About
                 </MenuItem>
-                <MenuItem as={MenuLink} href="/works">
+                {/* <MenuItem as={MenuLink} href="/works">
                   Works
                 </MenuItem>
                 <MenuItem as={MenuLink} href="/wallpapers">
@@ -124,13 +113,7 @@ const Navbar = props => {
                 </MenuItem>
                 <MenuItem as={MenuLink} href="https://uses.craftz.dog/">
                   Uses
-                </MenuItem>
-                <MenuItem
-                  as={Link}
-                  href="https://github.com/craftzdog/craftzdog-homepage"
-                >
-                  View Source
-                </MenuItem>
+                </MenuItem> */}
               </MenuList>
             </Menu>
           </Box>

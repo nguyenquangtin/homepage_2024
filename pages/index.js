@@ -18,7 +18,7 @@ import Section from '../components/section'
 import { GridItem } from '../components/grid-item'
 import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
 import thumbYouTube from '../public/images/links/youtube.png'
-import thumbInkdrop from '../public/images/works/inkdrop_eyecatch.png'
+import thumbEcomdyMedia from '../public/images/links/ecomdy-media.png'
 import Image from 'next/image'
 
 const Home = () => (
@@ -261,13 +261,25 @@ const Home = () => (
           </ListItem>
 
           <ListItem>
-            <Link href="https://instagram.com/craftzdog" target="_blank">
+            <Link href="https://twitter.com/nguyenquangtin" target="_blank">
+              <Button
+                variant="ghost"
+                colorScheme="teal"
+                leftIcon={<IoLogoTwitter/>}
+              >
+                @nguyenquangtin
+              </Button>
+            </Link>
+          </ListItem>
+
+          <ListItem>
+            <Link href="https://instagram.com/tonytinnguyen" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
                 leftIcon={<IoLogoInstagram />}
               >
-                @craftzdog
+                @tonytinnguyen
               </Button>
             </Link>
           </ListItem>
@@ -276,17 +288,17 @@ const Home = () => (
         <SimpleGrid columns={[1, 2, 2]} gap={6}>
           <GridItem
             href="https://www.youtube.com/@coderhorizon"
-            title="Dev as Life"
+            title="Coder Horizon"
             thumbnail={thumbYouTube}
           >
             My YouTube channel
           </GridItem>
           <GridItem
-            href="https://www.inkdrop.app/"
-            title="Inkdrop"
-            thumbnail={thumbInkdrop}
+            href="https://ecomdymedia.com/"
+            title="Ecomdy Media"
+            thumbnail={thumbEcomdyMedia}
           >
-            A Markdown note-taking app
+            TikTok Ads Management
           </GridItem>
         </SimpleGrid>
 
