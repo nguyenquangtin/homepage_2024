@@ -140,12 +140,23 @@ const Home = () => (
         </Heading>
         <BioSection>
           <BioYear>2022 to present</BioYear>
-          CTO at Ecomdy Media
+          CTO at {' '}
+          <Link href="https://ecomdymedia.com/" target="_blank">
+            Ecomdy Media
+          </Link>{' '}
+
         </BioSection>
 
         <BioSection>
           <BioYear>2020-2022</BioYear>
-          Frontend Technical Leader at NFQ Asia // Core Developer at Shopware
+          Technical Leader at {' '}
+          <Link href="https://nfq.asia/" target="_blank">
+            NFQ Asia
+          </Link>
+          // Core Developer at {' '}
+          <Link href="https://shopware.com/en/" target="_blank">
+            Shopware
+          </Link>
           <br />
           He leads the Shopware 6 core team at Shopware Asia - Danang branch.
           The team collaborates with the German team on PHP Symfony and Vue.js
@@ -157,42 +168,54 @@ const Home = () => (
           <BioYear>2018-2019</BioYear>
           Technical Leader // Product Manager <br />
           Release product VTV Giải Trí và ZAZU which TV platform for next
-          Vietnamese generation. We reached 298k CCU for "Về nhà đi con" TV
+          Vietnamese generation. We reached 298k CCU for &quot;Về nhà đi con&quot; TV
           series and 80k CCU for hot sport live streaming.
         </BioSection>
 
         <BioSection>
           <BioYear>2014-2017</BioYear>
-          Branch Manager Vietnam at Webpuppies Digital <br />I lead a small team
+          Branch Manager Vietnam - {' '}
+          <Link target="_blank" href="https://webpuppies.com.sg/">
+          Webpuppies Singapore
+          </Link>
+          <br />I lead a small team
           in Vietnam to share the workload with Singapore team. We now focus on
           these areas Social Media Management, Digital Campaigns, Digital
           Marketing, Ecommerce Solutions.
         </BioSection>
 
         <BioSection>
-          <BioYear>2010-2014</BioYear>Senior Interactive Web-developer at
+          <BioYear>2010-2014</BioYear>Senior Interactive Web-developer at {' '}
+          <Link target="_blank" href="https://webpuppies.com.sg/">
           Webpuppies Singapore
+          </Link>
           <br />
           Manage and develop on servals projects and digital marketing campaigns
           for BreadTalk (Gen 2nd, Gen 3rd and 4th), FoodRepublic, Toast Box, Din
-          Tai Fung, The Icing Room, Thy Moh Chan, breadsociety, BreadTalk IHQ,
+          Tai Fung, The Icing Room, Thy Moh Chan, Bread Society, BreadTalk IHQ,
           RamenPlay.
         </BioSection>
 
         <BioSection>
           <BioYear>2008-2010</BioYear>
-          Interactive Web-developer at Clearpath Development
+          Interactive Web-developer at {' '}
+          <Link target="_blank" href="https://clearpathdevelopment.com/">
+           Clearpath Development
+          </Link>
         </BioSection>
 
         <BioSection>
           <BioYear>2007-2008</BioYear>
-          Frontend Web-developer at Success Software Services
+          Frontend Web-developer at {' '}
+          <Link target="_blank" href="https://successsoftware.global/">
+          Success Software Services
+          </Link>
         </BioSection>
 
         <BioSection>
           <BioYear>2007</BioYear>
-          C# developer at Tien Hoang Ltd for product "Stockman" - stock
-          management.
+          C# developer at Tien Hoang Ltd for product &quote;StockMan&quote; - stock
+          management software.
         </BioSection>
 
         <BioSection>
@@ -206,15 +229,7 @@ const Home = () => (
           What I ♥
         </Heading>
         <Paragraph>
-          Art, Music,{' '}
-          <Link href="https://illust.odoruinu.net/" target="_blank">
-            Drawing
-          </Link>
-          , Playing Drums,{' '}
-          <Link href="https://500px.com/p/craftzdog" target="_blank">
-            Photography
-          </Link>
-          , Leica, Machine Learning
+          Music, Books, Coffee, Running
         </Paragraph>
       </Section>
 
