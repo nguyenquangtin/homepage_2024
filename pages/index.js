@@ -165,18 +165,28 @@ const Home = () => (
         </BioSection>
 
         <BioSection>
+          <BioYear>2019-2020</BioYear>
+          Technical Leader at {' '}
+          <Link href="https://www.facebook.com/Ylinkee/" target="_blank">
+            Ylinkee
+          </Link> <br />
+          A young startup in Danang, Vietnam We focus on digital marketing, ecommerce and  products online.
+        </BioSection>
+
+        <BioSection>
           <BioYear>2018-2019</BioYear>
-          Technical Leader // Product Manager <br />
-          Release product VTV Giải Trí và ZAZU which TV platform for next
-          Vietnamese generation. We reached 298k CCU for &quot;Về nhà đi con&quot; TV
-          series and 80k CCU for hot sport live streaming.
+          Technical Leader // Product Manager at Dotmark Connect <br />
+          Release product { ' ' }
+          <Link href="https://vtv.vn/vtv-giai-tri.html" target='_blank'>VTV Giải Trí</Link>{' '}
+           and ZAZU which TV platform for next Vietnamese generation.
+           We reached <strong>298k CCU</strong> for "Về nhà đi con" TV series and <strong>80k CCU</strong> for hot sport live streaming.
         </BioSection>
 
         <BioSection>
           <BioYear>2014-2017</BioYear>
           Branch Manager Vietnam - {' '}
           <Link target="_blank" href="https://webpuppies.com.sg/">
-          Webpuppies Singapore
+            Webpuppies Singapore
           </Link>
           <br />I lead a small team
           in Vietnam to share the workload with Singapore team. We now focus on
@@ -187,7 +197,7 @@ const Home = () => (
         <BioSection>
           <BioYear>2010-2014</BioYear>Senior Interactive Web-developer at {' '}
           <Link target="_blank" href="https://webpuppies.com.sg/">
-          Webpuppies Singapore
+            Webpuppies Singapore
           </Link>
           <br />
           Manage and develop on servals projects and digital marketing campaigns
@@ -200,7 +210,7 @@ const Home = () => (
           <BioYear>2008-2010</BioYear>
           Interactive Web-developer at {' '}
           <Link target="_blank" href="https://clearpathdevelopment.com/">
-           Clearpath Development
+            Clearpath Development
           </Link>
         </BioSection>
 
@@ -208,13 +218,13 @@ const Home = () => (
           <BioYear>2007-2008</BioYear>
           Frontend Web-developer at {' '}
           <Link target="_blank" href="https://successsoftware.global/">
-          Success Software Services
+            Success Software Services
           </Link>
         </BioSection>
 
         <BioSection>
           <BioYear>2007</BioYear>
-          C# developer at Tien Hoang Ltd for product &quote;StockMan&quote; - stock
+          C# developer at Tien Hoang Ltd for product &quot;StockMan&quot; - stock
           management software.
         </BioSection>
 
@@ -239,38 +249,17 @@ const Home = () => (
         </Heading>
         <List>
           <ListItem>
-            <Link href="https://github.com/craftzdog" target="_blank">
+            <Link href="https://github.com/nguyenquangtin" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
                 leftIcon={<IoLogoGithub />}
               >
-                @craftzdog
+                @nguyenquangtin
               </Button>
             </Link>
           </ListItem>
-          <ListItem>
-            <Link href="https://twitter.com/inkdrop_app" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoTwitter />}
-              >
-                @inkdrop_app (English)
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://twitter.com/craftzdog" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoTwitter />}
-              >
-                @craftzdog (日本語)
-              </Button>
-            </Link>
-          </ListItem>
+
           <ListItem>
             <Link href="https://instagram.com/craftzdog" target="_blank">
               <Button
@@ -286,11 +275,11 @@ const Home = () => (
 
         <SimpleGrid columns={[1, 2, 2]} gap={6}>
           <GridItem
-            href="https://www.youtube.com/devaslife"
+            href="https://www.youtube.com/@coderhorizon"
             title="Dev as Life"
             thumbnail={thumbYouTube}
           >
-            My YouTube channel (&gt;150k subs)
+            My YouTube channel
           </GridItem>
           <GridItem
             href="https://www.inkdrop.app/"
@@ -305,14 +294,14 @@ const Home = () => (
           Newsletter
         </Heading>
         <p>
-          Join me on a behind-the-scenes coding journey. Weekly updates on
-          projects, tutorials, and videos
+          Join me on my journey to build a better life as a developer.{' '}
+          I&apos;ll share tips and tricks  I learn along the way.
         </p>
 
         <Box align="center" my={4}>
           <Button
             as={NextLink}
-            href="https://www.devas.life/"
+            href="https://tonytinnguyen.substack.com/"
             scroll={false}
             leftIcon={<EmailIcon />}
             colorScheme="teal"
