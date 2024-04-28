@@ -18,7 +18,7 @@ import Section from '../components/section'
 import { GridItem } from '../components/grid-item'
 import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
 import thumbYouTube from '../public/images/links/youtube.png'
-import thumbInkdrop from '../public/images/works/inkdrop_eyecatch.png'
+import thumbEcomdyMedia from '../public/images/links/ecomdy-media.png'
 import Image from 'next/image'
 
 const Home = () => (
@@ -32,15 +32,15 @@ const Home = () => (
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
-        Hello, I&apos;m an indie app developer based in Japan!
+        Hello, I&apos;m an software developer based in Danang, Vietnam.
       </Box>
 
       <Box display={{ md: 'flex' }}>
         <Box flexGrow={1}>
           <Heading as="h2" variant="page-title">
-            Takuya Matsuyama
+            Tony Tin Nguyen
           </Heading>
-          <p>Digital Craftsman ( Artist / Developer / Designer )</p>
+          <p>Digital Enthusiast (developer // designer // entrepreneur)</p>
         </Box>
         <Box
           flexShrink={0}
@@ -59,7 +59,7 @@ const Home = () => (
             overflow="hidden"
           >
             <Image
-              src="/images/takuya.jpg"
+              src="/images/tony.png"
               alt="Profile image"
               width="100"
               height="100"
@@ -73,26 +73,53 @@ const Home = () => (
           Work
         </Heading>
         <Paragraph>
-          Takuya is a freelance and a full-stack developer based in Osaka with a
-          passion for building digital services/stuff he wants. He has a knack
-          for all things launching products, from planning and designing all the
-          way to solving real-life problems with code. When not online, he loves
-          hanging out with his camera. Currently, he is living off of his own
-          product called{' '}
-          <Link as={NextLink} href="/works/inkdrop" passHref scroll={false}>
-            Inkdrop
+          Tony is a highly skilled Web Development & Design Expert specializing
+          in WordPress,a PHP, NodeJS, ReactJS, and VueJS. With a decade of
+          experience, Tony has developed websites for renowned brands like
+          BreadTalk and CooperVision. Their strengths include hand-coding,
+          e-commerce integration, and API expertise. Passionate about
+          JavaScript, Tony prioritizes mobile optimization and responsive
+          design. Continual learning and industry participation keep them at the
+          forefront of trends and solutions. Dedicated to delivering exceptional
+          web solutions and building strong client relationships.
+        </Paragraph>
+        <br />
+        <Paragraph>
+          Nowadays he working as CTO with his wonderful colleges at{' '}
+          <Link href="https://ecomdymedia.com/" target="_blank">
+            Ecomdy
+          </Link>{' '}
+          -{' '}
+          <Link href="https://partners.tiktok.com/partner-details/7047014454382297089/pc/en?rid=472pckxp14b">
+            Tiktok Marketing Partner
           </Link>
-          . He publishes content for marketing his products and his YouTube
-          channel called &quot;
+          . Ecomdy was featured as{' '}
           <Link
-            as={NextLink}
-            href="https://www.youtube.com/devaslife"
-            passHref
+            href="https://www.tiktok.com/business/en-US/inspiration/ecomdy-media?"
             target="_blank"
           >
-            Dev as Life
+            API showcases
+          </Link>{' '}
+          and one of the{' '}
+          <Link href="https://www.tiktok.com/business/en/blog/badged-agency-marketing-partners">
+            top agency in APAC
           </Link>
-          &quot; has more than 100k subscribers.
+          .
+        </Paragraph>
+        <br />
+        <Paragraph>
+          Whenever he has free time, he is busy with the local developer
+          commnutity as co-founder in{' '}
+          <Link href="https://gdgmientrung.com/" target="_blank">
+            Google Developer Group Mientrung
+          </Link>{' '}
+          in the beautiful sea city -
+          <Link
+            href="https://maps.app.goo.gl/8u2VrpY1XTDUELCf8"
+            target="_blank"
+          >
+            Danang, Vietnam.
+          </Link>
         </Paragraph>
         <Box align="center" my={4}>
           <Button
@@ -109,42 +136,110 @@ const Home = () => (
 
       <Section delay={0.2}>
         <Heading as="h3" variant="section-title">
-          Bio
+          Resume
         </Heading>
         <BioSection>
-          <BioYear>1984</BioYear>
-          Born in Osaka (大阪), Japan.
+          <BioYear>2022 to present</BioYear>
+          CTO at {' '}
+          <Link href="https://ecomdymedia.com/" target="_blank">
+            Ecomdy Media
+          </Link>{' '}
+
         </BioSection>
+
         <BioSection>
-          <BioYear>2010</BioYear>
-          Completed the Master&apos;s Program in the Graduate School of
-          Information Science at Nara Institute of Science and Technology
-          (奈良先端科学技術大学院大学情報科学研究科修士課程)
+          <BioYear>2020-2022</BioYear>
+          Technical Leader at {' '}
+          <Link href="https://nfq.asia/" target="_blank">
+            NFQ Asia
+          </Link>
+          {'//'} Core Developer at {' '}
+          <Link href="https://shopware.com/en/" target="_blank">
+            Shopware
+          </Link>
+          <br />
+          He leads the Shopware 6 core team at Shopware Asia - Danang branch.
+          The team collaborates with the German team on PHP Symfony and Vue.js
+          for back-end administration features and develope new premium themes
+          for Shopware 6
         </BioSection>
+
         <BioSection>
-          <BioYear>2010</BioYear>
-          Worked at Yahoo! Japan (ヤフー株式会社入社)
+          <BioYear>2019-2020</BioYear>
+          Technical Leader at {' '}
+          <Link href="https://www.facebook.com/Ylinkee/" target="_blank">
+            Ylinkee
+          </Link> <br />
+          A young startup in Danang, Vietnam We focus on digital marketing, ecommerce and  products online.
         </BioSection>
+
         <BioSection>
-          <BioYear>2012 to present</BioYear>
-          Working as a freelancer
+          <BioYear>2018-2019</BioYear>
+          Technical Leader // Product Manager at Dotmark Connect <br />
+          Release product { ' ' }
+          <Link href="https://vtv.vn/vtv-giai-tri.html" target='_blank'>VTV Giải Trí</Link>{' '}
+           and ZAZU which TV platform for next Vietnamese generation.
+           We reached <strong>298k CCU</strong> for &quot;Về nhà đi con&quot; TV series and <strong>80k CCU</strong> for hot sport live streaming.
+        </BioSection>
+
+        <BioSection>
+          <BioYear>2014-2017</BioYear>
+          Branch Manager Vietnam - {' '}
+          <Link target="_blank" href="https://webpuppies.com.sg/">
+            Webpuppies Singapore
+          </Link>
+          <br />I lead a small team
+          in Vietnam to share the workload with Singapore team. We now focus on
+          these areas Social Media Management, Digital Campaigns, Digital
+          Marketing, Ecommerce Solutions.
+        </BioSection>
+
+        <BioSection>
+          <BioYear>2010-2014</BioYear>Senior Interactive Web-developer at {' '}
+          <Link target="_blank" href="https://webpuppies.com.sg/">
+            Webpuppies Singapore
+          </Link>
+          <br />
+          Manage and develop on servals projects and digital marketing campaigns
+          for BreadTalk (Gen 2nd, Gen 3rd and 4th), FoodRepublic, Toast Box, Din
+          Tai Fung, The Icing Room, Thy Moh Chan, Bread Society, BreadTalk IHQ,
+          RamenPlay.
+        </BioSection>
+
+        <BioSection>
+          <BioYear>2008-2010</BioYear>
+          Interactive Web-developer at {' '}
+          <Link target="_blank" href="https://clearpathdevelopment.com/">
+            Clearpath Development
+          </Link>
+        </BioSection>
+
+        <BioSection>
+          <BioYear>2007-2008</BioYear>
+          Frontend Web-developer at {' '}
+          <Link target="_blank" href="https://successsoftware.global/">
+            Success Software Services
+          </Link>
+        </BioSection>
+
+        <BioSection>
+          <BioYear>2007</BioYear>
+          C# developer at Tien Hoang Ltd for product &quot;StockMan&quot; - stock
+          management software.
+        </BioSection>
+
+        <BioSection>
+          <BioYear>1987</BioYear>
+          Born in Buon Ho, Daklak, Vietnam.
         </BioSection>
       </Section>
 
       <Section delay={0.3}>
         <Heading as="h3" variant="section-title">
-          I ♥
+          What I ♥
         </Heading>
         <Paragraph>
-          Art, Music,{' '}
-          <Link href="https://illust.odoruinu.net/" target="_blank">
-            Drawing
-          </Link>
-          , Playing Drums,{' '}
-          <Link href="https://500px.com/p/craftzdog" target="_blank">
-            Photography
-          </Link>
-          , Leica, Machine Learning
+          Music, Books, Coffee, Running
         </Paragraph>
       </Section>
 
@@ -154,46 +249,37 @@ const Home = () => (
         </Heading>
         <List>
           <ListItem>
-            <Link href="https://github.com/craftzdog" target="_blank">
+            <Link href="https://github.com/nguyenquangtin" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
                 leftIcon={<IoLogoGithub />}
               >
-                @craftzdog
+                @nguyenquangtin
               </Button>
             </Link>
           </ListItem>
+
           <ListItem>
-            <Link href="https://twitter.com/inkdrop_app" target="_blank">
+            <Link href="https://twitter.com/nguyenquangtin" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
-                leftIcon={<IoLogoTwitter />}
+                leftIcon={<IoLogoTwitter/>}
               >
-                @inkdrop_app (English)
+                @nguyenquangtin
               </Button>
             </Link>
           </ListItem>
+
           <ListItem>
-            <Link href="https://twitter.com/craftzdog" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoTwitter />}
-              >
-                @craftzdog (日本語)
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://instagram.com/craftzdog" target="_blank">
+            <Link href="https://instagram.com/tonytinnguyen" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
                 leftIcon={<IoLogoInstagram />}
               >
-                @craftzdog
+                @tonytinnguyen
               </Button>
             </Link>
           </ListItem>
@@ -201,18 +287,18 @@ const Home = () => (
 
         <SimpleGrid columns={[1, 2, 2]} gap={6}>
           <GridItem
-            href="https://www.youtube.com/devaslife"
-            title="Dev as Life"
+            href="https://www.youtube.com/@coderhorizon"
+            title="Coder Horizon"
             thumbnail={thumbYouTube}
           >
-            My YouTube channel (&gt;150k subs)
+            My YouTube channel
           </GridItem>
           <GridItem
-            href="https://www.inkdrop.app/"
-            title="Inkdrop"
-            thumbnail={thumbInkdrop}
+            href="https://ecomdymedia.com/"
+            title="Ecomdy Media"
+            thumbnail={thumbEcomdyMedia}
           >
-            A Markdown note-taking app
+            TikTok Ads Management
           </GridItem>
         </SimpleGrid>
 
@@ -220,14 +306,14 @@ const Home = () => (
           Newsletter
         </Heading>
         <p>
-          Join me on a behind-the-scenes coding journey. Weekly updates on
-          projects, tutorials, and videos
+          Join me on my journey to build a better life as a developer.{' '}
+          I&apos;ll share tips and tricks  I learn along the way.
         </p>
 
         <Box align="center" my={4}>
           <Button
             as={NextLink}
-            href="https://www.devas.life/"
+            href="https://tonytinnguyen.substack.com/"
             scroll={false}
             leftIcon={<EmailIcon />}
             colorScheme="teal"
