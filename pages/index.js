@@ -40,7 +40,7 @@ const Home = () => (
           <Heading as="h2" variant="page-title">
             Tony Tin Nguyen
           </Heading>
-          <p>Digital Enthusiast (developer // designer // entrepreneur)</p>
+          <p>Digital Enthusiast (developer // entrepreneur // consultant)</p>
         </Box>
         <Box
           flexShrink={0}
