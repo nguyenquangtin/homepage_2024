@@ -313,7 +313,7 @@ const Home = () => (
         <Box align="center" my={4}>
           <Button
             as={NextLink}
-            href="https://tonytinnguyen.substack.com/"
+            href="https://nguyenquangtin.substack.com/"
             scroll={false}
             leftIcon={<EmailIcon />}
             colorScheme="teal"
