@@ -80,6 +80,9 @@ const Navbar = props => {
            <LinkItem href="/works" path={path}>
             Works
           </LinkItem>
+          <LinkItem href="https://nguyenquangtin.substack.com/" target="_blank">
+            Blog
+          </LinkItem>
           {/*
           <LinkItem href="/posts" path={path}>
             Posts
@@ -105,6 +108,9 @@ const Navbar = props => {
                 </MenuItem>
                 <MenuItem as={MenuLink} href="/works">
                   Works
+                </MenuItem>
+                <MenuItem as={MenuLink} href="https://nguyenquangtin.substack.com/" target="_blank">
+                  Blog
                 </MenuItem>
                 {/*
                 <MenuItem as={MenuLink} href="/wallpapers">
