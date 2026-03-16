@@ -6,357 +6,291 @@ import {
   Box,
   SimpleGrid,
   Button,
-  List,
-  ListItem,
   Tag,
   TagLabel,
   Wrap,
   WrapItem,
+  Text,
+  Flex,
   useColorModeValue
 } from '@chakra-ui/react'
 import { ChevronRightIcon, EmailIcon } from '@chakra-ui/icons'
+import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
 import Paragraph from '../components/paragraph'
-import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { GridItem } from '../components/grid-item'
-import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
+import Image from 'next/image'
 import thumbYouTube from '../public/images/links/youtube.png'
 import thumbEcomdyMedia from '../public/images/links/ecomdy-media.png'
-import Image from 'next/image'
 
-const Home = () => (
-  <Layout>
-    <Container>
-      <Box
-        borderRadius="xl"
-        mb={6}
-        p={4}
-        textAlign="center"
-        bg={useColorModeValue('white', 'whiteAlpha.100')}
-        border="1px solid"
-        borderColor={useColorModeValue('gray.200', 'whiteAlpha.200')}
-        css={{ backdropFilter: 'blur(12px)' }}
-        fontSize="sm"
-        fontWeight={500}
-        letterSpacing="0.01em"
-      >
-        Building products that scale.{' '}
-        CTO @ Ecomdy · TikTok Marketing Partner · Co-founder of GDG Mien Trung.
-      </Box>
+// Resume timeline entries — keeps JSX clean
+const career = [
+  { year: '2022–now',  role: 'CTO',                        company: 'Ecomdy Media',           url: 'https://ecomdymedia.com/' },
+  { year: '2020–2022', role: 'Technical Leader / Core Dev', company: 'NFQ Asia · Shopware',    url: 'https://nfq.asia/' },
+  { year: '2019–2020', role: 'Technical Leader',            company: 'Ylinkee',                url: 'https://www.facebook.com/Ylinkee/' },
+  { year: '2018–2019', role: 'Tech Lead / Product Manager', company: 'Dotmark Connect',        url: null },
+  { year: '2014–2017', role: 'Branch Manager Vietnam',      company: 'Webpuppies Singapore',   url: 'https://webpuppies.com.sg/' },
+  { year: '2010–2014', role: 'Senior Interactive Developer', company: 'Webpuppies Singapore',  url: 'https://webpuppies.com.sg/' },
+  { year: '2008–2010', role: 'Interactive Web Developer',   company: 'Clearpath Development',  url: 'https://clearpathdevelopment.com/' },
+  { year: '2007–2008', role: 'Frontend Web Developer',      company: 'Success Software',       url: 'https://successsoftware.global/' },
+  { year: '1987',      role: 'Born',                        company: 'Buon Ho, Daklak, Vietnam', url: null },
+]
 
-      <Box display={{ md: 'flex' }}>
-        <Box flexGrow={1}>
-          <Heading as="h2" variant="page-title">
-            Tony Tin Nguyen
-          </Heading>
-          <p>Digital Enthusiast (developer // entrepreneur // consultant)</p>
-        </Box>
-        <Box
-          flexShrink={0}
-          mt={{ base: 4, md: 0 }}
-          ml={{ md: 6 }}
-          textAlign="center"
-        >
-          <Box
-            borderColor="whiteAlpha.800"
-            borderWidth={2}
-            borderStyle="solid"
-            w="100px"
-            h="100px"
-            display="inline-block"
-            borderRadius="full"
-            overflow="hidden"
+const techStack   = ['Node.js', 'React', 'Vue.js', 'PHP', 'TypeScript', 'WordPress', 'TikTok API', 'Docker']
+const interests   = ['Music', 'Books', 'Coffee', 'Running', 'Open Source', 'Community']
+const socialLinks = [
+  { icon: <IoLogoGithub />,    label: '@nguyenquangtin', href: 'https://github.com/nguyenquangtin' },
+  { icon: <IoLogoTwitter />,   label: '@nguyenquangtin', href: 'https://twitter.com/nguyenquangtin' },
+  { icon: <IoLogoInstagram />, label: '@tonytinnguyen',  href: 'https://instagram.com/tonytinnguyen' },
+]
+
+const Home = () => {
+  const cardBg     = useColorModeValue('white', 'whiteAlpha.50')
+  const cardBorder = useColorModeValue('gray.200', 'whiteAlpha.100')
+  const mutedText  = useColorModeValue('gray.500', 'gray.400')
+  const timelineLine = useColorModeValue('blue.400', 'blue.500')
+
+  return (
+    <Layout>
+      <Container>
+
+        {/* ── HERO ─────────────────────────────────────── */}
+        <Section delay={0}>
+          <Flex
+            direction={{ base: 'column', md: 'row' }}
+            align="center"
+            gap={6}
+            py={4}
           >
-            <Image
-              src="/images/tony.png"
-              alt="Tony Tin Nguyen"
-              width="100"
-              height="100"
-            />
-          </Box>
-        </Box>
-      </Box>
-
-      <Section delay={0.1}>
-        <Heading as="h3" variant="section-title">
-          Work
-        </Heading>
-        <Paragraph>
-          Tony is a highly skilled Web Development & Design Expert specializing
-          in WordPress,a PHP, NodeJS, ReactJS, and VueJS. With a decade of
-          experience, Tony has developed websites for renowned brands like
-          BreadTalk and CooperVision. Their strengths include hand-coding,
-          e-commerce integration, and API expertise. Passionate about
-          JavaScript, Tony prioritizes mobile optimization and responsive
-          design. Continual learning and industry participation keep them at the
-          forefront of trends and solutions. Dedicated to delivering exceptional
-          web solutions and building strong client relationships.
-        </Paragraph>
-        <br />
-        <Paragraph>
-          Nowadays he working as CTO with his wonderful colleges at{' '}
-          <Link href="https://ecomdymedia.com/" target="_blank">
-            Ecomdy
-          </Link>{' '}
-          -{' '}
-          <Link href="https://partners.tiktok.com/partner-details/7047014454382297089/pc/en?rid=472pckxp14b">
-            Tiktok Marketing Partner
-          </Link>
-          . Ecomdy was featured as{' '}
-          <Link
-            href="https://www.tiktok.com/business/en-US/inspiration/ecomdy-media?"
-            target="_blank"
-          >
-            API showcases
-          </Link>{' '}
-          and one of the{' '}
-          <Link href="https://www.tiktok.com/business/en/blog/badged-agency-marketing-partners">
-            top agency in APAC
-          </Link>
-          .
-        </Paragraph>
-        <br />
-        <Paragraph>
-          Whenever he has free time, he is busy with the local developer
-          commnutity as co-founder in{' '}
-          <Link href="https://gdgmientrung.com/" target="_blank">
-            Google Developer Group Mientrung
-          </Link>{' '}
-          in the beautiful sea city -
-          <Link
-            href="https://maps.app.goo.gl/8u2VrpY1XTDUELCf8"
-            target="_blank"
-          >
-            Danang, Vietnam.
-          </Link>
-        </Paragraph>
-        <Box align="center" my={4}>
-          <Button
-            as={NextLink}
-            href="/works"
-            scroll={false}
-            rightIcon={<ChevronRightIcon />}
-            colorScheme="teal"
-          >
-            My portfolio
-          </Button>
-        </Box>
-      </Section>
-
-      <Section delay={0.2}>
-        <Heading as="h3" variant="section-title">
-          Resume
-        </Heading>
-        <Box
-          borderRadius="xl"
-          border="1px solid"
-          borderColor={useColorModeValue('gray.200', 'whiteAlpha.100')}
-          bg={useColorModeValue('white', 'whiteAlpha.50')}
-          p={4}
-          mb={4}
-        >
-        <BioSection>
-          <BioYear>2022 to present</BioYear>
-          CTO at {' '}
-          <Link href="https://ecomdymedia.com/" target="_blank">
-            Ecomdy Media
-          </Link>{' '}
-
-        </BioSection>
-
-        <BioSection>
-          <BioYear>2020-2022</BioYear>
-          Technical Leader at {' '}
-          <Link href="https://nfq.asia/" target="_blank">
-            NFQ Asia
-          </Link>
-          {'//'} Core Developer at {' '}
-          <Link href="https://shopware.com/en/" target="_blank">
-            Shopware
-          </Link>
-          <br />
-          He leads the Shopware 6 core team at Shopware Asia - Danang branch.
-          The team collaborates with the German team on PHP Symfony and Vue.js
-          for back-end administration features and develope new premium themes
-          for Shopware 6
-        </BioSection>
-
-        <BioSection>
-          <BioYear>2019-2020</BioYear>
-          Technical Leader at {' '}
-          <Link href="https://www.facebook.com/Ylinkee/" target="_blank">
-            Ylinkee
-          </Link> <br />
-          A young startup in Danang, Vietnam We focus on digital marketing, ecommerce and  products online.
-        </BioSection>
-
-        <BioSection>
-          <BioYear>2018-2019</BioYear>
-          Technical Leader // Product Manager at Dotmark Connect <br />
-          Release product { ' ' }
-          <Link href="https://vtv.vn/vtv-giai-tri.html" target='_blank'>VTV Giải Trí</Link>{' '}
-           and ZAZU which TV platform for next Vietnamese generation.
-           We reached <strong>298k CCU</strong> for &quot;Về nhà đi con&quot; TV series and <strong>80k CCU</strong> for hot sport live streaming.
-        </BioSection>
-
-        <BioSection>
-          <BioYear>2014-2017</BioYear>
-          Branch Manager Vietnam - {' '}
-          <Link target="_blank" href="https://webpuppies.com.sg/">
-            Webpuppies Singapore
-          </Link>
-          <br />I lead a small team
-          in Vietnam to share the workload with Singapore team. We now focus on
-          these areas Social Media Management, Digital Campaigns, Digital
-          Marketing, Ecommerce Solutions.
-        </BioSection>
-
-        <BioSection>
-          <BioYear>2010-2014</BioYear>Senior Interactive Web-developer at {' '}
-          <Link target="_blank" href="https://webpuppies.com.sg/">
-            Webpuppies Singapore
-          </Link>
-          <br />
-          Manage and develop on servals projects and digital marketing campaigns
-          for BreadTalk (Gen 2nd, Gen 3rd and 4th), FoodRepublic, Toast Box, Din
-          Tai Fung, The Icing Room, Thy Moh Chan, Bread Society, BreadTalk IHQ,
-          RamenPlay.
-        </BioSection>
-
-        <BioSection>
-          <BioYear>2008-2010</BioYear>
-          Interactive Web-developer at {' '}
-          <Link target="_blank" href="https://clearpathdevelopment.com/">
-            Clearpath Development
-          </Link>
-        </BioSection>
-
-        <BioSection>
-          <BioYear>2007-2008</BioYear>
-          Frontend Web-developer at {' '}
-          <Link target="_blank" href="https://successsoftware.global/">
-            Success Software Services
-          </Link>
-        </BioSection>
-
-        <BioSection>
-          <BioYear>2007</BioYear>
-          C# developer at Tien Hoang Ltd for product &quot;StockMan&quot; - stock
-          management software.
-        </BioSection>
-
-        <BioSection>
-          <BioYear>1987</BioYear>
-          Born in Buon Ho, Daklak, Vietnam.
-        </BioSection>
-        </Box>
-      </Section>
-
-      <Section delay={0.3}>
-        <Heading as="h3" variant="section-title">
-          What I love
-        </Heading>
-        <Wrap spacing={2} mt={2}>
-          {['Music', 'Books', 'Coffee', 'Running', 'Open Source', 'Community'].map(item => (
-            <WrapItem key={item}>
-              <Tag
-                size="md"
+            {/* Avatar */}
+            <Box flexShrink={0} textAlign="center">
+              <Box
+                w="120px"
+                h="120px"
                 borderRadius="full"
-                variant="subtle"
-                colorScheme="blue"
-                px={3}
-                py={1}
+                overflow="hidden"
+                border="2px solid"
+                borderColor={timelineLine}
+                mx="auto"
               >
-                <TagLabel>{item}</TagLabel>
-              </Tag>
-            </WrapItem>
-          ))}
-        </Wrap>
-      </Section>
+                <Image
+                  src="/images/tony.png"
+                  alt="Tony Tin Nguyen"
+                  width={120}
+                  height={120}
+                />
+              </Box>
+              {/* Status dot */}
+              <Flex align="center" justify="center" mt={2} gap={1}>
+                <Box w={2} h={2} borderRadius="full" bg="green.400" />
+                <Text fontSize="xs" color={mutedText}>Danang, Vietnam</Text>
+              </Flex>
+            </Box>
 
-      <Section delay={0.3}>
-        <Heading as="h3" variant="section-title">
-          On the web
-        </Heading>
-        <List>
-          <ListItem>
-            <Link href="https://github.com/nguyenquangtin" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoGithub />}
+            {/* Name + tagline */}
+            <Box>
+              <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} fontWeight={700}>
+                Tony Tin Nguyen
+              </Heading>
+              <Text color={mutedText} mt={1} fontSize="sm">
+                developer · entrepreneur · consultant
+              </Text>
+              <Box
+                mt={3}
+                p={3}
+                borderRadius="lg"
+                bg={cardBg}
+                border="1px solid"
+                borderColor={cardBorder}
+                fontSize="sm"
+                fontWeight={500}
               >
-                @nguyenquangtin
-              </Button>
-            </Link>
-          </ListItem>
+                Building products that scale — CTO at{' '}
+                <Link href="https://ecomdymedia.com/" isExternal color="blue.400">Ecomdy</Link>
+                , TikTok Marketing Partner & co-founder of{' '}
+                <Link href="https://gdgmientrung.com/" isExternal color="blue.400">GDG Mien Trung</Link>.
+              </Box>
+            </Box>
+          </Flex>
+        </Section>
 
-          <ListItem>
-            <Link href="https://twitter.com/nguyenquangtin" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoTwitter/>}
-              >
-                @nguyenquangtin
-              </Button>
-            </Link>
-          </ListItem>
+        {/* ── WORK ─────────────────────────────────────── */}
+        <Section delay={0.1}>
+          <Heading as="h3" variant="section-title">Work</Heading>
+          <Paragraph>
+            10+ years shipping web products for global brands (BreadTalk, CooperVision) and
+            fast-growing startups. Expert in JavaScript ecosystems — Node.js, React, Vue — with
+            a focus on e-commerce, API integrations, and scalable architecture.
+          </Paragraph>
+          <Box mt={4} textAlign="center">
+            <Button
+              as={NextLink}
+              href="/works"
+              scroll={false}
+              rightIcon={<ChevronRightIcon />}
+              colorScheme="blue"
+              size="sm"
+            >
+              View portfolio
+            </Button>
+          </Box>
+        </Section>
 
-          <ListItem>
-            <Link href="https://instagram.com/tonytinnguyen" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<IoLogoInstagram />}
-              >
-                @tonytinnguyen
-              </Button>
-            </Link>
-          </ListItem>
-        </List>
+        {/* ── TECH STACK ───────────────────────────────── */}
+        <Section delay={0.15}>
+          <Heading as="h3" variant="section-title">Tech Stack</Heading>
+          <Wrap spacing={2} mt={2}>
+            {techStack.map(tech => (
+              <WrapItem key={tech}>
+                <Tag size="sm" borderRadius="md" variant="subtle" colorScheme="blue">
+                  <TagLabel>{tech}</TagLabel>
+                </Tag>
+              </WrapItem>
+            ))}
+          </Wrap>
+        </Section>
 
-        <SimpleGrid columns={[1, 2, 2]} gap={6}>
-          <GridItem
-            href="https://www.youtube.com/@coderhorizon"
-            title="Coder Horizon"
-            thumbnail={thumbYouTube}
+        {/* ── RESUME TIMELINE ──────────────────────────── */}
+        <Section delay={0.2}>
+          <Heading as="h3" variant="section-title">Career</Heading>
+          <Box
+            borderRadius="xl"
+            border="1px solid"
+            borderColor={cardBorder}
+            bg={cardBg}
+            p={5}
           >
-            My YouTube channel
-          </GridItem>
-          <GridItem
-            href="https://ecomdymedia.com/"
-            title="Ecomdy Media"
-            thumbnail={thumbEcomdyMedia}
-          >
-            TikTok Ads Management
-          </GridItem>
-        </SimpleGrid>
+            {/* Vertical timeline with left blue rail */}
+            <Box borderLeft="2px solid" borderColor={timelineLine} pl={4}>
+              {career.map((entry, i) => (
+                <Box key={i} mb={i < career.length - 1 ? 4 : 0} position="relative">
+                  {/* Timeline dot */}
+                  <Box
+                    position="absolute"
+                    left="-21px"
+                    top="5px"
+                    w="8px"
+                    h="8px"
+                    borderRadius="full"
+                    bg={timelineLine}
+                  />
+                  <Text fontSize="xs" color={mutedText} fontFamily="mono" mb={0.5}>
+                    {entry.year}
+                  </Text>
+                  <Text fontWeight={600} fontSize="sm" lineHeight={1.3}>
+                    {entry.role}
+                  </Text>
+                  <Text fontSize="xs" color={mutedText}>
+                    {entry.url
+                      ? <Link href={entry.url} isExternal>{entry.company}</Link>
+                      : entry.company}
+                  </Text>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        </Section>
 
-        <Heading as="h3" variant="section-title">
-          Newsletter
-        </Heading>
-        <p>
-          Join me on my journey — tips, lessons, and things I build along the way.
-        </p>
+        {/* ── INTERESTS ────────────────────────────────── */}
+        <Section delay={0.25}>
+          <Heading as="h3" variant="section-title">What I love</Heading>
+          <Wrap spacing={2} mt={2}>
+            {interests.map(item => (
+              <WrapItem key={item}>
+                <Tag size="md" borderRadius="full" variant="subtle" colorScheme="blue" px={3}>
+                  <TagLabel>{item}</TagLabel>
+                </Tag>
+              </WrapItem>
+            ))}
+          </Wrap>
+        </Section>
 
-        <Box align="center" my={4}>
-          <Button
-            as="a"
-            href="https://nguyenquangtin.substack.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            leftIcon={<EmailIcon />}
-            colorScheme="teal"
+        {/* ── FEATURED ─────────────────────────────────── */}
+        <Section delay={0.3}>
+          <Heading as="h3" variant="section-title">Featured</Heading>
+          <SimpleGrid columns={[1, 2]} gap={4}>
+            <GridItem
+              href="https://www.youtube.com/@coderhorizon"
+              title="Coder Horizon"
+              thumbnail={thumbYouTube}
+            >
+              My YouTube channel
+            </GridItem>
+            <GridItem
+              href="https://ecomdymedia.com/"
+              title="Ecomdy Media"
+              thumbnail={thumbEcomdyMedia}
+            >
+              TikTok Ads Management
+            </GridItem>
+          </SimpleGrid>
+        </Section>
+
+        {/* ── SOCIAL LINKS ─────────────────────────────── */}
+        <Section delay={0.35}>
+          <Heading as="h3" variant="section-title">On the web</Heading>
+          <Flex gap={3} wrap="wrap" mt={2}>
+            {socialLinks.map(({ icon, label, href }) => (
+              <Link key={href} href={href} isExternal _hover={{ textDecoration: 'none' }}>
+                <Flex
+                  align="center"
+                  gap={2}
+                  px={3}
+                  py={2}
+                  borderRadius="lg"
+                  border="1px solid"
+                  borderColor={cardBorder}
+                  bg={cardBg}
+                  fontSize="sm"
+                  fontWeight={500}
+                  _hover={{ borderColor: 'blue.400' }}
+                  transition="border-color 0.2s"
+                  cursor="pointer"
+                >
+                  {icon}
+                  <Text>{label}</Text>
+                </Flex>
+              </Link>
+            ))}
+          </Flex>
+        </Section>
+
+        {/* ── NEWSLETTER CTA ───────────────────────────── */}
+        <Section delay={0.4}>
+          <Box
+            borderRadius="xl"
+            border="1px solid"
+            borderColor={cardBorder}
+            bg={cardBg}
+            p={6}
+            textAlign="center"
+            mb={4}
           >
-            Subscribe on Substack
-          </Button>
-        </Box>
-      </Section>
-    </Container>
-  </Layout>
-)
+            <Heading as="h3" fontSize="lg" fontWeight={700} mb={2}>
+              Stay in the loop
+            </Heading>
+            <Text fontSize="sm" color={mutedText} mb={4}>
+              Tips, lessons, and things I build along the way.
+            </Text>
+            <Button
+              as="a"
+              href="https://nguyenquangtin.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              leftIcon={<EmailIcon />}
+              colorScheme="blue"
+              size="sm"
+            >
+              Subscribe on Substack
+            </Button>
+          </Box>
+        </Section>
+
+      </Container>
+    </Layout>
+  )
+}
 
 export default Home
 export { getServerSideProps } from '../components/chakra'
