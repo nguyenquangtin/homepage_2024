@@ -29,7 +29,7 @@ const Main = ({ children, router }) => {
           name="twitter:image"
           content="https://www.nguyenquangtin.com/card.png"
         />
-        <meta property="og:site_name" content="Takuya Matsuyama" />
+        <meta property="og:site_name" content="Tony Tin Nguyen" />
         <meta name="og:title" content="Tony Tin Nguyen" />
         <meta property="og:type" content="website" />
         <meta

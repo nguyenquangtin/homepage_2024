@@ -32,7 +32,7 @@ const Home = () => (
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
-        Hello, I&apos;m a software developer & entrepreneur based in Danang, Vietnam.
+        Building products that scale. CTO @ Ecomdy · TikTok Marketing Partner · Co-founder of GDG Mien Trung.
       </Box>
 
       <Box display={{ md: 'flex' }}>
@@ -60,7 +60,7 @@ const Home = () => (
           >
             <Image
               src="/images/tony.png"
-              alt="Profile image"
+              alt="Tony Tin Nguyen"
               width="100"
               height="100"
             />
@@ -306,19 +306,19 @@ const Home = () => (
           Newsletter
         </Heading>
         <p>
-          Join me on my journey to build a better life as a developer.{' '}
-          I&apos;ll share tips and tricks  I learn along the way.
+          Join me on my journey — tips, lessons, and things I build along the way.
         </p>
 
         <Box align="center" my={4}>
           <Button
-            as={NextLink}
+            as="a"
             href="https://nguyenquangtin.substack.com/"
-            scroll={false}
+            target="_blank"
+            rel="noopener noreferrer"
             leftIcon={<EmailIcon />}
             colorScheme="teal"
           >
-            Sign up my newsletter here
+            Subscribe on Substack
           </Button>
         </Box>
       </Section>
