@@ -8,6 +8,10 @@ import {
   Button,
   List,
   ListItem,
+  Tag,
+  TagLabel,
+  Wrap,
+  WrapItem,
   useColorModeValue
 } from '@chakra-ui/react'
 import { ChevronRightIcon, EmailIcon } from '@chakra-ui/icons'
@@ -25,14 +29,20 @@ const Home = () => (
   <Layout>
     <Container>
       <Box
-        borderRadius="lg"
+        borderRadius="xl"
         mb={6}
-        p={3}
+        p={4}
         textAlign="center"
-        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
-        css={{ backdropFilter: 'blur(10px)' }}
+        bg={useColorModeValue('white', 'whiteAlpha.100')}
+        border="1px solid"
+        borderColor={useColorModeValue('gray.200', 'whiteAlpha.200')}
+        css={{ backdropFilter: 'blur(12px)' }}
+        fontSize="sm"
+        fontWeight={500}
+        letterSpacing="0.01em"
       >
-        Building products that scale. CTO @ Ecomdy · TikTok Marketing Partner · Co-founder of GDG Mien Trung.
+        Building products that scale.{' '}
+        CTO @ Ecomdy · TikTok Marketing Partner · Co-founder of GDG Mien Trung.
       </Box>
 
       <Box display={{ md: 'flex' }}>
@@ -138,6 +148,14 @@ const Home = () => (
         <Heading as="h3" variant="section-title">
           Resume
         </Heading>
+        <Box
+          borderRadius="xl"
+          border="1px solid"
+          borderColor={useColorModeValue('gray.200', 'whiteAlpha.100')}
+          bg={useColorModeValue('white', 'whiteAlpha.50')}
+          p={4}
+          mb={4}
+        >
         <BioSection>
           <BioYear>2022 to present</BioYear>
           CTO at {' '}
@@ -232,15 +250,29 @@ const Home = () => (
           <BioYear>1987</BioYear>
           Born in Buon Ho, Daklak, Vietnam.
         </BioSection>
+        </Box>
       </Section>
 
       <Section delay={0.3}>
         <Heading as="h3" variant="section-title">
-          What I ♥
+          What I love
         </Heading>
-        <Paragraph>
-          Music, Books, Coffee, Running
-        </Paragraph>
+        <Wrap spacing={2} mt={2}>
+          {['Music', 'Books', 'Coffee', 'Running', 'Open Source', 'Community'].map(item => (
+            <WrapItem key={item}>
+              <Tag
+                size="md"
+                borderRadius="full"
+                variant="subtle"
+                colorScheme="blue"
+                px={3}
+                py={1}
+              >
+                <TagLabel>{item}</TagLabel>
+              </Tag>
+            </WrapItem>
+          ))}
+        </Wrap>
       </Section>
 
       <Section delay={0.3}>
