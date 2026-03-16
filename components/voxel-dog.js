@@ -44,6 +44,80 @@ function createSparkles(scene) {
   return { points, velocities, positions, count }
 }
 
+// Build Tony Tony Chopper from One Piece using Three.js primitives
+// — positioned beside the stone, arms raised, straining to pull Excalibur
+function createChopper(scene) {
+  const body    = new THREE.MeshLambertMaterial({ color: 0xd4956a }) // tan fur
+  const hat     = new THREE.MeshLambertMaterial({ color: 0xe0306a }) // pink hat
+  const white   = new THREE.MeshLambertMaterial({ color: 0xffffff })
+  const nose    = new THREE.MeshLambertMaterial({ color: 0x5588ff }) // blue nose
+  const eye     = new THREE.MeshLambertMaterial({ color: 0x111111 })
+  const antler  = new THREE.MeshLambertMaterial({ color: 0xc47c3e })
+  const boot    = new THREE.MeshLambertMaterial({ color: 0x4a3020 })
+  const short   = new THREE.MeshLambertMaterial({ color: 0xd4956a })
+
+  const g = new THREE.Group()
+
+  const mesh = (geo, mat, x, y, z, rx = 0, ry = 0, rz = 0) => {
+    const m = new THREE.Mesh(geo, mat)
+    m.position.set(x, y, z)
+    m.rotation.set(rx, ry, rz)
+    g.add(m)
+    return m
+  }
+
+  // Torso
+  mesh(new THREE.BoxGeometry(0.52, 0.5, 0.38), body, 0, 0.25, 0)
+
+  // Head (bigger than torso — classic Chopper proportions)
+  mesh(new THREE.BoxGeometry(0.68, 0.62, 0.56), body, 0, 0.84, 0)
+
+  // Cheek puffs
+  mesh(new THREE.SphereGeometry(0.16, 8, 6), body, -0.3, 0.82, 0.2)
+  mesh(new THREE.SphereGeometry(0.16, 8, 6), body,  0.3, 0.82, 0.2)
+
+  // Blue nose
+  mesh(new THREE.SphereGeometry(0.1, 8, 6), nose, 0, 0.84, 0.3)
+
+  // Eyes
+  mesh(new THREE.SphereGeometry(0.08, 8, 6), eye, -0.17, 0.94, 0.29)
+  mesh(new THREE.SphereGeometry(0.08, 8, 6), eye,  0.17, 0.94, 0.29)
+  // Eye shine
+  mesh(new THREE.SphereGeometry(0.03, 6, 4), white, -0.14, 0.97, 0.35)
+  mesh(new THREE.SphereGeometry(0.03, 6, 4), white,  0.20, 0.97, 0.35)
+
+  // Hat brim
+  mesh(new THREE.CylinderGeometry(0.47, 0.47, 0.07, 14), hat, 0, 1.19, 0)
+  // Hat crown
+  mesh(new THREE.CylinderGeometry(0.31, 0.38, 0.38, 14), hat, 0, 1.4, 0)
+  // White hat stripe
+  mesh(new THREE.CylinderGeometry(0.32, 0.39, 0.1, 14), white, 0, 1.27, 0)
+
+  // Antlers (branching left & right)
+  mesh(new THREE.BoxGeometry(0.08, 0.38, 0.07), antler, -0.22, 1.55, 0,  0, 0,  0.35)
+  mesh(new THREE.BoxGeometry(0.07, 0.22, 0.07), antler, -0.38, 1.67, 0,  0, 0,  0.7)
+  mesh(new THREE.BoxGeometry(0.08, 0.38, 0.07), antler,  0.22, 1.55, 0,  0, 0, -0.35)
+  mesh(new THREE.BoxGeometry(0.07, 0.22, 0.07), antler,  0.38, 1.67, 0,  0, 0, -0.7)
+
+  // Arms reaching up toward the sword hilt
+  const leftArm  = mesh(new THREE.BoxGeometry(0.2, 0.42, 0.2), body, -0.36, 0.44, 0, 0, 0, -1.1)
+  const rightArm = mesh(new THREE.BoxGeometry(0.2, 0.42, 0.2), body,  0.36, 0.44, 0, 0, 0,  1.1)
+
+  // Stubby legs
+  mesh(new THREE.BoxGeometry(0.21, 0.28, 0.22), short, -0.14, -0.07, 0)
+  mesh(new THREE.BoxGeometry(0.21, 0.28, 0.22), short,  0.14, -0.07, 0)
+  // Boots
+  mesh(new THREE.BoxGeometry(0.22, 0.14, 0.28), boot, -0.14, -0.28, 0.03)
+  mesh(new THREE.BoxGeometry(0.22, 0.14, 0.28), boot,  0.14, -0.28, 0.03)
+
+  // Position beside the stone, facing it
+  g.position.set(1.6, 0.05, 1.1)
+  g.rotation.y = -0.75
+  scene.add(g)
+
+  return { group: g, leftArm, rightArm }
+}
+
 // Drift sparkles upward, reset when too high
 function updateSparkles({ points, velocities, positions, count }) {
   for (let i = 0; i < count; i++) {
@@ -128,6 +202,9 @@ const VoxelDog = () => {
       // Sparkle particles
       const sparkles = createSparkles(scene)
 
+      // Tony Tony Chopper trying to pull Excalibur
+      const chopper = createChopper(scene)
+
       const controls = new OrbitControls(camera, renderer.domElement)
       controls.autoRotate = true
       controls.autoRotateSpeed = 1.2
@@ -166,6 +243,11 @@ const VoxelDog = () => {
 
         // Animate sparkle particles
         updateSparkles(sparkles)
+
+        // Chopper straining animation — body bobs, arms pull rhythmically
+        chopper.group.position.y = 0.05 + Math.sin(t * 4) * 0.04
+        chopper.leftArm.rotation.z  = -1.1 + Math.sin(t * 4) * 0.25
+        chopper.rightArm.rotation.z =  1.1 - Math.sin(t * 4) * 0.25
 
         renderer.render(scene, camera)
       }
