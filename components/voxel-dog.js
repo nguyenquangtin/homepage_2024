@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { loadGLTFModel } from '../lib/model'
 import { DogSpinner, DogContainer } from './voxel-dog-loader'
 
@@ -9,7 +8,7 @@ function easeOutCirc(x) {
   return Math.sqrt(1 - Math.pow(x - 1, 4))
 }
 
-// Create floating sparkle particle system for magic Excalibur effect
+// Floating sparkle particle system for magic Excalibur effect
 function createSparkles(scene) {
   const count = 120
   const positions = new Float32Array(count * 3)
@@ -60,59 +59,6 @@ function updateSparkles({ points, velocities, positions, count }) {
   points.geometry.attributes.position.needsUpdate = true
 }
 
-// Load real Tony Tony Chopper FBX model with textures
-function loadChopperFBX(scene) {
-  return new Promise(resolve => {
-    const loader = new FBXLoader()
-    // setPath tells FBXLoader where to find textures relative to the FBX
-    loader.setPath('/chopper/')
-    loader.load(
-      'Chopper.fbx',
-      model => {
-        // FBX is in centimeters; scale down to match the sword scene
-        model.scale.setScalar(0.012)
-        // Position beside the stone, facing inward
-        model.position.set(1.7, -0.45, 1.0)
-        model.rotation.y = -0.75
-
-        // Make sure all materials respond to scene lighting
-        model.traverse(child => {
-          if (child.isMesh) {
-            child.castShadow = false
-            child.receiveShadow = false
-            // Boost material so it looks good under the dramatic lighting
-            if (child.material) {
-              const mats = Array.isArray(child.material)
-                ? child.material
-                : [child.material]
-              mats.forEach(mat => {
-                mat.roughness = 0.7
-                mat.metalness = 0.1
-              })
-            }
-          }
-        })
-
-        scene.add(model)
-
-        // Set up animation mixer if FBX has embedded animations
-        let mixer = null
-        if (model.animations && model.animations.length > 0) {
-          mixer = new THREE.AnimationMixer(model)
-          mixer.clipAction(model.animations[0]).play()
-        }
-
-        resolve({ group: model, mixer })
-      },
-      undefined,
-      err => {
-        console.error('Chopper FBX load error:', err)
-        resolve({ group: null, mixer: null })
-      }
-    )
-  })
-}
-
 const VoxelDog = () => {
   const refContainer = useRef()
   const [loading, setLoading] = useState(true)
@@ -156,21 +102,17 @@ const VoxelDog = () => {
       camera.position.copy(initialCameraPosition)
       camera.lookAt(target)
 
-      // Soft fill light
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
       scene.add(ambientLight)
 
-      // Golden Excalibur glow near the blade
       const goldenLight = new THREE.PointLight(0xffd700, 4, 8)
       goldenLight.position.set(0, 3, 1.5)
       scene.add(goldenLight)
 
-      // Cool blue magic light from the stone base
       const stoneLight = new THREE.PointLight(0x4488ff, 2.5, 6)
       stoneLight.position.set(0, -0.5, 0)
       scene.add(stoneLight)
 
-      // Rim light for silhouette drama
       const rimLight = new THREE.DirectionalLight(0xffeedd, 1.2)
       rimLight.position.set(-5, 8, -5)
       scene.add(rimLight)
@@ -182,29 +124,21 @@ const VoxelDog = () => {
       controls.autoRotateSpeed = 1.2
       controls.target = target
 
-      // Load sword + Chopper in parallel
-      let chopperMixer = null
-      let chopperGroup = null
       let req = null
       let frame = 0
 
-      Promise.all([
-        loadGLTFModel(scene, urlSwordGLB, { receiveShadow: false, castShadow: false }),
-        loadChopperFBX(scene)
-      ]).then(([, chopper]) => {
-        chopperMixer = chopper.mixer
-        chopperGroup = chopper.group
+      loadGLTFModel(scene, urlSwordGLB, {
+        receiveShadow: false,
+        castShadow: false
+      }).then(() => {
         animate()
         setLoading(false)
       })
-
-      const clock = new THREE.Clock()
 
       const animate = () => {
         req = requestAnimationFrame(animate)
         frame = frame <= 100 ? frame + 1 : frame
 
-        // Intro camera sweep
         if (frame <= 100) {
           const p = initialCameraPosition
           const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
@@ -217,23 +151,10 @@ const VoxelDog = () => {
         }
 
         const t = Date.now() * 0.001
-        // Pulse Excalibur lights
         goldenLight.intensity = 3 + Math.sin(t * 1.8) * 1.5
         stoneLight.intensity  = 2 + Math.sin(t * 1.2 + 1) * 0.8
 
         updateSparkles(sparkles)
-
-        // Drive FBX animation mixer (if model has embedded animations)
-        const delta = clock.getDelta()
-        if (chopperMixer) {
-          chopperMixer.update(delta)
-        }
-
-        // Gentle straining bob even if no embedded animation
-        if (chopperGroup) {
-          chopperGroup.position.y = -0.45 + Math.sin(t * 3.5) * 0.04
-        }
-
         renderer.render(scene, camera)
       }
 
