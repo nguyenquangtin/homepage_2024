@@ -29,7 +29,7 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
       scroll={false}
       p={2}
       bg={active ? 'grassTeal' : undefined}
-      color={active ? '#202023' : inactiveColor}
+      color={active ? '#ffffff' : inactiveColor}
       target={target}
       {...props}
     >
@@ -50,7 +50,7 @@ const Navbar = props => {
       position="fixed"
       as="nav"
       w="100%"
-      bg={useColorModeValue('#ffffff40', '#20202380')}
+      bg={useColorModeValue('#f7f7f740', '#18181b80')}
       css={{ backdropFilter: 'blur(10px)' }}
       zIndex={2}
       {...props}

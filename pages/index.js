@@ -32,7 +32,7 @@ const Home = () => (
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
-        Hello, I&apos;m an software developer based in Danang, Vietnam.
+        Hello, I&apos;m a software developer & entrepreneur based in Danang, Vietnam.
       </Box>
 
       <Box display={{ md: 'flex' }}>
