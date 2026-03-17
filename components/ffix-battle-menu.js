@@ -94,3 +94,39 @@ const MenuPanel = ({ title, items }) => {
 
 export const FfixTechMenu     = () => <MenuPanel title="◆ TECH ARSENAL" items={TECH_ITEMS} />
 export const FfixInterestMenu = () => <MenuPanel title="◆ INTERESTS"    items={INTEREST_ITEMS} />
+
+// Horizontal pill badge variant — fits full-width rows without squeezing into narrow columns
+export const FfixInterestTags = () => (
+  <Box
+    bg={PANEL_BG}
+    border={`2px solid ${GOLD}`}
+    borderRadius="sm"
+    boxShadow={`0 0 0 3px rgba(8,14,40,0.9), 0 0 0 5px ${GOLD}33`}
+    overflow="hidden"
+    fontFamily="monospace"
+  >
+    <Box px={3} py={2} bg="rgba(200,168,0,0.06)" borderBottom={`1px solid ${GOLD}44`}>
+      <Text fontSize="10px" color={GOLD} letterSpacing="0.15em">◆ INTERESTS</Text>
+    </Box>
+    <Flex px={3} py={3} gap={2} wrap="wrap">
+      {INTEREST_ITEMS.map(({ label, desc }) => (
+        <Flex
+          key={label}
+          align="center"
+          gap={1.5}
+          px={3}
+          py={1.5}
+          bg="rgba(200,168,0,0.07)"
+          border={`1px solid ${GOLD}33`}
+          borderRadius="full"
+          cursor="default"
+          _hover={{ bg: 'rgba(200,168,0,0.14)', borderColor: `${GOLD}66` }}
+          transition="all 0.15s"
+        >
+          <Text fontSize="10px" color={GOLD} lineHeight={1}>{desc}</Text>
+          <Text fontSize="xs" color={CREAM} fontFamily="monospace">{label}</Text>
+        </Flex>
+      ))}
+    </Flex>
+  </Box>
+)

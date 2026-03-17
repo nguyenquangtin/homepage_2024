@@ -17,7 +17,7 @@ import Section from '../components/section'
 import Image from 'next/image'
 import { FfixMoogleFlying } from '../components/ffix-moogle'
 import FfixCharSheet from '../components/ffix-char-sheet'
-import { FfixTechMenu, FfixInterestMenu } from '../components/ffix-battle-menu'
+import { FfixTechMenu, FfixInterestTags } from '../components/ffix-battle-menu'
 import FfixEquipment from '../components/ffix-equipment'
 import FfixStatusEffects from '../components/ffix-status-effects'
 import FfixMognet from '../components/ffix-mognet'
@@ -188,6 +188,7 @@ const Home = () => {
               <Section delay={0.15}>
                 <Heading as="h3" variant="section-title">Character Sheet</Heading>
                 <FfixStatusEffects />
+                {/* 3-column row: CharSheet | Tech | Equipment */}
                 <SimpleGrid
                   columns={{ base: 1, sm: 2 }}
                   gap={4}
@@ -195,15 +196,18 @@ const Home = () => {
                   mt={3}
                   sx={{
                     '@media (min-width: 48em)': {
-                      gridTemplateColumns: '2fr 1.2fr 1.2fr 1.2fr',
+                      gridTemplateColumns: '2fr 1.4fr 1.4fr',
                     }
                   }}
                 >
                   <FfixCharSheet />
                   <FfixTechMenu />
-                  <FfixInterestMenu />
                   <FfixEquipment />
                 </SimpleGrid>
+                {/* Interest pills — full-width row below */}
+                <Box mt={4}>
+                  <FfixInterestTags />
+                </Box>
               </Section>
 
               {/* TETRA MASTER CARDS */}
