@@ -2,7 +2,6 @@ import Parser from 'rss-parser'
 import { Box, Container, Heading, Text, Link, Flex } from '@chakra-ui/react'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import { getServerSideProps as chakraSSP } from '../components/chakra'
 
 const PANEL_BG = 'rgba(8, 14, 40, 0.97)'
 const GOLD = '#c8a800'
