@@ -26,7 +26,8 @@ import thumbEcomdyMedia from '../public/images/links/ecomdy-media.png'
 
 // Resume timeline entries — keeps JSX clean
 const career = [
-  { year: '2022–now',  role: 'CTO',                        company: 'Ecomdy Media',           url: 'https://ecomdymedia.com/' },
+  { year: 'Jan 2026–now',  role: 'Head of Tech Partnership',   company: 'Ecomdy Media',           url: 'https://ecomdymedia.com/' },
+  { year: '2022–2025',     role: 'CTO',                        company: 'Ecomdy Media',           url: 'https://ecomdymedia.com/' },
   { year: '2020–2022', role: 'Technical Leader / Core Dev', company: 'NFQ Asia · Shopware',    url: 'https://nfq.asia/' },
   { year: '2019–2020', role: 'Technical Leader',            company: 'Ylinkee',                url: 'https://www.facebook.com/Ylinkee/' },
   { year: '2018–2019', role: 'Tech Lead / Product Manager', company: 'Dotmark Connect',        url: null },
@@ -106,7 +107,7 @@ const Home = () => {
                 fontSize="sm"
                 fontWeight={500}
               >
-                Building products that scale — CTO at{' '}
+                Building products that scale — Head of Tech Partnership at{' '}
                 <Link href="https://ecomdymedia.com/" isExternal color="blue.400">Ecomdy</Link>
                 , TikTok Marketing Partner & co-founder of{' '}
                 <Link href="https://gdgmientrung.com/" isExternal color="blue.400">GDG Mien Trung</Link>.
