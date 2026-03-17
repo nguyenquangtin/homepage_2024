@@ -111,7 +111,7 @@ const FfixCharSheet = () => (
         <Box flex={1}>
           <Flex justify="space-between" mb={1}>
             <Text fontSize="10px" color={GOLD}>HP</Text>
-            <Text fontSize="10px" color="#00cc55">4200/4200</Text>
+            <Text fontSize="10px" color="#00cc55">3024/4200</Text>
           </Flex>
           <Box h="6px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
             <Box h="full" w="72%" bg="linear-gradient(90deg,#009933,#00ff55)" />
@@ -149,6 +149,13 @@ const FfixCharSheet = () => (
         </Text>
         <Text fontSize="10px" color={MUTED}>
           EXP <Text as="span" color={CREAM}>19 YRS</Text>
+        </Text>
+      </Flex>
+
+      {/* Gil counter */}
+      <Flex justify="flex-end" mt={1.5}>
+        <Text fontSize="10px" color={GOLD} letterSpacing="0.05em">
+          GIL <Text as="span" color="#ffd700" fontWeight="bold">9,999,999</Text>
         </Text>
       </Flex>
     </Box>
