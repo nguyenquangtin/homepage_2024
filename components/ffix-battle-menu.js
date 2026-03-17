@@ -18,19 +18,19 @@ const TECH_ITEMS = [
 ]
 
 const INTEREST_ITEMS = [
-  { label: 'Music',       desc: '🎵' },
-  { label: 'Books',       desc: '📚' },
-  { label: 'Coffee',      desc: '☕' },
-  { label: 'Running',     desc: '🏃' },
-  { label: 'Open Source', desc: '💻' },
-  { label: 'Community',   desc: '🤝' },
+  { label: 'Music',       desc: '♪' },
+  { label: 'Books',       desc: '▣' },
+  { label: 'Coffee',      desc: '◉' },
+  { label: 'Running',     desc: '▶' },
+  { label: 'Open Source', desc: '◈' },
+  { label: 'Community',   desc: '◎' },
 ]
 
 const MenuItem = ({ label, desc, selected, onClick }) => (
   <Flex
     align="center"
     gap={2}
-    py={1}
+    py={1.5}
     px={2}
     cursor="pointer"
     bg={selected ? 'rgba(200,168,0,0.12)' : 'transparent'}
@@ -52,61 +52,45 @@ const MenuItem = ({ label, desc, selected, onClick }) => (
       {label}
     </Text>
     {desc && (
-      <Text fontSize="10px" fontFamily="monospace" color={selected ? '#ffcc00' : MUTED + '88'}>
+      <Text fontSize="10px" fontFamily="monospace" color={selected ? '#ffcc00' : MUTED}>
         {desc}
       </Text>
     )}
   </Flex>
 )
 
-const MenuPanel = ({ title, items, selected, onSelect }) => (
-  <Box
-    bg={PANEL_BG}
-    border={`2px solid ${GOLD}`}
-    borderRadius="sm"
-    boxShadow={`0 0 0 3px rgba(8,14,40,0.9), 0 0 0 5px ${GOLD}33`}
-    overflow="hidden"
-    fontFamily="monospace"
-    flex={1}
-  >
-    <Box px={3} py={2} bg="rgba(200,168,0,0.06)" borderBottom={`1px solid ${GOLD}44`}>
-      <Text fontSize="10px" color={GOLD} letterSpacing="0.15em">
-        {title}
-      </Text>
-    </Box>
-    <Box p={2}>
-      {items.map((item, i) => (
-        <MenuItem
-          key={item.label}
-          {...item}
-          selected={selected === i}
-          onClick={() => onSelect(i)}
-        />
-      ))}
-    </Box>
-  </Box>
-)
-
-const FfixBattleMenu = () => {
-  const [techSelected, setTechSelected]         = useState(0)
-  const [interestSelected, setInterestSelected] = useState(0)
+// Self-contained panel — owns its own selection state
+const MenuPanel = ({ title, items }) => {
+  const [selected, setSelected] = useState(0)
 
   return (
-    <Flex gap={3} direction={{ base: 'column', sm: 'row' }}>
-      <MenuPanel
-        title="◆ TECH ARSENAL"
-        items={TECH_ITEMS}
-        selected={techSelected}
-        onSelect={setTechSelected}
-      />
-      <MenuPanel
-        title="◆ INTERESTS"
-        items={INTEREST_ITEMS}
-        selected={interestSelected}
-        onSelect={setInterestSelected}
-      />
-    </Flex>
+    <Box
+      bg={PANEL_BG}
+      border={`2px solid ${GOLD}`}
+      borderRadius="sm"
+      boxShadow={`0 0 0 3px rgba(8,14,40,0.9), 0 0 0 5px ${GOLD}33`}
+      overflow="hidden"
+      fontFamily="monospace"
+      h="100%"
+    >
+      <Box px={3} py={2} bg="rgba(200,168,0,0.06)" borderBottom={`1px solid ${GOLD}44`}>
+        <Text fontSize="10px" color={GOLD} letterSpacing="0.15em">
+          {title}
+        </Text>
+      </Box>
+      <Box p={2}>
+        {items.map((item, i) => (
+          <MenuItem
+            key={item.label}
+            {...item}
+            selected={selected === i}
+            onClick={() => setSelected(i)}
+          />
+        ))}
+      </Box>
+    </Box>
   )
 }
 
-export default FfixBattleMenu
+export const FfixTechMenu     = () => <MenuPanel title="◆ TECH ARSENAL" items={TECH_ITEMS} />
+export const FfixInterestMenu = () => <MenuPanel title="◆ INTERESTS"    items={INTEREST_ITEMS} />

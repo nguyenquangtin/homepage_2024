@@ -21,7 +21,7 @@ import thumbYouTube from '../public/images/links/youtube.png'
 import thumbEcomdyMedia from '../public/images/links/ecomdy-media.png'
 import FfixMoogle from '../components/ffix-moogle'
 import FfixCharSheet from '../components/ffix-char-sheet'
-import FfixBattleMenu from '../components/ffix-battle-menu'
+import { FfixTechMenu, FfixInterestMenu } from '../components/ffix-battle-menu'
 
 // Resume timeline entries — keeps JSX clean
 const career = [
@@ -146,9 +146,10 @@ const Home = () => {
         {/* ── FFIX CHARACTER SHEET ─────────────────────── */}
         <Section delay={0.15}>
           <Heading as="h3" variant="section-title">Character Sheet</Heading>
-          <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
+          <SimpleGrid columns={{ base: 1, md: 3 }} gap={4} alignItems="stretch">
             <FfixCharSheet />
-            <FfixBattleMenu />
+            <FfixTechMenu />
+            <FfixInterestMenu />
           </SimpleGrid>
         </Section>
 
