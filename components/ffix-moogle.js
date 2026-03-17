@@ -162,7 +162,7 @@ export const FfixMoogleFlying = ({ size = 58 }) => {
       >
         {/* Interactive layer: hover + bobbing */}
         <motion.div
-          style={{ display: 'inline-block', position: 'relative', pointerEvents: 'auto' }}
+          style={{ display: 'inline-block', position: 'relative', pointerEvents: 'auto', cursor: 'pointer' }}
           animate={{ y: [0, -8, 0] }}
           transition={{ repeat: Infinity, duration: 2.0, ease: 'easeInOut' }}
           onMouseEnter={() => setHovered(true)}
