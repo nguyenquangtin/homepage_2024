@@ -58,7 +58,7 @@ const PostRow = ({ title, link, pubDate, contentSnippet }, i) => (
 const Posts = ({ posts, error }) => (
   <Layout title="Posts">
     <Container>
-      <Heading as="h3" fontSize={20} mb={4}>
+      <Heading as="h1" fontSize={20} mb={4}>
         Posts
       </Heading>
 
