@@ -71,6 +71,15 @@ export const FfixMoogleFlying = ({ size = 58 }) => {
   const [flipped, setFlipped] = useState(false)
   const [hovered, setHovered] = useState(false)
   const prevX                 = useRef(0)
+  const clickCount            = useRef(0)
+
+  const handleClick = () => {
+    clickCount.current += 1
+    if (clickCount.current >= 5) {
+      clickCount.current = 0
+      window.dispatchEvent(new Event('ffix-encounter'))
+    }
+  }
 
   // Set initial position after mount (needs window)
   useEffect(() => {
@@ -112,6 +121,7 @@ export const FfixMoogleFlying = ({ size = 58 }) => {
           transition={{ repeat: Infinity, duration: 2.0, ease: 'easeInOut' }}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
+          onClick={handleClick}
           whileHover={{ scale: 1.15 }}
         >
           <AnimatePresence>

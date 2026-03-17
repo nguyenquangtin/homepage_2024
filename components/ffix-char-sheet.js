@@ -26,6 +26,21 @@ const StatBar = ({ label, value, max = 100, color }) => (
   </Flex>
 )
 
+// Trance gauge — slowly fills, glows purple when full, then resets
+const TranceBar = () => (
+  <Flex align="center" gap={2} mt={1}>
+    <Text fontSize="10px" fontFamily="monospace" color="#cc88ff" w="30px">TRN</Text>
+    <Box flex={1} h="7px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
+      <motion.div
+        animate={{ width: ['0%', '100%', '100%', '0%'], opacity: [0.8, 1, 0.4, 0.8] }}
+        transition={{ repeat: Infinity, duration: 12, times: [0, 0.78, 0.92, 1], ease: 'easeInOut' }}
+        style={{ height: '100%', background: 'linear-gradient(90deg,#7722cc,#cc66ff)', borderRadius: '2px' }}
+      />
+    </Box>
+    <Text fontSize="10px" fontFamily="monospace" color="#cc88ff" w="24px" textAlign="right">✦</Text>
+  </Flex>
+)
+
 // ATB gauge — perpetually charging
 const AtbBar = () => (
   <Flex align="center" gap={2} mt={1}>
@@ -114,6 +129,7 @@ const FfixCharSheet = () => (
       </Flex>
 
       <AtbBar />
+      <TranceBar />
 
       {/* Divider */}
       <Box borderTop={`1px solid ${GOLD}33`} my={3} />

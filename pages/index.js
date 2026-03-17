@@ -9,18 +9,21 @@ import {
   Flex,
   useColorModeValue
 } from '@chakra-ui/react'
-import { ChevronRightIcon, EmailIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
 import Paragraph from '../components/paragraph'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import { GridItem } from '../components/grid-item'
 import Image from 'next/image'
-import thumbYouTube from '../public/images/links/youtube.png'
-import thumbEcomdyMedia from '../public/images/links/ecomdy-media.png'
 import { FfixMoogleFlying } from '../components/ffix-moogle'
 import FfixCharSheet from '../components/ffix-char-sheet'
 import { FfixTechMenu, FfixInterestMenu } from '../components/ffix-battle-menu'
+import FfixEquipment from '../components/ffix-equipment'
+import FfixStatusEffects from '../components/ffix-status-effects'
+import FfixMognet from '../components/ffix-mognet'
+import FfixTetraCards from '../components/ffix-tetra-card'
+import FfixEncounter from '../components/ffix-encounter'
+import FfixWorldMap from '../components/ffix-world-map'
 
 // Resume timeline entries — keeps JSX clean
 const career = [
@@ -89,6 +92,7 @@ const Home = () => {
   return (
     <>
       <FfixMoogleFlying />
+      <FfixEncounter />
       <Layout>
 
           {/* ── TWO-COLUMN DESKTOP LAYOUT ─────────────────── */}
@@ -183,20 +187,29 @@ const Home = () => {
               {/* FFIX CHARACTER SHEET */}
               <Section delay={0.15}>
                 <Heading as="h3" variant="section-title">Character Sheet</Heading>
+                <FfixStatusEffects />
                 <SimpleGrid
-                  columns={{ base: 1, sm: 2, md: 3 }}
+                  columns={{ base: 1, sm: 2 }}
                   gap={4}
                   alignItems="stretch"
+                  mt={3}
                   sx={{
                     '@media (min-width: 48em)': {
-                      gridTemplateColumns: '2fr 1.2fr 1.2fr',
+                      gridTemplateColumns: '2fr 1.2fr 1.2fr 1.2fr',
                     }
                   }}
                 >
                   <FfixCharSheet />
                   <FfixTechMenu />
                   <FfixInterestMenu />
+                  <FfixEquipment />
                 </SimpleGrid>
+              </Section>
+
+              {/* TETRA MASTER CARDS */}
+              <Section delay={0.25}>
+                <Heading as="h3" variant="section-title">Featured</Heading>
+                <FfixTetraCards />
               </Section>
 
               {/* CAREER — mobile only (shows inline in stack) */}
@@ -207,25 +220,10 @@ const Home = () => {
                 </Section>
               </Box>
 
-              {/* FEATURED */}
+              {/* WORLD MAP */}
               <Section delay={0.3}>
-                <Heading as="h3" variant="section-title">Featured</Heading>
-                <SimpleGrid columns={[1, 2]} gap={4}>
-                  <GridItem
-                    href="https://www.youtube.com/@coderhorizon"
-                    title="Coder Horizon"
-                    thumbnail={thumbYouTube}
-                  >
-                    My YouTube channel
-                  </GridItem>
-                  <GridItem
-                    href="https://ecomdymedia.com/"
-                    title="Ecomdy Media"
-                    thumbnail={thumbEcomdyMedia}
-                  >
-                    TikTok Ads Management
-                  </GridItem>
-                </SimpleGrid>
+                <Heading as="h3" variant="section-title">Location</Heading>
+                <FfixWorldMap />
               </Section>
 
               {/* SOCIAL LINKS */}
@@ -257,35 +255,10 @@ const Home = () => {
                 </Flex>
               </Section>
 
-              {/* NEWSLETTER CTA */}
+              {/* MOGNET — newsletter CTA */}
               <Section delay={0.4}>
-                <Box
-                  borderRadius="xl"
-                  border="1px solid"
-                  borderColor={cardBorder}
-                  bg={cardBg}
-                  p={6}
-                  textAlign="center"
-                  mb={4}
-                >
-                  <Heading as="h3" fontSize="lg" fontWeight={700} mb={2}>
-                    Stay in the loop
-                  </Heading>
-                  <Text fontSize="sm" color={mutedText} mb={4}>
-                    Tips, lessons, and things I build along the way.
-                  </Text>
-                  <Button
-                    as="a"
-                    href="https://nguyenquangtin.substack.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    leftIcon={<EmailIcon />}
-                    colorScheme="blue"
-                    size="sm"
-                  >
-                    Subscribe on Substack
-                  </Button>
-                </Box>
+                <Heading as="h3" variant="section-title">Mognet</Heading>
+                <FfixMognet />
               </Section>
 
             </Box>
