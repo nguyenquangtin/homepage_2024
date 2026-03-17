@@ -2,70 +2,75 @@ import { useState, useEffect, useRef } from 'react'
 import { Box, Text } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-// SVG Moogle — fluffy body, bat wings (2 membranes each), open mouth with teeth
+// SVG Moogle — modelled after FFIX design:
+// round merged head+body, small cat ears, red-iris eyes, dark purple bat wings,
+// fluffy chest patch, stubby arms, small feet, open mouth with teeth
 const MoogleSVG = ({ size = 70 }) => (
   <svg
     width={size}
-    height={size * 1.12}
-    viewBox="0 0 90 100"
+    height={size * 1.15}
+    viewBox="0 0 100 115"
     xmlns="http://www.w3.org/2000/svg"
     style={{ overflow: 'visible', display: 'block' }}
   >
-    {/* Antenna */}
-    <line x1="45" y1="20" x2="45" y2="33" stroke="#999" strokeWidth="2.5" strokeLinecap="round" />
+    {/* ── Antenna + pompom ── */}
+    <line x1="50" y1="19" x2="50" y2="30" stroke="#c0a888" strokeWidth="2" strokeLinecap="round" />
+    <circle cx="50" cy="11"  r="10"  fill="#cc2020" />
+    <circle cx="46" cy="8.5" r="3.5" fill="#ee5555" opacity="0.6" />
 
-    {/* Pompom */}
-    <circle cx="45" cy="11" r="10" fill="#e02828" />
-    <circle cx="41" cy="8"  r="3.5" fill="#ff6666" opacity="0.6" />
+    {/* ── Dark purple bat wings — behind body, 3 finger membranes each ── */}
+    {/* Left wing */}
+    <path d="M 21 62 Q 5  46 10 28 Q 16 42 22 54 Z"  fill="#7a3265" />
+    <path d="M 21 66 Q 2  56 9  42 Q 16 52 22 60 Z"  fill="#6a2858" opacity="0.92" />
+    <path d="M 21 70 Q 4  66 11 56 Q 17 63 22 66 Z"  fill="#5a2050" opacity="0.8"  />
+    <path d="M 21 63 Q 5  46 10 28" fill="none" stroke="#3a1030" strokeWidth="0.7" strokeLinecap="round" />
+    <path d="M 21 67 Q 2  56 9  42" fill="none" stroke="#3a1030" strokeWidth="0.6" strokeLinecap="round" opacity="0.7" />
+    {/* Right wing */}
+    <path d="M 79 62 Q 95 46 90 28 Q 84 42 78 54 Z"  fill="#7a3265" />
+    <path d="M 79 66 Q 98 56 91 42 Q 84 52 78 60 Z"  fill="#6a2858" opacity="0.92" />
+    <path d="M 79 70 Q 96 66 89 56 Q 83 63 78 66 Z"  fill="#5a2050" opacity="0.8"  />
+    <path d="M 79 63 Q 95 46 90 28" fill="none" stroke="#3a1030" strokeWidth="0.7" strokeLinecap="round" />
+    <path d="M 79 67 Q 98 56 91 42" fill="none" stroke="#3a1030" strokeWidth="0.6" strokeLinecap="round" opacity="0.7" />
 
-    {/* Ears — round with inner highlight */}
-    <ellipse cx="22" cy="36" rx="9"  ry="7"  fill="#ece0c4" />
-    <ellipse cx="68" cy="36" rx="9"  ry="7"  fill="#ece0c4" />
-    <ellipse cx="22" cy="35" rx="5"  ry="4"  fill="#f8eed8" />
-    <ellipse cx="68" cy="35" rx="5"  ry="4"  fill="#f8eed8" />
+    {/* ── Small cat ears — on top of head ── */}
+    <ellipse cx="33" cy="33" rx="7"   ry="6"   fill="#f0ddd0" />
+    <ellipse cx="67" cy="33" rx="7"   ry="6"   fill="#f0ddd0" />
+    <ellipse cx="33" cy="33" rx="3.8" ry="3.2" fill="#f0b8b0" />
+    <ellipse cx="67" cy="33" rx="3.8" ry="3.2" fill="#f0b8b0" />
 
-    {/* ── Wings — bat style, two overlapping membranes per side ── */}
+    {/* ── Body — single large oval, head merges into torso ── */}
+    <ellipse cx="50" cy="65" rx="30" ry="34" fill="#f2e2d4" />
 
-    {/* Left wing: upper membrane (longer, points high) */}
-    <path d="M 14 57 Q 1 44 5 25 Q 13 38 20 50 Z" fill="#e06aaa" />
-    {/* Left wing: lower membrane (shorter, gives finger effect) */}
-    <path d="M 14 62 Q 2 55 7 42 Q 15 50 21 58 Z" fill="#c45898" opacity="0.85" />
-    {/* Left wing veins */}
-    <path d="M 14 58 Q 1 44 5 25" fill="none" stroke="#a84080" strokeWidth="0.8" strokeLinecap="round" />
-    <path d="M 14 62 Q 2 55 7 42"  fill="none" stroke="#a84080" strokeWidth="0.7" strokeLinecap="round" opacity="0.7" />
+    {/* Fluffy chest patch */}
+    <ellipse cx="50" cy="72" rx="18" ry="16" fill="#ecddd0" />
 
-    {/* Right wing: upper membrane */}
-    <path d="M 76 57 Q 89 44 85 25 Q 77 38 70 50 Z" fill="#e06aaa" />
-    {/* Right wing: lower membrane */}
-    <path d="M 76 62 Q 88 55 83 42 Q 75 50 69 58 Z" fill="#c45898" opacity="0.85" />
-    {/* Right wing veins */}
-    <path d="M 76 58 Q 89 44 85 25" fill="none" stroke="#a84080" strokeWidth="0.8" strokeLinecap="round" />
-    <path d="M 76 62 Q 88 55 83 42"  fill="none" stroke="#a84080" strokeWidth="0.7" strokeLinecap="round" opacity="0.7" />
+    {/* ── Stubby arms ── */}
+    <ellipse cx="23" cy="74" rx="7"  ry="9"  fill="#ecd8c8" transform="rotate(-18 23 74)" />
+    <ellipse cx="77" cy="74" rx="7"  ry="9"  fill="#ecd8c8" transform="rotate(18 77 74)" />
 
-    {/* Body — large fluffy round */}
-    <ellipse cx="45" cy="66" rx="31" ry="27" fill="#f2ead6" />
+    {/* ── Small feet ── */}
+    <ellipse cx="40" cy="97" rx="10" ry="6"  fill="#d8c4a8" />
+    <ellipse cx="60" cy="97" rx="10" ry="6"  fill="#d8c4a8" />
 
-    {/* Belly tuft */}
-    <ellipse cx="45" cy="76" rx="14" ry="10" fill="#e8dfc8" />
-
-    {/* Eyes */}
-    <circle cx="33" cy="60" r="5.5" fill="#1a0e0e" />
-    <circle cx="57" cy="60" r="5.5" fill="#1a0e0e" />
+    {/* ── Eyes — white sclera, red iris, dark pupil (FFIX style) ── */}
+    <circle cx="38" cy="56" r="8"   fill="white" />
+    <circle cx="62" cy="56" r="8"   fill="white" />
+    <circle cx="38" cy="56" r="5.5" fill="#cc2828" />
+    <circle cx="62" cy="56" r="5.5" fill="#cc2828" />
+    <circle cx="38" cy="56" r="2.8" fill="#1a0808" />
+    <circle cx="62" cy="56" r="2.8" fill="#1a0808" />
     {/* Eye shine */}
-    <circle cx="31" cy="58" r="2"   fill="white" />
-    <circle cx="55" cy="58" r="2"   fill="white" />
+    <circle cx="35" cy="53" r="2"   fill="white" />
+    <circle cx="59" cy="53" r="2"   fill="white" />
 
-    {/* Nose */}
-    <ellipse cx="45" cy="68" rx="5" ry="3.5" fill="#e87090" />
+    {/* ── Nose ── */}
+    <ellipse cx="50" cy="64" rx="4" ry="2.8" fill="#e87090" />
 
-    {/* Mouth — open smile with two teeth */}
-    {/* Dark mouth interior */}
-    <path d="M 37 74 Q 45 82 53 74 L 53 73 Q 45 79 37 73 Z" fill="#6a2828" />
-    {/* Two little teeth */}
-    <rect x="41"   y="72.5" width="3.5" height="4" rx="0.8" fill="white" />
-    <rect x="45.5" y="72.5" width="3.5" height="4" rx="0.8" fill="white" />
-    {/* Mouth curve outline */}
-    <path d="M 37 73 Q 45 80 53 73" fill="none" stroke="#9a3838" strokeWidth="1" strokeLinecap="round" />
+    {/* ── Mouth — open with two white teeth ── */}
+    <path d="M 42 70 Q 50 78 58 70 L 58 69 Q 50 76 42 69 Z" fill="#7a2828" />
+    <rect x="46"   y="69" width="3.2" height="4" rx="0.8" fill="white" />
+    <rect x="50.5" y="69" width="3.2" height="4" rx="0.8" fill="white" />
+    <path d="M 42 69 Q 50 77 58 69" fill="none" stroke="#a03030" strokeWidth="0.9" strokeLinecap="round" />
   </svg>
 )
 
