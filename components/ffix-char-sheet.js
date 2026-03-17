@@ -60,13 +60,13 @@ const AtbBar = () => (
   </Flex>
 )
 
-// Stats tuned for FULLSTACK MAGE — MAG is the primary stat
+// Stats tuned for FULLSTACK MAGE — MAG is the primary stat, low STR/VIT like Vivi
 const STATS = [
   { label: 'MAG', value: 97, color: '#aa66ff' }, // Architecture & system design
-  { label: 'SPI', value: 92, color: '#44ccff' }, // Community & leadership
-  { label: 'SPD', value: 88, color: '#ffcc00' }, // Shipping velocity
-  { label: 'VIT', value: 84, color: '#00cc55' }, // Consistency & endurance
-  { label: 'STR', value: 68, color: '#ff8844' }, // Low — mages don't lift 😄
+  { label: 'SPI', value: 90, color: '#44ccff' }, // Community & leadership
+  { label: 'SPD', value: 82, color: '#ffcc00' }, // Shipping velocity
+  { label: 'VIT', value: 55, color: '#00cc55' }, // Low — mages are fragile
+  { label: 'STR', value: 32, color: '#ff8844' }, // Very low — mages don't lift
 ]
 
 const FfixCharSheet = () => (
@@ -111,16 +111,16 @@ const FfixCharSheet = () => (
         <Box flex={1}>
           <Flex justify="space-between" mb={1}>
             <Text fontSize="10px" color={GOLD}>HP</Text>
-            <Text fontSize="10px" color="#00cc55">9999/9999</Text>
+            <Text fontSize="10px" color="#00cc55">4200/4200</Text>
           </Flex>
           <Box h="6px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
-            <Box h="full" w="100%" bg="linear-gradient(90deg,#009933,#00ff55)" />
+            <Box h="full" w="72%" bg="linear-gradient(90deg,#009933,#00ff55)" />
           </Box>
         </Box>
         <Box flex={1}>
           <Flex justify="space-between" mb={1}>
             <Text fontSize="10px" color={GOLD}>MP</Text>
-            <Text fontSize="10px" color="#4488ff">999/999</Text>
+            <Text fontSize="10px" color="#4488ff">9999/9999</Text>
           </Flex>
           <Box h="6px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
             <Box h="full" w="100%" bg="linear-gradient(90deg,#2244bb,#4499ff)" />
