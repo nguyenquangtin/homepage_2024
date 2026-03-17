@@ -6,10 +6,6 @@ import {
   Box,
   SimpleGrid,
   Button,
-  Tag,
-  TagLabel,
-  Wrap,
-  WrapItem,
   Text,
   Flex,
   useColorModeValue
@@ -23,6 +19,9 @@ import { GridItem } from '../components/grid-item'
 import Image from 'next/image'
 import thumbYouTube from '../public/images/links/youtube.png'
 import thumbEcomdyMedia from '../public/images/links/ecomdy-media.png'
+import FfixMoogle from '../components/ffix-moogle'
+import FfixCharSheet from '../components/ffix-char-sheet'
+import FfixBattleMenu from '../components/ffix-battle-menu'
 
 // Resume timeline entries — keeps JSX clean
 const career = [
@@ -38,8 +37,6 @@ const career = [
   { year: '1987',      role: 'Born',                        company: 'Buon Ho, Daklak, Vietnam', url: null },
 ]
 
-const techStack   = ['Node.js', 'React', 'Vue.js', 'PHP', 'TypeScript', 'WordPress', 'TikTok API', 'Docker']
-const interests   = ['Music', 'Books', 'Coffee', 'Running', 'Open Source', 'Community']
 const socialLinks = [
   { icon: <IoLogoGithub />,    label: '@nguyenquangtin', href: 'https://github.com/nguyenquangtin' },
   { icon: <IoLogoTwitter />,   label: '@nguyenquangtin', href: 'https://twitter.com/nguyenquangtin' },
@@ -90,28 +87,36 @@ const Home = () => {
             </Box>
 
             {/* Name + tagline */}
-            <Box>
-              <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} fontWeight={700}>
-                Tony Tin Nguyen
-              </Heading>
-              <Text color={mutedText} mt={1} fontSize="sm">
-                developer · entrepreneur · consultant
-              </Text>
-              <Box
-                mt={3}
-                p={3}
-                borderRadius="lg"
-                bg={cardBg}
-                border="1px solid"
-                borderColor={cardBorder}
-                fontSize="sm"
-                fontWeight={500}
-              >
-                Building products that scale — Head of Tech Partnership at{' '}
-                <Link href="https://ecomdymedia.com/" isExternal color="blue.400">Ecomdy</Link>
-                , TikTok Marketing Partner & co-founder of{' '}
-                <Link href="https://gdgmientrung.com/" isExternal color="blue.400">GDG Mien Trung</Link>.
-              </Box>
+            <Box flex={1}>
+              <Flex align="flex-start" justify="space-between" gap={2}>
+                <Box flex={1}>
+                  <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} fontWeight={700}>
+                    Tony Tin Nguyen
+                  </Heading>
+                  <Text color={mutedText} mt={1} fontSize="sm">
+                    developer · entrepreneur · consultant
+                  </Text>
+                  <Box
+                    mt={3}
+                    p={3}
+                    borderRadius="lg"
+                    bg={cardBg}
+                    border="1px solid"
+                    borderColor={cardBorder}
+                    fontSize="sm"
+                    fontWeight={500}
+                  >
+                    Building products that scale — Head of Tech Partnership at{' '}
+                    <Link href="https://ecomdymedia.com/" isExternal color="blue.400">Ecomdy</Link>
+                    , TikTok Marketing Partner & co-founder of{' '}
+                    <Link href="https://gdgmientrung.com/" isExternal color="blue.400">GDG Mien Trung</Link>.
+                  </Box>
+                </Box>
+                {/* Moogle mascot — hover for Kupo! */}
+                <Box flexShrink={0} display={{ base: 'none', sm: 'block' }}>
+                  <FfixMoogle size={64} />
+                </Box>
+              </Flex>
             </Box>
           </Flex>
         </Section>
@@ -138,18 +143,13 @@ const Home = () => {
           </Box>
         </Section>
 
-        {/* ── TECH STACK ───────────────────────────────── */}
+        {/* ── FFIX CHARACTER SHEET ─────────────────────── */}
         <Section delay={0.15}>
-          <Heading as="h3" variant="section-title">Tech Stack</Heading>
-          <Wrap spacing={2} mt={2}>
-            {techStack.map(tech => (
-              <WrapItem key={tech}>
-                <Tag size="sm" borderRadius="md" variant="subtle" colorScheme="blue">
-                  <TagLabel>{tech}</TagLabel>
-                </Tag>
-              </WrapItem>
-            ))}
-          </Wrap>
+          <Heading as="h3" variant="section-title">Character Sheet</Heading>
+          <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
+            <FfixCharSheet />
+            <FfixBattleMenu />
+          </SimpleGrid>
         </Section>
 
         {/* ── RESUME TIMELINE ──────────────────────────── */}
@@ -191,20 +191,6 @@ const Home = () => {
               ))}
             </Box>
           </Box>
-        </Section>
-
-        {/* ── INTERESTS ────────────────────────────────── */}
-        <Section delay={0.25}>
-          <Heading as="h3" variant="section-title">What I love</Heading>
-          <Wrap spacing={2} mt={2}>
-            {interests.map(item => (
-              <WrapItem key={item}>
-                <Tag size="md" borderRadius="full" variant="subtle" colorScheme="blue" px={3}>
-                  <TagLabel>{item}</TagLabel>
-                </Tag>
-              </WrapItem>
-            ))}
-          </Wrap>
         </Section>
 
         {/* ── FEATURED ─────────────────────────────────── */}
