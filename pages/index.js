@@ -19,7 +19,7 @@ import { GridItem } from '../components/grid-item'
 import Image from 'next/image'
 import thumbYouTube from '../public/images/links/youtube.png'
 import thumbEcomdyMedia from '../public/images/links/ecomdy-media.png'
-import FfixMoogle from '../components/ffix-moogle'
+import { FfixMoogleFlying } from '../components/ffix-moogle'
 import FfixCharSheet from '../components/ffix-char-sheet'
 import { FfixTechMenu, FfixInterestMenu } from '../components/ffix-battle-menu'
 
@@ -50,6 +50,8 @@ const Home = () => {
   const timelineLine = useColorModeValue('blue.400', 'blue.500')
 
   return (
+    <>
+    <FfixMoogleFlying />
     <Layout>
       <Container>
 
@@ -88,35 +90,27 @@ const Home = () => {
 
             {/* Name + tagline */}
             <Box flex={1}>
-              <Flex align="flex-start" justify="space-between" gap={2}>
-                <Box flex={1}>
-                  <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} fontWeight={700}>
-                    Tony Tin Nguyen
-                  </Heading>
-                  <Text color={mutedText} mt={1} fontSize="sm">
-                    developer · entrepreneur · consultant
-                  </Text>
-                  <Box
-                    mt={3}
-                    p={3}
-                    borderRadius="lg"
-                    bg={cardBg}
-                    border="1px solid"
-                    borderColor={cardBorder}
-                    fontSize="sm"
-                    fontWeight={500}
-                  >
-                    Building products that scale — Head of Tech Partnership at{' '}
-                    <Link href="https://ecomdymedia.com/" isExternal color="blue.400">Ecomdy</Link>
-                    , TikTok Marketing Partner & co-founder of{' '}
-                    <Link href="https://gdgmientrung.com/" isExternal color="blue.400">GDG Mien Trung</Link>.
-                  </Box>
-                </Box>
-                {/* Moogle mascot — hover for Kupo! */}
-                <Box flexShrink={0} display={{ base: 'none', sm: 'block' }}>
-                  <FfixMoogle size={64} />
-                </Box>
-              </Flex>
+              <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} fontWeight={700}>
+                Tony Tin Nguyen
+              </Heading>
+              <Text color={mutedText} mt={1} fontSize="sm">
+                developer · entrepreneur · consultant
+              </Text>
+              <Box
+                mt={3}
+                p={3}
+                borderRadius="lg"
+                bg={cardBg}
+                border="1px solid"
+                borderColor={cardBorder}
+                fontSize="sm"
+                fontWeight={500}
+              >
+                Building products that scale — Head of Tech Partnership at{' '}
+                <Link href="https://ecomdymedia.com/" isExternal color="blue.400">Ecomdy</Link>
+                , TikTok Marketing Partner & co-founder of{' '}
+                <Link href="https://gdgmientrung.com/" isExternal color="blue.400">GDG Mien Trung</Link>.
+              </Box>
             </Box>
           </Flex>
         </Section>
@@ -277,6 +271,7 @@ const Home = () => {
 
       </Container>
     </Layout>
+    </>
   )
 }
 
