@@ -1,7 +1,6 @@
 import NextLink from 'next/link'
 import {
   Link,
-  Container,
   Heading,
   Box,
   SimpleGrid,
@@ -91,7 +90,6 @@ const Home = () => {
     <>
       <FfixMoogleFlying />
       <Layout>
-        <Container>
 
           {/* ── TWO-COLUMN DESKTOP LAYOUT ─────────────────── */}
           <Flex
@@ -299,7 +297,6 @@ const Home = () => {
             </Box>
 
           </Flex>
-        </Container>
       </Layout>
     </>
   )
