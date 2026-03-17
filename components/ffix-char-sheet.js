@@ -123,10 +123,10 @@ const FfixCharSheet = () => (
         <Box flex={1}>
           <Flex justify="space-between" mb={1}>
             <Text fontSize="10px" color={GOLD}>MP</Text>
-            <Text fontSize="10px" color="#4488ff">580/580</Text>
+            <Text fontSize="10px" color="#4488ff">464/580</Text>
           </Flex>
           <Box h="6px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
-            <Box h="full" w="100%" bg="linear-gradient(90deg,#2244bb,#4499ff)" />
+            <Box h="full" w="80%" bg="linear-gradient(90deg,#2244bb,#4499ff)" />
           </Box>
         </Box>
       </Flex>
@@ -148,7 +148,7 @@ const FfixCharSheet = () => (
       {/* LV + EXP footer */}
       <Flex justify="space-between" mt={3} pt={2} borderTop={`1px solid ${GOLD}33`}>
         <Text fontSize="10px" color={GOLD}>
-          LV <Text as="span" color={CREAM}>19</Text>
+          LV <Text as="span" color={CREAM}>39</Text>
         </Text>
         <Text fontSize="10px" color={MUTED}>
           EXP <Text as="span" color={CREAM}>19 YRS</Text>
@@ -158,7 +158,7 @@ const FfixCharSheet = () => (
       {/* Gil counter */}
       <Flex justify="flex-end" mt={1.5}>
         <Text fontSize="10px" color={GOLD} letterSpacing="0.05em">
-          GIL <Text as="span" color="#ffd700" fontWeight="bold">9,999,999</Text>
+          GIL <Text as="span" color="#ffd700" fontWeight="bold">8,888,888</Text>
         </Text>
       </Flex>
     </Box>
