@@ -166,9 +166,9 @@ const Home = () => {
               <Section delay={0.1}>
                 <Heading as="h3" variant="section-title">Work</Heading>
                 <Paragraph>
-                  18+ years shipping web products for global brands (BreadTalk, CooperVision) and
-                  fast-growing startups. Expert in JavaScript ecosystems — Node.js, React, Vue — with
-                  a focus on e-commerce, API integrations, and scalable architecture.
+                  19+ years shipping web products for global brands (BreadTalk, CooperVision) and
+                  fast-growing startups. Expert in JavaScript ecosystems — Node.js, React, Vue,
+                  TypeScript — with a focus on e-commerce, TikTok API integrations, and scalable architecture.
                 </Paragraph>
                 <Box mt={4} textAlign="center">
                   <Button
