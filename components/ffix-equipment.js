@@ -6,10 +6,11 @@ const CREAM = '#f0e6a0'
 const MUTED = '#9890a0'
 
 const EQUIP = [
-  { slot: 'WPN', name: 'TypeScript',   bonus: '+95 MAG', color: '#aa66ff' },
-  { slot: 'ARM', name: 'Docker',        bonus: '+80 VIT', color: '#44ccff' },
-  { slot: 'ACC', name: 'TikTok API',   bonus: '+60 SPD', color: '#ffcc00' },
-  { slot: 'ADD', name: 'Open Source',  bonus: '+55 SPI', color: '#00cc55' },
+  { slot: 'WPN', name: 'TypeScript',    bonus: '+95 MAG', color: '#aa66ff' }, // primary weapon — type system mastery
+  { slot: 'HLM', name: 'System Design', bonus: '+88 MAG', color: '#cc88ff' }, // helmet — architecture thinking
+  { slot: 'ARM', name: 'Docker',         bonus: '+80 VIT', color: '#44ccff' }, // armor — stability & endurance
+  { slot: 'BDY', name: 'Node.js',        bonus: '+75 SPD', color: '#00cc88' }, // body — runtime foundation
+  { slot: 'ACC', name: 'TikTok API',    bonus: '+60 SPD', color: '#ffcc00' }, // accessory — platform edge
 ]
 
 const FfixEquipment = () => (
