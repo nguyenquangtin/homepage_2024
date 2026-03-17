@@ -61,7 +61,7 @@ const FfixMognet = () => (
           </Text>
           <Button
             as="a"
-            href="https://nguyenquangtin.substack.com/"
+            href="https://coderhorizon.com/"
             target="_blank"
             rel="noopener noreferrer"
             leftIcon={<EmailIcon />}

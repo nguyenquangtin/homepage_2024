@@ -53,7 +53,7 @@ const Main = ({ children, router }) => {
             "sameAs": [
               "https://github.com/nguyenquangtin",
               "https://twitter.com/nguyenquangtin",
-              "https://nguyenquangtin.substack.com"
+              "https://coderhorizon.com"
             ]
           })}}
         />

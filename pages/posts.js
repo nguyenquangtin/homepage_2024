@@ -79,7 +79,7 @@ const Posts = ({ posts, error }) => (
           align="center"
         >
           <Text fontFamily="monospace" fontSize="10px" color={GOLD} letterSpacing="0.15em">
-            ◆ MOGNET ARCHIVES — nguyenquangtin.substack.com
+            ◆ MOGNET ARCHIVES — coderhorizon.com
           </Text>
           <Text fontFamily="monospace" fontSize="10px" color={MUTED}>
             {posts.length} dispatches
@@ -104,7 +104,7 @@ const Posts = ({ posts, error }) => (
       <Section delay={0.2}>
         <Flex justify="center">
           <Link
-            href="https://nguyenquangtin.substack.com/"
+            href="https://coderhorizon.com/"
             isExternal
             fontFamily="monospace"
             fontSize="xs"
@@ -123,7 +123,7 @@ const Posts = ({ posts, error }) => (
 export async function getStaticProps() {
   try {
     const parser = new Parser({ timeout: 8000 })
-    const feed = await parser.parseURL('https://nguyenquangtin.substack.com/feed')
+    const feed = await parser.parseURL('https://coderhorizon.com/feed')
     const posts = (feed.items || []).map(({ title, link, pubDate, contentSnippet }) => ({
       title: title || '',
       link: link || '',
