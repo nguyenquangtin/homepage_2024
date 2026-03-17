@@ -183,7 +183,16 @@ const Home = () => {
               {/* FFIX CHARACTER SHEET */}
               <Section delay={0.15}>
                 <Heading as="h3" variant="section-title">Character Sheet</Heading>
-                <SimpleGrid columns={{ base: 1, md: 3 }} gap={4} alignItems="stretch">
+                <SimpleGrid
+                  columns={{ base: 1, sm: 2, md: 3 }}
+                  gap={4}
+                  alignItems="stretch"
+                  sx={{
+                    '@media (min-width: 48em)': {
+                      gridTemplateColumns: '2fr 1.2fr 1.2fr',
+                    }
+                  }}
+                >
                   <FfixCharSheet />
                   <FfixTechMenu />
                   <FfixInterestMenu />

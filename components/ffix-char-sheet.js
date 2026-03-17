@@ -45,13 +45,13 @@ const AtbBar = () => (
   </Flex>
 )
 
-// Stats mapped to Tony's real attributes (out of 100)
+// Stats tuned for FULLSTACK MAGE — MAG is the primary stat
 const STATS = [
-  { label: 'STR', value: 95, color: '#ff8844' }, // Code quality
-  { label: 'MAG', value: 88, color: '#aa66ff' }, // Architecture
-  { label: 'SPD', value: 92, color: '#ffcc00' }, // Shipping speed
-  { label: 'VIT', value: 97, color: '#00cc55' }, // Consistency
-  { label: 'SPI', value: 85, color: '#44ccff' }, // Community spirit
+  { label: 'MAG', value: 97, color: '#aa66ff' }, // Architecture & system design
+  { label: 'SPI', value: 92, color: '#44ccff' }, // Community & leadership
+  { label: 'SPD', value: 88, color: '#ffcc00' }, // Shipping velocity
+  { label: 'VIT', value: 84, color: '#00cc55' }, // Consistency & endurance
+  { label: 'STR', value: 68, color: '#ff8844' }, // Low — mages don't lift 😄
 ]
 
 const FfixCharSheet = () => (
