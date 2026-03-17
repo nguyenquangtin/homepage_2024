@@ -60,13 +60,16 @@ const AtbBar = () => (
   </Flex>
 )
 
-// Stats tuned for FULLSTACK MAGE — MAG is the primary stat, low STR/VIT like Vivi
+// Stats tuned for DRAGON KNIGHT — STR/VIT primary like Freya, MAG secondary
+// Effective totals include equipment bonuses shown in the Equipment panel:
+//   WPN TypeScript +18 STR | HLM System Design +15 SPI | ARM Docker +20 VIT
+//   BDY Node.js +12 SPD   | ACC TikTok API +10 SPD
 const STATS = [
-  { label: 'MAG', value: 97, color: '#aa66ff' }, // Architecture & system design
-  { label: 'SPI', value: 90, color: '#44ccff' }, // Community & leadership
-  { label: 'SPD', value: 82, color: '#ffcc00' }, // Shipping velocity
-  { label: 'VIT', value: 55, color: '#00cc55' }, // Low — mages are fragile
-  { label: 'STR', value: 32, color: '#ff8844' }, // Very low — mages don't lift
+  { label: 'STR', value: 88, color: '#ff8844' }, // Execution power — primary for Dragon Knight
+  { label: 'VIT', value: 84, color: '#00cc55' }, // Endurance & consistency
+  { label: 'SPI', value: 78, color: '#44ccff' }, // Community & leadership
+  { label: 'SPD', value: 74, color: '#ffcc00' }, // Shipping velocity
+  { label: 'MAG', value: 60, color: '#aa66ff' }, // Tech depth — secondary for DK
 ]
 
 const FfixCharSheet = () => (
@@ -100,8 +103,8 @@ const FfixCharSheet = () => (
           <Text fontSize="10px" color={MUTED} letterSpacing="0.1em" mb={0.5}>
             JOB
           </Text>
-          <Text color="#80ccff" fontSize="xs" fontWeight="bold" letterSpacing="0.04em">
-            FULLSTACK MAGE
+          <Text color="#ffb866" fontSize="xs" fontWeight="bold" letterSpacing="0.04em">
+            DRAGON KNIGHT
           </Text>
         </Box>
       </Flex>
@@ -111,16 +114,16 @@ const FfixCharSheet = () => (
         <Box flex={1}>
           <Flex justify="space-between" mb={1}>
             <Text fontSize="10px" color={GOLD}>HP</Text>
-            <Text fontSize="10px" color="#00cc55">3024/4200</Text>
+            <Text fontSize="10px" color="#00cc55">7168/8400</Text>
           </Flex>
           <Box h="6px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
-            <Box h="full" w="72%" bg="linear-gradient(90deg,#009933,#00ff55)" />
+            <Box h="full" w="85%" bg="linear-gradient(90deg,#009933,#00ff55)" />
           </Box>
         </Box>
         <Box flex={1}>
           <Flex justify="space-between" mb={1}>
             <Text fontSize="10px" color={GOLD}>MP</Text>
-            <Text fontSize="10px" color="#4488ff">9999/9999</Text>
+            <Text fontSize="10px" color="#4488ff">580/580</Text>
           </Flex>
           <Box h="6px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
             <Box h="full" w="100%" bg="linear-gradient(90deg,#2244bb,#4499ff)" />
