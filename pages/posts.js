@@ -89,7 +89,7 @@ const Posts = ({ posts, error }) => (
         <Box p={4}>
           {error && (
             <Text fontFamily="monospace" fontSize="sm" color="#ff6666">
-              ◇ Could not load posts — visit substack directly
+              ◇ Could not load posts — visit coderhorizon.com directly
             </Text>
           )}
           {!error && posts.length === 0 && (
