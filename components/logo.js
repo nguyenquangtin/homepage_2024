@@ -28,8 +28,10 @@ const Logo = () => {
         <CodeBracketIcon />
         <Text
           color={useColorModeValue('gray.800', 'whiteAlpha.900')}
-          fontFamily='M PLUS Rounded 1c", sans-serif'
-          fontWeight="bold"
+          fontFamily="'Cinzel', Georgia, serif"
+          fontWeight="700"
+          fontSize="15px"
+          letterSpacing="0.03em"
           ml={3}
         >
           Tony Tin Nguyen

@@ -15,7 +15,7 @@ const Main = ({ children, router }) => {
     <Box as="main" pb={8}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Tony Tin Nguyen — Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years shipping web products globally. Based in Danang, Vietnam." />
+        <meta name="description" content="Building products that scale. Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years in JavaScript & e-commerce. Danang, Vietnam." />
         <meta name="author" content="Tony Tin Nguyen" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={`https://www.nguyenquangtin.com${router.asPath.split('?')[0]}`} />
@@ -26,14 +26,14 @@ const Main = ({ children, router }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@nguyenquangtin" />
         <meta name="twitter:creator" content="@nguyenquangtin" />
-        <meta name="twitter:title" content="Tony Tin Nguyen" />
-        <meta name="twitter:description" content="Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years in web development. Danang, Vietnam." />
+        <meta name="twitter:title" content="Tony Tin Nguyen — Building products that scale." />
+        <meta name="twitter:description" content="Building products that scale. Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years in JS & e-commerce." />
         <meta name="twitter:image" content="https://www.nguyenquangtin.com/card.png" />
 
         {/* Open Graph */}
         <meta property="og:site_name" content="Tony Tin Nguyen" />
-        <meta property="og:title" content="Tony Tin Nguyen" />
-        <meta property="og:description" content="Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years in web development. Danang, Vietnam." />
+        <meta property="og:title" content="Tony Tin Nguyen — Building products that scale." />
+        <meta property="og:description" content="Building products that scale. Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years in JS & e-commerce." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.nguyenquangtin.com${router.asPath.split('?')[0]}`} />
         <meta property="og:image" content="https://www.nguyenquangtin.com/card.png" />
@@ -58,7 +58,7 @@ const Main = ({ children, router }) => {
           })}}
         />
 
-        <title>Tony Tin Nguyen - Homepage</title>
+        <title>Tony Tin Nguyen — Building products that scale.</title>
       </Head>
 
       <NavBar path={router.asPath} />

@@ -140,8 +140,8 @@ const Home = () => {
                     <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} fontWeight={700}>
                       Tony Tin Nguyen
                     </Heading>
-                    <Text color={mutedText} mt={1} fontSize="sm">
-                      developer · entrepreneur · consultant
+                    <Text color={mutedText} mt={1} fontSize="sm" fontFamily="mono">
+                      engineer · entrepreneur · black mage
                     </Text>
                     <Box
                       mt={3}

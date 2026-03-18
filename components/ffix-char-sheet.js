@@ -60,16 +60,16 @@ const AtbBar = () => (
   </Flex>
 )
 
-// Stats tuned for DRAGON KNIGHT — STR/VIT primary like Freya, MAG secondary
+// Stats tuned for BLACK MAGE — MAG/SPI primary, glass cannon
 // Effective totals include equipment bonuses shown in the Equipment panel:
-//   WPN TypeScript +18 STR | HLM System Design +15 SPI | ARM Docker +20 VIT
-//   BDY Node.js +12 SPD   | ACC TikTok API +10 SPD
+//   WPN React/Next.js +24 MAG | HLM TypeScript +16 SPI | BDY System Design +20 SPI
+//   ARM Node.js +12 SPD       | ACC TikTok API +15 MAG
 const STATS = [
-  { label: 'STR', value: 88, color: '#ff8844' }, // Execution power — primary for Dragon Knight
-  { label: 'VIT', value: 84, color: '#00cc55' }, // Endurance & consistency
-  { label: 'SPI', value: 78, color: '#44ccff' }, // Community & leadership
-  { label: 'SPD', value: 74, color: '#ffcc00' }, // Shipping velocity
-  { label: 'MAG', value: 60, color: '#aa66ff' }, // Tech depth — secondary for DK
+  { label: 'MAG', value: 92, color: '#aa66ff' }, // Code mastery — primary for Black Mage
+  { label: 'SPI', value: 85, color: '#44ccff' }, // Architectural wisdom & 19 yrs intuition
+  { label: 'SPD', value: 76, color: '#ffcc00' }, // Shipping velocity
+  { label: 'VIT', value: 64, color: '#00cc55' }, // Glass cannon — thinker, not grinder
+  { label: 'STR', value: 58, color: '#ff8844' }, // Physical execution — not the main weapon
 ]
 
 const FfixCharSheet = () => (
@@ -103,8 +103,8 @@ const FfixCharSheet = () => (
           <Text fontSize="10px" color={MUTED} letterSpacing="0.1em" mb={0.5}>
             JOB
           </Text>
-          <Text color="#ffb866" fontSize="xs" fontWeight="bold" letterSpacing="0.04em">
-            DRAGON KNIGHT
+          <Text color="#bb77ff" fontSize="xs" fontWeight="bold" letterSpacing="0.04em">
+            BLACK MAGE
           </Text>
         </Box>
       </Flex>
@@ -114,19 +114,19 @@ const FfixCharSheet = () => (
         <Box flex={1}>
           <Flex justify="space-between" mb={1}>
             <Text fontSize="10px" color={GOLD}>HP</Text>
-            <Text fontSize="10px" color="#00cc55">7168/8400</Text>
+            <Text fontSize="10px" color="#00cc55">3780/5400</Text>
           </Flex>
           <Box h="6px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
-            <Box h="full" w="85%" bg="linear-gradient(90deg,#009933,#00ff55)" />
+            <Box h="full" w="70%" bg="linear-gradient(90deg,#009933,#00ff55)" />
           </Box>
         </Box>
         <Box flex={1}>
           <Flex justify="space-between" mb={1}>
             <Text fontSize="10px" color={GOLD}>MP</Text>
-            <Text fontSize="10px" color="#4488ff">464/580</Text>
+            <Text fontSize="10px" color="#bb77ff">663/720</Text>
           </Flex>
           <Box h="6px" bg="rgba(255,255,255,0.08)" borderRadius="sm" overflow="hidden">
-            <Box h="full" w="80%" bg="linear-gradient(90deg,#2244bb,#4499ff)" />
+            <Box h="full" w="92%" bg="linear-gradient(90deg,#7722cc,#bb66ff)" />
           </Box>
         </Box>
       </Flex>
