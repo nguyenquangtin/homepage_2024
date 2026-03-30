@@ -1,37 +1,43 @@
-import { useEffect, useState } from 'react'
-import { Box, Text } from '@chakra-ui/react'
+import { useEffect, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
+import { getRandomEnemy } from './battle/battle-enemies'
+
+// Lazy-load battle scene — only fetched when encounter triggers
+const BattleScene = dynamic(() => import('./battle/battle-scene'), { ssr: false })
 
 // Triggered by: window.dispatchEvent(new Event('ffix-encounter'))
 // Click the Moogle 5× to activate — see ffix-moogle.js
 
-const MESSAGES = [
-  { enemy: 'WILD BUG',        action: 'Deploy fix?' },
-  { enemy: 'SCOPE CREEP',     action: 'Defend scope?' },
-  { enemy: 'LEGACY CODE',     action: 'Refactor?' },
-  { enemy: 'DEADLINE',        action: 'Ship now?' },
-  { enemy: 'MERGE CONFLICT',  action: 'Resolve?' },
-]
-
 const FfixEncounter = () => {
-  const [phase, setPhase]     = useState(null) // null | 'flash' | 'battle' | 'fade'
-  const [encounter, setEncounter] = useState(MESSAGES[0])
+  const [phase, setPhase] = useState(null) // null | 'flash' | 'battle' | 'fade'
+  const [enemy, setEnemy] = useState(null)
 
   useEffect(() => {
     const trigger = () => {
-      // Pick a random encounter message
-      setEncounter(MESSAGES[Math.floor(Math.random() * MESSAGES.length)])
-
+      setEnemy(getRandomEnemy())
       setPhase('flash')
       const t1 = setTimeout(() => setPhase('battle'), 350)
-      const t2 = setTimeout(() => setPhase('fade'),   1600)
-      const t3 = setTimeout(() => setPhase(null),     2200)
-      return () => [t1, t2, t3].forEach(clearTimeout)
+      return () => clearTimeout(t1)
     }
 
     window.addEventListener('ffix-encounter', trigger)
     return () => window.removeEventListener('ffix-encounter', trigger)
   }, [])
+
+  const handleClose = useCallback(() => {
+    setPhase('fade')
+    const t = setTimeout(() => setPhase(null), 600)
+    return () => clearTimeout(t)
+  }, [])
+
+  // ESC key to close
+  useEffect(() => {
+    if (!phase) return
+    const handler = (e) => { if (e.key === 'Escape') handleClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [phase, handleClose])
 
   return (
     <AnimatePresence>
@@ -45,59 +51,27 @@ const FfixEncounter = () => {
         />
       )}
 
-      {phase === 'battle' && (
+      {phase === 'battle' && enemy && (
         <motion.div
           key="battle"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          style={{ position: 'fixed', inset: 0, zIndex: 99999, pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          transition={{ duration: 0.3 }}
+          style={{ position: 'fixed', inset: 0, zIndex: 99999 }}
         >
-          <Box
-            bg="rgba(0,0,0,0.92)"
-            w="100%"
-            h="100%"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
-            gap={4}
-          >
-            {/* Enemy name flash */}
-            <motion.div
-              animate={{ x: [-10, 0] }}
-              transition={{ duration: 0.2 }}
-            >
-              <Text
-                fontFamily="monospace"
-                fontSize={{ base: 'xl', md: '3xl' }}
-                fontWeight="bold"
-                color="#f0e6a0"
-                letterSpacing="0.2em"
-              >
-                ！{encounter.enemy} appeared！
-              </Text>
-            </motion.div>
-
-            {/* ATB-style action prompt */}
-            <Box
-              border="2px solid #c8a800"
-              borderRadius="sm"
-              px={6}
-              py={3}
-              bg="rgba(8,14,40,0.97)"
-            >
-              <Text fontFamily="monospace" fontSize="sm" color="#c8a800" letterSpacing="0.15em">
-                ◆ {encounter.action}
-              </Text>
-            </Box>
-
-            <Text fontFamily="monospace" fontSize="xs" color="#9890a0" letterSpacing="0.1em">
-              (hint: click Moogle 5× to trigger)
-            </Text>
-          </Box>
+          <BattleScene enemy={enemy} onClose={handleClose} />
         </motion.div>
+      )}
+
+      {phase === 'fade' && (
+        <motion.div
+          key="fade"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{ position: 'fixed', inset: 0, background: 'black', zIndex: 99999, pointerEvents: 'none' }}
+        />
       )}
     </AnimatePresence>
   )
