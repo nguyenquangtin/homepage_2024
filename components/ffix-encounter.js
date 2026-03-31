@@ -74,9 +74,27 @@ const FfixEncounter = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          style={{ position: 'fixed', inset: 0, zIndex: 99999 }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 99999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(0,0,0,0.7)',
+          }}
         >
-          <BattleScene enemy={enemy} onClose={handleClose} />
+          <div style={{
+            width: '80vw',
+            height: '80vh',
+            borderRadius: '8px',
+            border: '3px solid #c8a800',
+            boxShadow: '0 0 0 5px rgba(8,14,40,0.9), 0 0 40px rgba(200,168,0,0.3), 0 0 80px rgba(0,0,0,0.8)',
+            overflow: 'hidden',
+            position: 'relative',
+          }}>
+            <BattleScene enemy={enemy} onClose={handleClose} />
+          </div>
         </motion.div>
       )}
 
