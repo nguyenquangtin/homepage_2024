@@ -20,6 +20,7 @@ const Main = ({ children, router }) => {
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={`https://www.nguyenquangtin.com${router.asPath.split('?')[0]}`} />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
         {/* Twitter / X */}
