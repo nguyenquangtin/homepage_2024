@@ -44,20 +44,36 @@ const BattleScene = ({ enemy, onClose }) => {
     return () => window.removeEventListener('keydown', handler)
   }, [onClose])
 
-  // Show damage number when animation plays
+  // Show damage number + fallback timer for animDone
+  const animDoneCalledRef = useRef(false)
   useEffect(() => {
     if (phase === 'player_anim' || phase === 'enemy_anim') {
+      animDoneCalledRef.current = false
       const isEnemy = phase === 'enemy_anim'
       setDmgDisplay({
         value: lastDmg,
         position: isEnemy
-          ? { left: '30%', top: '35%' }   // on player sprite
-          : { left: '22%', top: '30%' }    // on enemy sprite
+          ? { left: '30%', top: '35%' }
+          : { left: '22%', top: '30%' }
       })
-      const t = setTimeout(() => setDmgDisplay(null), 900)
-      return () => clearTimeout(t)
+      const t1 = setTimeout(() => setDmgDisplay(null), 900)
+      // Fallback: if onComplete never fires, advance after 800ms
+      const t2 = setTimeout(() => {
+        if (!animDoneCalledRef.current) {
+          animDoneCalledRef.current = true
+          animDone()
+        }
+      }, 800)
+      return () => { clearTimeout(t1); clearTimeout(t2) }
     }
-  }, [phase, lastDmg])
+  }, [phase, lastDmg, animDone])
+
+  const safeAnimDone = useCallback(() => {
+    if (!animDoneCalledRef.current) {
+      animDoneCalledRef.current = true
+      animDone()
+    }
+  }, [animDone])
 
   const handleClose = useCallback(() => {
     clearTimeout(autoCloseRef.current)
@@ -126,7 +142,7 @@ const BattleScene = ({ enemy, onClose }) => {
         </AnimatePresence>
         {/* Enemy effect overlay */}
         {phase === 'player_anim' && animType !== 'item' && (
-          <BattleEffect animType={animType} onComplete={animDone} />
+          <BattleEffect animType={animType} onComplete={safeAnimDone} />
         )}
       </Box>
 
@@ -144,10 +160,10 @@ const BattleScene = ({ enemy, onClose }) => {
         </motion.div>
         {/* Player effect overlay (heal / enemy attack) */}
         {phase === 'player_anim' && animType === 'item' && (
-          <BattleEffect animType="item" onComplete={animDone} />
+          <BattleEffect animType="item" onComplete={safeAnimDone} />
         )}
         {phase === 'enemy_anim' && (
-          <BattleEffect animType="enemy_attack" onComplete={animDone} />
+          <BattleEffect animType="enemy_attack" onComplete={safeAnimDone} />
         )}
       </Box>
 
