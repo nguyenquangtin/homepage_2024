@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { getRandomEnemy } from './battle/battle-enemies'
@@ -7,28 +7,43 @@ import { getRandomEnemy } from './battle/battle-enemies'
 const BattleScene = dynamic(() => import('./battle/battle-scene'), { ssr: false })
 
 // Triggered by: window.dispatchEvent(new Event('ffix-encounter'))
-// Click the Moogle 5× to activate — see ffix-moogle.js
+// Click the Moogle 5x to activate — see ffix-moogle.js
 
 const FfixEncounter = () => {
   const [phase, setPhase] = useState(null) // null | 'flash' | 'battle' | 'fade'
   const [enemy, setEnemy] = useState(null)
+  const timersRef = useRef([])
+
+  const clearTimers = () => {
+    timersRef.current.forEach(clearTimeout)
+    timersRef.current = []
+  }
 
   useEffect(() => {
     const trigger = () => {
-      setEnemy(getRandomEnemy())
+      clearTimers()
+      const e = getRandomEnemy()
+      setEnemy(e)
       setPhase('flash')
-      const t1 = setTimeout(() => setPhase('battle'), 350)
-      return () => clearTimeout(t1)
+      const t1 = setTimeout(() => setPhase('battle'), 400)
+      timersRef.current.push(t1)
     }
 
     window.addEventListener('ffix-encounter', trigger)
-    return () => window.removeEventListener('ffix-encounter', trigger)
+    return () => {
+      window.removeEventListener('ffix-encounter', trigger)
+      clearTimers()
+    }
   }, [])
 
   const handleClose = useCallback(() => {
+    clearTimers()
     setPhase('fade')
-    const t = setTimeout(() => setPhase(null), 600)
-    return () => clearTimeout(t)
+    const t = setTimeout(() => {
+      setPhase(null)
+      setEnemy(null)
+    }, 600)
+    timersRef.current.push(t)
   }, [])
 
   // ESC key to close
@@ -39,14 +54,16 @@ const FfixEncounter = () => {
     return () => window.removeEventListener('keydown', handler)
   }, [phase, handleClose])
 
+  if (!phase) return null
+
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {phase === 'flash' && (
         <motion.div
           key="flash"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 1, 0] }}
-          transition={{ duration: 0.35, times: [0, 0.1, 0.8, 1] }}
+          transition={{ duration: 0.4, times: [0, 0.1, 0.8, 1] }}
           style={{ position: 'fixed', inset: 0, background: 'white', zIndex: 99999, pointerEvents: 'none' }}
         />
       )}
@@ -56,7 +73,6 @@ const FfixEncounter = () => {
           key="battle"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           style={{ position: 'fixed', inset: 0, zIndex: 99999 }}
         >
