@@ -34,6 +34,12 @@ const Footer = () => {
         <Text fontFamily="monospace" fontSize="9px" color="#4a6080" letterSpacing="0.08em">
           &copy; {new Date().getFullYear()} Tony Tin Nguyen — All rights reserved
         </Text>
+        <Text fontFamily="monospace" fontSize="8px" color="#3a5060" letterSpacing="0.06em" opacity={0.7}>
+          Originally inspired by{' '}
+          <a href="https://www.craftz.dog/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
+            Takuya Matsuyama
+          </a>
+        </Text>
       </Flex>
     </Box>
   )
