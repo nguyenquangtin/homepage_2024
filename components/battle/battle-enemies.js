@@ -4,45 +4,45 @@
 const ENEMIES = [
   {
     name: 'WILD BUG',
-    hp: 120,
-    atk: 14,
-    def: 8,
+    hp: 220,
+    atk: 22,
+    def: 12,
     weakness: 'fire',
     spriteKey: 'bug',
     desc: 'A crawling menace from the codebase depths.'
   },
   {
     name: 'LEGACY CODE',
-    hp: 180,
-    atk: 10,
-    def: 14,
+    hp: 320,
+    atk: 18,
+    def: 20,
     weakness: 'thunder',
     spriteKey: 'legacyCode',
     desc: 'Ancient spaghetti that refuses to die.'
   },
   {
     name: 'SCOPE CREEP',
-    hp: 150,
-    atk: 16,
-    def: 10,
+    hp: 280,
+    atk: 26,
+    def: 14,
     weakness: 'ice',
     spriteKey: 'scopeCreep',
     desc: 'It just keeps growing...'
   },
   {
     name: 'DEADLINE',
-    hp: 200,
-    atk: 20,
-    def: 12,
+    hp: 380,
+    atk: 32,
+    def: 16,
     weakness: null,
     spriteKey: 'deadline',
     desc: 'Time waits for no developer.'
   },
   {
     name: 'MERGE CONFLICT',
-    hp: 160,
-    atk: 18,
-    def: 11,
+    hp: 300,
+    atk: 28,
+    def: 15,
     weakness: null,
     spriteKey: 'mergeConflict',
     desc: 'Two realities collide. Only one survives.'
