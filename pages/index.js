@@ -24,6 +24,7 @@ import FfixMognet from '../components/ffix-mognet'
 import FfixTetraCards from '../components/ffix-tetra-card'
 import FfixEncounter from '../components/ffix-encounter'
 import FfixWorldMap from '../components/ffix-world-map'
+import { useSiteTheme } from '../lib/site-theme-context'
 
 // Resume timeline entries — keeps JSX clean
 const career = [
@@ -45,7 +46,17 @@ const socialLinks = [
   { icon: <IoLogoInstagram />, label: '@tonytinnguyen',  href: 'https://instagram.com/tonytinnguyen' },
 ]
 
+const TAGLINES = {
+  ffix: 'engineer · entrepreneur · black mage',
+  sc2:  'engineer · entrepreneur · high templar',
+}
+const SECTION_LABELS = {
+  ffix: { charSheet: 'Character Sheet', mognet: 'Mognet' },
+  sc2:  { charSheet: 'Commander Profile', mognet: 'Khalai Comms' },
+}
+
 const Home = () => {
+  const { theme } = useSiteTheme()
   const cardBg       = useColorModeValue('white', 'whiteAlpha.50')
   const cardBorder   = useColorModeValue('gray.200', 'whiteAlpha.100')
   const mutedText    = useColorModeValue('gray.500', 'gray.400')
@@ -141,7 +152,7 @@ const Home = () => {
                       Tony Tin Nguyen
                     </Heading>
                     <Text color={mutedText} mt={1} fontSize="sm" fontFamily="mono">
-                      engineer · entrepreneur · black mage
+                      {TAGLINES[theme]}
                     </Text>
                     <Box
                       mt={3}
@@ -153,7 +164,7 @@ const Home = () => {
                       fontSize="sm"
                       fontWeight={500}
                     >
-                      Building products that scale — Head of Tech Partnership at{' '}
+                      Building products that scale - Head of Tech Partnership at{' '}
                       <Link href="https://ecomdymedia.com/" isExternal color="blue.400">Ecomdy</Link>
                       , TikTok Marketing Partner & co-founder of{' '}
                       <Link href="https://gdgmientrung.com/" isExternal color="blue.400">GDG Mien Trung</Link>.
@@ -167,8 +178,8 @@ const Home = () => {
                 <Heading as="h3" variant="section-title">Work</Heading>
                 <Paragraph>
                   19+ years shipping web products for global brands (BreadTalk, CooperVision) and
-                  fast-growing startups. Expert in JavaScript ecosystems — Node.js, React, Vue,
-                  TypeScript — with a focus on e-commerce, TikTok API integrations, and scalable architecture.
+                  fast-growing startups. Expert in JavaScript ecosystems - Node.js, React, Vue,
+                  TypeScript - with a focus on e-commerce, TikTok API integrations, and scalable architecture.
                 </Paragraph>
                 <Box mt={4} textAlign="center">
                   <Button
@@ -186,7 +197,7 @@ const Home = () => {
 
               {/* FFIX CHARACTER SHEET */}
               <Section delay={0.15}>
-                <Heading as="h3" variant="section-title">Character Sheet</Heading>
+                <Heading as="h3" variant="section-title">{SECTION_LABELS[theme].charSheet}</Heading>
                 <FfixStatusEffects />
                 {/* 3-column row: CharSheet | Tech | Equipment */}
                 <SimpleGrid
@@ -261,7 +272,7 @@ const Home = () => {
 
               {/* MOGNET — newsletter CTA */}
               <Section delay={0.4}>
-                <Heading as="h3" variant="section-title">Mognet</Heading>
+                <Heading as="h3" variant="section-title">{SECTION_LABELS[theme].mognet}</Heading>
                 <FfixMognet />
               </Section>
 

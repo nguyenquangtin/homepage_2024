@@ -311,13 +311,16 @@ export const ItemEffect = ({ onComplete }) => (
   </motion.div>
 )
 
-// Effect dispatcher
+// Effect dispatcher — SC2 spells map to visually similar FFIX effects
 export const BattleEffect = ({ animType, onComplete }) => {
   switch (animType) {
     case 'attack':       return <AttackEffect onComplete={onComplete} />
     case 'fire':         return <FireEffect onComplete={onComplete} />
     case 'ice':          return <IceEffect onComplete={onComplete} />
     case 'thunder':      return <ThunderEffect onComplete={onComplete} />
+    case 'psiStorm':     return <ThunderEffect onComplete={onComplete} />
+    case 'feedback':     return <FireEffect onComplete={onComplete} />
+    case 'hallucinate':  return <IceEffect onComplete={onComplete} />
     case 'enemy_attack': return <EnemyAttackEffect onComplete={onComplete} />
     case 'item':         return <ItemEffect onComplete={onComplete} />
     default:             return null

@@ -4,13 +4,20 @@ import NavBar from '../navbar'
 import { Box, Container } from '@chakra-ui/react'
 import Footer from '../footer'
 import VoxelDogLoader from '../voxel-dog-loader'
+import { useSiteTheme } from '../../lib/site-theme-context'
 
-const LazyVoxelDog = dynamic(() => import('../voxel-dog'), {
+const LazySword = dynamic(() => import('../voxel-dog'), {
+  ssr: false,
+  loading: () => <VoxelDogLoader />
+})
+
+const LazyProtossPylon = dynamic(() => import('../protoss-pylon'), {
   ssr: false,
   loading: () => <VoxelDogLoader />
 })
 
 const Main = ({ children, router }) => {
+  const { theme } = useSiteTheme()
   return (
     <Box as="main" pb={8}>
       <Head>
@@ -65,7 +72,7 @@ const Main = ({ children, router }) => {
       <NavBar path={router.asPath} />
 
       <Container maxW="container.xl" pt={14}>
-        <LazyVoxelDog />
+        {theme === 'sc2' ? <LazyProtossPylon /> : <LazySword />}
 
         {children}
 
