@@ -21,7 +21,7 @@ function createPylonCrystal(scene) {
     transmission: 0.25,
     thickness: 1.5,
     emissive: 0x0044aa,
-    emissiveIntensity: 0.3,
+    emissiveIntensity: 0.3
   })
   const crystal = new THREE.Mesh(crystalGeo, crystalMat)
   crystal.position.y = 1.5
@@ -32,7 +32,7 @@ function createPylonCrystal(scene) {
   const coreMat = new THREE.MeshBasicMaterial({
     color: 0x00ddff,
     transparent: true,
-    opacity: 0.8,
+    opacity: 0.8
   })
   const core = new THREE.Mesh(coreGeo, coreMat)
   core.position.y = 1.5
@@ -45,7 +45,7 @@ function createPylonCrystal(scene) {
     color: 0x00bbdd,
     transparent: true,
     opacity: 0.06,
-    wireframe: true,
+    wireframe: true
   })
   const field = new THREE.Mesh(fieldGeo, fieldMat)
   field.position.y = 1.5
@@ -56,7 +56,7 @@ function createPylonCrystal(scene) {
   const ringMat = new THREE.MeshBasicMaterial({
     color: 0x00ddff,
     transparent: true,
-    opacity: 0.5,
+    opacity: 0.5
   })
   const ring = new THREE.Mesh(ringGeo, ringMat)
   ring.rotation.x = Math.PI / 2
@@ -69,8 +69,21 @@ function createPylonCrystal(scene) {
   ring2.scale.set(0.7, 0.7, 0.7)
   group.add(ring2)
 
+  // Expanding power-field shockwave — Pylon power radius pulse,
+  // scaled outward and faded in the render loop
+  const pulseGeo = new THREE.TorusGeometry(1.6, 0.05, 8, 48)
+  const pulseMat = new THREE.MeshBasicMaterial({
+    color: 0x00ddff,
+    transparent: true,
+    opacity: 0.4
+  })
+  const pulse = new THREE.Mesh(pulseGeo, pulseMat)
+  pulse.rotation.x = Math.PI / 2
+  pulse.position.y = -1.2
+  group.add(pulse)
+
   scene.add(group)
-  return { crystal, core, field, ring, ring2, group }
+  return { crystal, core, field, ring, ring2, pulse, group }
 }
 
 // Psionic energy particles — cyan sparkles rising upward
@@ -82,10 +95,10 @@ function createPsionicParticles(scene) {
   for (let i = 0; i < count; i++) {
     const theta = Math.random() * Math.PI * 2
     const r = 0.5 + Math.random() * 2.0
-    positions[i * 3]     = r * Math.cos(theta)
+    positions[i * 3] = r * Math.cos(theta)
     positions[i * 3 + 1] = -2 + Math.random() * 5
     positions[i * 3 + 2] = r * Math.sin(theta)
-    velocities[i * 3]     = (Math.random() - 0.5) * 0.002
+    velocities[i * 3] = (Math.random() - 0.5) * 0.002
     velocities[i * 3 + 1] = 0.005 + Math.random() * 0.008
     velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.002
   }
@@ -99,7 +112,7 @@ function createPsionicParticles(scene) {
     transparent: true,
     opacity: 0.7,
     sizeAttenuation: true,
-    depthWrite: false,
+    depthWrite: false
   })
 
   const points = new THREE.Points(geometry, material)
@@ -109,13 +122,13 @@ function createPsionicParticles(scene) {
 
 function updateParticles({ points, velocities, positions, count }) {
   for (let i = 0; i < count; i++) {
-    positions[i * 3]     += velocities[i * 3]
+    positions[i * 3] += velocities[i * 3]
     positions[i * 3 + 1] += velocities[i * 3 + 1]
     positions[i * 3 + 2] += velocities[i * 3 + 2]
     if (positions[i * 3 + 1] > 5) {
       const theta = Math.random() * Math.PI * 2
       const r = 0.3 + Math.random() * 1.5
-      positions[i * 3]     = r * Math.cos(theta)
+      positions[i * 3] = r * Math.cos(theta)
       positions[i * 3 + 1] = -2 + Math.random() * -0.5
       positions[i * 3 + 2] = r * Math.sin(theta)
     }
@@ -159,7 +172,12 @@ const ProtossPylon = () => {
 
       const scale = scH * 0.004 + 3.5
       const camera = new THREE.OrthographicCamera(
-        -scale, scale, scale, -scale, 0.01, 50000
+        -scale,
+        scale,
+        scale,
+        -scale,
+        0.01,
+        50000
       )
       camera.position.copy(initialCameraPosition)
       camera.lookAt(target)
@@ -206,8 +224,10 @@ const ProtossPylon = () => {
           const p = initialCameraPosition
           const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
           camera.position.y = 10
-          camera.position.x = p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
-          camera.position.z = p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed)
+          camera.position.x =
+            p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
+          camera.position.z =
+            p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed)
           camera.lookAt(target)
         } else {
           controls.update()
@@ -234,6 +254,15 @@ const ProtossPylon = () => {
         pylon.ring.material.opacity = 0.3 + Math.sin(t * 2.5) * 0.2
         pylon.ring2.material.opacity = 0.3 + Math.sin(t * 2.5 + 1) * 0.2
 
+        // Expanding power-field shockwave — 2.4s loop from base outward
+        const pw = (t % 2.4) / 2.4
+        pylon.pulse.scale.setScalar(1 + pw * 1.8)
+        pylon.pulse.material.opacity = 0.4 * (1 - pw)
+
+        // Crystal emissive throb — psionic charge breathing
+        pylon.crystal.material.emissiveIntensity =
+          0.3 + (Math.sin(t * 1.8) + 1) * 0.2
+
         updateParticles(particles)
         renderer.render(scene, camera)
       }
@@ -242,6 +271,12 @@ const ProtossPylon = () => {
 
       return () => {
         cancelAnimationFrame(req)
+        // renderer.dispose() does not cascade to scene objects —
+        // free GPU buffers explicitly to avoid leaks on theme toggle
+        scene.traverse(obj => {
+          if (obj.geometry) obj.geometry.dispose()
+          if (obj.material && obj.material.dispose) obj.material.dispose()
+        })
         renderer.domElement.remove()
         renderer.dispose()
       }
