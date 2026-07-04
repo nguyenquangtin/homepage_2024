@@ -43,6 +43,11 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
         color: '#c0e8ff',
         textShadow: `0 0 8px rgba(${PROTOSS_CYAN_RGB}, 0.6)`
       }}
+      _focusVisible={{
+        color: '#c0e8ff',
+        outline: `2px solid ${PROTOSS_CYAN}`,
+        outlineOffset: '2px'
+      }}
       transition="all 0.15s"
       target={target}
       {...props}
@@ -120,13 +125,31 @@ const Navbar = props => {
                 fontFamily="mono"
                 fontSize="sm"
               >
-                <MenuItem as={MenuLink} href="/" bg="transparent">
+                <MenuItem
+                  as={MenuLink}
+                  href="/"
+                  bg="transparent"
+                  color="#c0e8ff"
+                  _hover={{ bg: `rgba(${PROTOSS_CYAN_RGB}, 0.12)` }}
+                >
                   About
                 </MenuItem>
-                <MenuItem as={MenuLink} href="/works" bg="transparent">
+                <MenuItem
+                  as={MenuLink}
+                  href="/works"
+                  bg="transparent"
+                  color="#c0e8ff"
+                  _hover={{ bg: `rgba(${PROTOSS_CYAN_RGB}, 0.12)` }}
+                >
                   Works
                 </MenuItem>
-                <MenuItem as={MenuLink} href="/posts" bg="transparent">
+                <MenuItem
+                  as={MenuLink}
+                  href="/posts"
+                  bg="transparent"
+                  color="#c0e8ff"
+                  _hover={{ bg: `rgba(${PROTOSS_CYAN_RGB}, 0.12)` }}
+                >
                   Blog
                 </MenuItem>
               </MenuList>

@@ -34,7 +34,6 @@ const Sc2Button = ({ variant = 'cyan', children, ...rest }) => {
       bg={`rgba(${v.rgb}, 0.12)`}
       border="1px solid"
       borderColor={`rgba(${v.rgb}, 0.55)`}
-      borderRadius="2px"
       clipPath="polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)"
       boxShadow={`inset 0 0 12px rgba(${v.rgb}, 0.18)`}
       _hover={{
@@ -44,6 +43,12 @@ const Sc2Button = ({ variant = 'cyan', children, ...rest }) => {
         textShadow: `0 0 8px rgba(${v.rgb}, 0.8)`
       }}
       _active={{ transform: 'scale(0.97)' }}
+      // inset focus ring — outlines/shadows outside the box get clipped
+      // by clipPath, so keyboard focus must render inside (WCAG 2.4.7)
+      _focusVisible={{
+        outline: 'none',
+        boxShadow: `inset 0 0 0 2px rgba(${v.rgb}, 0.9), inset 0 0 16px rgba(${v.rgb}, 0.4)`
+      }}
       transition="all 0.15s"
       {...rest}
     >
