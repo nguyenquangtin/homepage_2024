@@ -65,6 +65,9 @@ function createPylonCrystal(scene) {
 
   // Second ring (higher)
   const ring2 = ring.clone()
+  // clone() shares the material by reference — give ring2 its own so the
+  // phase-offset opacity pulse in the render loop is actually visible (#6)
+  ring2.material = ring.material.clone()
   ring2.position.y = 0.3
   ring2.scale.set(0.7, 0.7, 0.7)
   group.add(ring2)
