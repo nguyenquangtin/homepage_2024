@@ -58,7 +58,14 @@ const Medallion = ({ glow }) => (
     alignItems="center"
     justifyContent="center"
   >
-    <svg width="22" height="26" viewBox="0 0 10 14" fill="none">
+    <svg
+      width="22"
+      height="26"
+      viewBox="0 0 10 14"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
       <polygon
         points="5,0 10,4 8,13 2,13 0,4"
         fill="rgba(6, 10, 24, 0.9)"
@@ -79,7 +86,6 @@ const AchievementTile = ({ a }) => (
       borderRadius="4px"
       p={3}
       textAlign="center"
-      cursor="pointer"
       _hover={{
         borderColor: `${a.glow}88`,
         boxShadow: `0 0 16px ${a.glow}33`
@@ -97,7 +103,7 @@ const AchievementTile = ({ a }) => (
       >
         {a.name}
       </Text>
-      <Text fontSize="8px" color={`${a.glow}cc`} letterSpacing="0.12em" mb={1}>
+      <Text fontSize="9px" color={`${a.glow}cc`} letterSpacing="0.12em" mb={1}>
         {a.tier}
       </Text>
       {/* Gold point count (medal style) */}
@@ -124,7 +130,7 @@ const AchievementTile = ({ a }) => (
   </motion.div>
 )
 
-const FfixTetraCards = () => (
+const AchievementsPanel = () => (
   <Box
     bg={PROTOSS_PANEL_BG}
     border={`2px solid rgba(${KHALA_GOLD_RGB}, 0.6)`}
@@ -161,4 +167,4 @@ const FfixTetraCards = () => (
   </Box>
 )
 
-export default FfixTetraCards
+export default AchievementsPanel

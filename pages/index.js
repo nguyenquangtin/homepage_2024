@@ -21,7 +21,7 @@ import { FfixTechMenu, FfixInterestTags } from '../components/ffix-battle-menu'
 import FfixEquipment from '../components/ffix-equipment'
 import FfixStatusEffects from '../components/ffix-status-effects'
 import FfixMognet from '../components/ffix-mognet'
-import FfixTetraCards from '../components/ffix-tetra-card'
+import AchievementsPanel from '../components/achievements-panel'
 import FfixEncounter from '../components/ffix-encounter'
 import FfixWorldMap from '../components/ffix-world-map'
 import ProtossWarpIn from '../components/protoss-warp-in'
@@ -340,7 +340,7 @@ const Home = () => {
               <Heading as="h3" variant="section-title">
                 {PROTOSS_LABELS.featured}
               </Heading>
-              <FfixTetraCards />
+              <AchievementsPanel />
             </Section>
 
             {/* CAREER — mobile only (shows inline in stack) */}
