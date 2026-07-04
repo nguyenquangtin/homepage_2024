@@ -12,25 +12,43 @@ import {
   MenuItem,
   MenuList,
   MenuButton,
-  IconButton,
-  useColorModeValue
+  IconButton
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import ThemeToggleButton from './theme-toggle-button'
-import GameThemeToggle from './game-theme-toggle'
-// import { IoLogoGithub } from 'react-icons/io5'
+import { PROTOSS_CYAN, PROTOSS_CYAN_RGB } from '../lib/site-theme-context'
+// GameThemeToggle + ThemeToggleButton removed while FFIX is hidden (#7) —
+// site is locked to the SC2 dark console look. Components kept for re-enable.
 
+// Console tab link (SC2 menu style): uppercase mono, cyan glow when active
 const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href
-  const inactiveColor = useColorModeValue('gray.800', 'whiteAlpha.900')
   return (
     <Link
       as={NextLink}
       href={href}
       scroll={false}
-      p={2}
-      bg={active ? 'grassTeal' : undefined}
-      color={active ? '#ffffff' : inactiveColor}
+      px={3}
+      py={2}
+      fontFamily="mono"
+      fontSize="xs"
+      fontWeight="bold"
+      textTransform="uppercase"
+      letterSpacing="0.12em"
+      color={active ? '#eafcff' : '#8fb8cc'}
+      bg={active ? `rgba(${PROTOSS_CYAN_RGB}, 0.14)` : undefined}
+      boxShadow={active ? `inset 0 -2px 0 ${PROTOSS_CYAN}` : undefined}
+      textShadow={active ? `0 0 10px rgba(${PROTOSS_CYAN_RGB}, 0.7)` : 'none'}
+      _hover={{
+        textDecoration: 'none',
+        color: '#c0e8ff',
+        textShadow: `0 0 8px rgba(${PROTOSS_CYAN_RGB}, 0.6)`
+      }}
+      _focusVisible={{
+        color: '#c0e8ff',
+        outline: `2px solid ${PROTOSS_CYAN}`,
+        outlineOffset: '2px'
+      }}
+      transition="all 0.15s"
       target={target}
       {...props}
     >
@@ -51,7 +69,9 @@ const Navbar = props => {
       position="fixed"
       as="nav"
       w="100%"
-      bg={useColorModeValue('#f7f7f740', '#18181b80')}
+      bg="rgba(4, 10, 24, 0.85)"
+      borderBottom={`1px solid rgba(${PROTOSS_CYAN_RGB}, 0.25)`}
+      boxShadow={`0 0 18px rgba(${PROTOSS_CYAN_RGB}, 0.12)`}
       css={{ backdropFilter: 'blur(10px)' }}
       zIndex={2}
       {...props}
@@ -77,53 +97,61 @@ const Navbar = props => {
           alignItems="center"
           flexGrow={1}
           mt={{ base: 4, md: 0 }}
+          spacing={1}
         >
-           <LinkItem href="/works" path={path}>
+          <LinkItem href="/works" path={path}>
             Works
           </LinkItem>
           <LinkItem href="/posts" path={path}>
             Blog
           </LinkItem>
-          {/*
-          <LinkItem href="/posts" path={path}>
-            Posts
-          </LinkItem>
-          <LinkItem href="https://uses.craftz.dog/">Uses</LinkItem>
-  */}
         </Stack>
 
         <Box flex={1} align="right">
-          <GameThemeToggle />
-          <ThemeToggleButton />
-
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu isLazy id="navbar-menu">
               <MenuButton
                 as={IconButton}
                 icon={<HamburgerIcon />}
                 variant="outline"
+                borderColor={`rgba(${PROTOSS_CYAN_RGB}, 0.45)`}
+                color="#c0e8ff"
+                _hover={{ bg: `rgba(${PROTOSS_CYAN_RGB}, 0.12)` }}
                 aria-label="Options"
               />
-              <MenuList>
-                <MenuItem as={MenuLink} href="/">
+              <MenuList
+                bg="rgba(4, 12, 28, 0.97)"
+                borderColor={`rgba(${PROTOSS_CYAN_RGB}, 0.35)`}
+                fontFamily="mono"
+                fontSize="sm"
+              >
+                <MenuItem
+                  as={MenuLink}
+                  href="/"
+                  bg="transparent"
+                  color="#c0e8ff"
+                  _hover={{ bg: `rgba(${PROTOSS_CYAN_RGB}, 0.12)` }}
+                >
                   About
                 </MenuItem>
-                <MenuItem as={MenuLink} href="/works">
+                <MenuItem
+                  as={MenuLink}
+                  href="/works"
+                  bg="transparent"
+                  color="#c0e8ff"
+                  _hover={{ bg: `rgba(${PROTOSS_CYAN_RGB}, 0.12)` }}
+                >
                   Works
                 </MenuItem>
-                <MenuItem as={MenuLink} href="/posts">
+                <MenuItem
+                  as={MenuLink}
+                  href="/posts"
+                  bg="transparent"
+                  color="#c0e8ff"
+                  _hover={{ bg: `rgba(${PROTOSS_CYAN_RGB}, 0.12)` }}
+                >
                   Blog
                 </MenuItem>
-                {/*
-                <MenuItem as={MenuLink} href="/wallpapers">
-                  Wallpapers
-                </MenuItem>
-                <MenuItem as={MenuLink} href="/posts">
-                  Posts
-                </MenuItem>
-                <MenuItem as={MenuLink} href="https://uses.craftz.dog/">
-                  Uses
-                </MenuItem>  */}
               </MenuList>
             </Menu>
           </Box>

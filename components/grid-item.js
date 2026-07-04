@@ -2,10 +2,47 @@ import NextLink from 'next/link'
 import Image from 'next/image'
 import { Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
 import { Global } from '@emotion/react'
+import { Sc2CornerBrackets } from './sc2/sc2-panel'
+import { PROTOSS_CYAN_RGB } from '../lib/site-theme-context'
+
+// SC2 command-card slot styling shared by both grid variants:
+// dark navy slot, luminous border, hover = corner brackets + psionic glow
+const cardSlotProps = {
+  role: 'group',
+  position: 'relative',
+  display: 'block',
+  bg: 'rgba(4, 12, 28, 0.85)',
+  border: `1px solid rgba(${PROTOSS_CYAN_RGB}, 0.25)`,
+  borderRadius: '4px',
+  p: 3,
+  cursor: 'pointer',
+  transition: 'all 0.2s',
+  _hover: {
+    borderColor: `rgba(${PROTOSS_CYAN_RGB}, 0.7)`,
+    boxShadow: `0 0 18px rgba(${PROTOSS_CYAN_RGB}, 0.25), inset 0 0 14px rgba(${PROTOSS_CYAN_RGB}, 0.06)`
+  }
+}
+
+const cardTitleProps = {
+  mt: 2,
+  fontFamily: 'mono',
+  fontSize: 'sm',
+  fontWeight: 'bold',
+  textTransform: 'uppercase',
+  letterSpacing: '0.08em',
+  color: '#c0e8ff'
+}
+
+const cardDescProps = {
+  fontSize: '13px',
+  color: '#7090a8',
+  mt: 1
+}
 
 export const GridItem = ({ children, href, title, thumbnail }) => (
   <Box w="100%" textAlign="center">
-    <LinkBox cursor="pointer">
+    <LinkBox {...cardSlotProps}>
+      <Sc2CornerBrackets hoverReveal />
       <Image
         src={thumbnail}
         alt={title}
@@ -14,9 +51,9 @@ export const GridItem = ({ children, href, title, thumbnail }) => (
         loading="lazy"
       />
       <LinkOverlay href={href} target="_blank">
-        <Text mt={2}>{title}</Text>
+        <Text {...cardTitleProps}>{title}</Text>
       </LinkOverlay>
-      <Text fontSize={14}>{children}</Text>
+      <Text {...cardDescProps}>{children}</Text>
     </LinkBox>
   </Box>
 )
@@ -33,8 +70,9 @@ export const WorkGridItem = ({
       as={NextLink}
       href={`/${category}/${id}`}
       scroll={false}
-      cursor="pointer"
+      {...cardSlotProps}
     >
+      <Sc2CornerBrackets hoverReveal />
       <Image
         src={thumbnail}
         alt={title}
@@ -42,20 +80,26 @@ export const WorkGridItem = ({
         placeholder="blur"
       />
       <LinkOverlay as="div" href={`/${category}/${id}`}>
-        <Text mt={2} fontSize={20}>
+        <Text {...cardTitleProps} fontSize="md">
           {title}
         </Text>
       </LinkOverlay>
-      <Text fontSize={14}>{children}</Text>
+      <Text {...cardDescProps}>{children}</Text>
     </LinkBox>
   </Box>
 )
 
+// Thumbnails idle slightly dimmed, brighten when the card slot is hovered
 export const GridItemStyle = () => (
   <Global
     styles={`
       .grid-item-thumbnail {
-        border-radius: 12px;
+        border-radius: 2px;
+        filter: brightness(0.88);
+        transition: filter 0.2s ease;
+      }
+      [role='group']:hover .grid-item-thumbnail {
+        filter: brightness(1.05);
       }
     `}
   />

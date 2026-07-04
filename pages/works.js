@@ -1,7 +1,8 @@
-import { Container, Heading, SimpleGrid, Divider } from '@chakra-ui/react'
+import { Container, SimpleGrid, Divider } from '@chakra-ui/react'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { WorkGridItem } from '../components/grid-item'
+import Sc2SectionHeader from '../components/sc2/sc2-section-header'
 
 import thumbTTM from '../public/images/works/ttm.png'
 import thumbTTMW from '../public/images/works/ttm_w.png'
@@ -12,9 +13,9 @@ import thumbShopware6 from '../public/images/works/shopware6.png'
 const Works = () => (
   <Layout title="Works">
     <Container>
-      <Heading as="h1" fontSize={20} mb={4}>
+      <Sc2SectionHeader as="h1" mt={0}>
         Works
-      </Heading>
+      </Sc2SectionHeader>
 
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
         <Section>
@@ -24,48 +25,57 @@ const Works = () => (
         </Section>
 
         <Section>
-          <WorkGridItem id="ttm-whitelabel" title="TikTok Management Whitelabel" thumbnail={thumbTTMW}>
-            The Whitelable system for TikTok Management.
-            You want to be a TikTok Agency? This is the right choice.
+          <WorkGridItem
+            id="ttm-whitelabel"
+            title="TikTok Management Whitelabel"
+            thumbnail={thumbTTMW}
+          >
+            The Whitelable system for TikTok Management. You want to be a TikTok
+            Agency? This is the right choice.
           </WorkGridItem>
         </Section>
-
       </SimpleGrid>
 
       <Section delay={0.2}>
-        <Divider my={6} />
+        <Divider my={6} borderColor="rgba(0,221,255,0.2)" />
 
-        <Heading as="h2" fontSize={20} mb={4}>
-          Contribute
-        </Heading>
+        <Sc2SectionHeader>Contribute</Sc2SectionHeader>
       </Section>
 
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
         <Section delay={0.3}>
-          <WorkGridItem id="shopware6" thumbnail={thumbShopware6} title="Shopware 6">
-            Shopware 6 is an open headless commerce platform powered by Symfony 7 and Vue.js 3.
+          <WorkGridItem
+            id="shopware6"
+            thumbnail={thumbShopware6}
+            title="Shopware 6"
+          >
+            Shopware 6 is an open headless commerce platform powered by Symfony
+            7 and Vue.js 3.
           </WorkGridItem>
         </Section>
         <Section delay={0.3}>
           <WorkGridItem id="laravue" thumbnail={thumbLaravue} title="Laravue">
-            Laravue is a beautiful dashboard combination of Laravel, Vue.js and the UI toolkit Element a.
+            Laravue is a beautiful dashboard combination of Laravel, Vue.js and
+            the UI toolkit Element a.
           </WorkGridItem>
         </Section>
       </SimpleGrid>
 
       <Section delay={0.4}>
-        <Divider my={6} />
+        <Divider my={6} borderColor="rgba(0,221,255,0.2)" />
 
-        <Heading as="h2" fontSize={20} mb={4}>
-          Old works
-        </Heading>
+        <Sc2SectionHeader>Old works</Sc2SectionHeader>
       </Section>
 
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
         <Section delay={0.5}>
-          <WorkGridItem id="vtv_giaitri" thumbnail={thumbVtve} title="VTV GiaiTri">
-            VTV Entertainment is an application that provides exclusive entertainment
-            content from Vietnam Television Station.
+          <WorkGridItem
+            id="vtv_giaitri"
+            thumbnail={thumbVtve}
+            title="VTV GiaiTri"
+          >
+            VTV Entertainment is an application that provides exclusive
+            entertainment content from Vietnam Television Station.
           </WorkGridItem>
         </Section>
       </SimpleGrid>

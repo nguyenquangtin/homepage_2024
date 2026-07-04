@@ -1,8 +1,9 @@
 import NextLink from 'next/link'
-import { Box, Container, Heading, SimpleGrid, Link } from '@chakra-ui/react'
+import { Box, Container, SimpleGrid, Link } from '@chakra-ui/react'
 import Layout from '../../components/layouts/article'
 import Section from '../../components/section'
 import { WorkGridItem } from '../../components/grid-item'
+import Sc2SectionHeader from '../../components/sc2/sc2-section-header'
 
 import thumbCherryBlossoms from '../../public/images/wallpapers/cherry-blossoms/ls-13.jpg'
 import thumbMachiya from '../../public/images/wallpapers/machiya/ls-03.jpg'
@@ -10,9 +11,9 @@ import thumbMachiya from '../../public/images/wallpapers/machiya/ls-03.jpg'
 const Wallpapers = () => (
   <Layout title="Wallpaper Packs">
     <Container>
-      <Heading as="h3" fontSize={20} mb={4}>
+      <Sc2SectionHeader as="h1" mt={0}>
         Wallpaper Packs
-      </Heading>
+      </Sc2SectionHeader>
 
       <Box my={4}>
         The wallpaper packs offer a selection of carefully curated images

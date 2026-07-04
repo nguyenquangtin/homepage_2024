@@ -2,8 +2,8 @@ import { Box, Text, Flex } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 
 const PANEL_BG = 'rgba(8, 14, 40, 0.97)'
-const GOLD  = '#c8a800'
-const LAND  = '#1a3a2a'
+const GOLD = '#00bbdd' // SC2 accent while FFIX is hidden (#7); was '#c8a800'
+const LAND = '#1a3a2a'
 const OCEAN = PANEL_BG
 
 // Simplified world map paths in a 700×320 viewBox (Mercator-ish)
@@ -30,7 +30,7 @@ const CONTINENTS = [
   // Australia
   'M 538 238 L 612 228 L 628 258 L 618 294 L 574 302 L 538 282 L 528 260 Z',
   // UK/Ireland
-  'M 280 64 L 294 60 L 298 80 L 285 84 Z',
+  'M 280 64 L 294 60 L 298 80 L 285 84 Z'
 ]
 
 // Danang coordinates in the same projection
@@ -46,11 +46,22 @@ const FfixWorldMap = () => (
     fontFamily="monospace"
   >
     {/* Header */}
-    <Flex px={3} py={2} bg="rgba(200,168,0,0.06)" borderBottom={`1px solid ${GOLD}44`} justify="space-between" align="center">
-      <Text fontSize="10px" color={GOLD} letterSpacing="0.15em">◆ WORLD MAP</Text>
+    <Flex
+      px={3}
+      py={2}
+      bg="rgba(0,187,221,0.06)"
+      borderBottom={`1px solid ${GOLD}44`}
+      justify="space-between"
+      align="center"
+    >
+      <Text fontSize="10px" color={GOLD} letterSpacing="0.15em">
+        ◆ WORLD MAP
+      </Text>
       <Flex align="center" gap={1}>
         <Box w={2} h={2} borderRadius="full" bg="green.400" />
-        <Text fontSize="9px" color="#9890a0">DANANG, VIETNAM</Text>
+        <Text fontSize="9px" color="#9890a0">
+          DANANG, VIETNAM
+        </Text>
       </Flex>
     </Flex>
 
@@ -63,15 +74,38 @@ const FfixWorldMap = () => (
       >
         {/* Ocean grid lines */}
         {[...Array(8)].map((_, i) => (
-          <line key={`h${i}`} x1="0" y1={i * 40} x2="700" y2={i * 40} stroke="#ffffff06" strokeWidth="0.5" />
+          <line
+            key={`h${i}`}
+            x1="0"
+            y1={i * 40}
+            x2="700"
+            y2={i * 40}
+            stroke="#ffffff06"
+            strokeWidth="0.5"
+          />
         ))}
         {[...Array(14)].map((_, i) => (
-          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="320" stroke="#ffffff06" strokeWidth="0.5" />
+          <line
+            key={`v${i}`}
+            x1={i * 50}
+            y1="0"
+            x2={i * 50}
+            y2="320"
+            stroke="#ffffff06"
+            strokeWidth="0.5"
+          />
         ))}
 
         {/* Continents */}
         {CONTINENTS.map((d, i) => (
-          <path key={i} d={d} fill={LAND} stroke="#2a5a3a" strokeWidth="0.8" opacity={0.9} />
+          <path
+            key={i}
+            d={d}
+            fill={LAND}
+            stroke="#2a5a3a"
+            strokeWidth="0.8"
+            opacity={0.9}
+          />
         ))}
 
         {/* Danang — outer pulse ring */}
