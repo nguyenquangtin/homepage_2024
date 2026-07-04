@@ -1,13 +1,20 @@
 import { Box, Text, Flex } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
+import {
+  PROTOSS_CYAN,
+  PROTOSS_CYAN_RGB,
+  KHALA_GOLD,
+  KHALA_GOLD_RGB,
+  PROTOSS_PANEL_BG,
+  PALETTES
+} from '../lib/site-theme-context'
 
-const PANEL_BG = 'rgba(8, 14, 40, 0.97)'
-const GOLD = '#00bbdd' // SC2 accent while FFIX is hidden (#7); was '#c8a800'
-const LAND = '#1a3a2a'
-const OCEAN = PANEL_BG
+// SC2 tactical minimap (#16): dark terrain, cyan grid, unit blips,
+// camera viewport rect, scan sweep. Base marker at Danang, Vietnam.
+const LAND = '#0f2438' // dark tactical terrain
+const LAND_EDGE = `rgba(${PROTOSS_CYAN_RGB}, 0.35)`
 
 // Simplified world map paths in a 700×320 viewBox (Mercator-ish)
-// Danang, Vietnam: 108.2°E 16.1°N → x≈641, y≈164 — marked with pulsing dot
 const CONTINENTS = [
   // North America
   'M 68 58 L 138 48 L 168 68 L 178 98 L 162 158 L 128 172 L 88 164 L 62 138 L 54 108 Z',
@@ -33,111 +40,171 @@ const CONTINENTS = [
   'M 280 64 L 294 60 L 298 80 L 285 84 Z'
 ]
 
-// Danang coordinates in the same projection
+// Base (player) at Danang; fixed ally/enemy blips for tactical flavor
 const DANANG = { x: 550, y: 168 }
+const ALLY_BLIPS = [
+  { x: 300, y: 80 }, // Europe
+  { x: 590, y: 95 }, // Japan
+  { x: 130, y: 110 }, // North America
+  { x: 575, y: 265 } // Australia
+]
+const ENEMY_BLIPS = [
+  { x: 330, y: 180 }, // Africa
+  { x: 480, y: 60 } // North Asia
+]
 
-const FfixWorldMap = () => (
-  <Box
-    bg={PANEL_BG}
-    border={`2px solid ${GOLD}`}
-    borderRadius="sm"
-    boxShadow={`0 0 0 3px rgba(8,14,40,0.9), 0 0 0 5px ${GOLD}33`}
-    overflow="hidden"
-    fontFamily="monospace"
-  >
-    {/* Header */}
-    <Flex
-      px={3}
-      py={2}
-      bg="rgba(0,187,221,0.06)"
-      borderBottom={`1px solid ${GOLD}44`}
-      justify="space-between"
-      align="center"
+const FfixWorldMap = () => {
+  const reduceMotion = useReducedMotion()
+  return (
+    <Box
+      bg={PROTOSS_PANEL_BG}
+      border={`2px solid rgba(${KHALA_GOLD_RGB}, 0.6)`}
+      borderRadius="sm"
+      boxShadow={`0 0 0 3px rgba(10,8,24,0.9), 0 0 0 5px rgba(${KHALA_GOLD_RGB}, 0.2)`}
+      overflow="hidden"
+      fontFamily="monospace"
     >
-      <Text fontSize="10px" color={GOLD} letterSpacing="0.15em">
-        ◆ WORLD MAP
-      </Text>
-      <Flex align="center" gap={1}>
-        <Box w={2} h={2} borderRadius="full" bg="green.400" />
-        <Text fontSize="9px" color="#9890a0">
-          DANANG, VIETNAM
-        </Text>
-      </Flex>
-    </Flex>
-
-    {/* SVG map */}
-    <Box bg={OCEAN} position="relative">
-      <svg
-        viewBox="0 0 700 320"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ display: 'block', width: '100%' }}
+      {/* Command header */}
+      <Flex
+        px={3}
+        py={2}
+        bg={`rgba(${KHALA_GOLD_RGB}, 0.07)`}
+        borderBottom={`1px solid rgba(${KHALA_GOLD_RGB}, 0.35)`}
+        justify="space-between"
+        align="center"
       >
-        {/* Ocean grid lines */}
-        {[...Array(8)].map((_, i) => (
-          <line
-            key={`h${i}`}
-            x1="0"
-            y1={i * 40}
-            x2="700"
-            y2={i * 40}
-            stroke="#ffffff06"
-            strokeWidth="0.5"
-          />
-        ))}
-        {[...Array(14)].map((_, i) => (
-          <line
-            key={`v${i}`}
-            x1={i * 50}
-            y1="0"
-            x2={i * 50}
-            y2="320"
-            stroke="#ffffff06"
-            strokeWidth="0.5"
-          />
-        ))}
+        <Text fontSize="10px" color={PROTOSS_CYAN} letterSpacing="0.15em">
+          ▸ TACTICAL MAP — SECTOR: EARTH
+        </Text>
+        <Flex align="center" gap={1}>
+          <Box w={2} h={2} borderRadius="full" bg="green.400" />
+          <Text fontSize="9px" color={PALETTES.sc2.muted}>
+            BASE: DANANG · 16.1°N 108.2°E
+          </Text>
+        </Flex>
+      </Flex>
 
-        {/* Continents */}
-        {CONTINENTS.map((d, i) => (
-          <path
-            key={i}
-            d={d}
-            fill={LAND}
-            stroke="#2a5a3a"
-            strokeWidth="0.8"
-            opacity={0.9}
-          />
-        ))}
-
-        {/* Danang — outer pulse ring */}
-        <motion.circle
-          cx={DANANG.x}
-          cy={DANANG.y}
-          r="12"
-          fill="none"
-          stroke="#00cc55"
-          strokeWidth="1"
-          initial={{ r: 6, opacity: 0.8 }}
-          animate={{ r: 16, opacity: 0 }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeOut' }}
-        />
-        {/* Danang — dot */}
-        <circle cx={DANANG.x} cy={DANANG.y} r="4" fill="#00ff66" />
-        <circle cx={DANANG.x} cy={DANANG.y} r="2" fill="white" />
-
-        {/* Danang — label */}
-        <text
-          x={DANANG.x + 8}
-          y={DANANG.y - 6}
-          fontSize="9"
-          fill={GOLD}
-          fontFamily="monospace"
-          letterSpacing="0.5"
+      {/* Minimap */}
+      <Box position="relative">
+        <svg
+          viewBox="0 0 700 320"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ display: 'block', width: '100%' }}
         >
-          DANANG
-        </text>
-      </svg>
+          {/* Tactical grid */}
+          {[...Array(16)].map((_, i) => (
+            <line
+              key={`h${i}`}
+              x1="0"
+              y1={i * 20}
+              x2="700"
+              y2={i * 20}
+              stroke={`rgba(${PROTOSS_CYAN_RGB}, 0.05)`}
+              strokeWidth="0.5"
+            />
+          ))}
+          {[...Array(28)].map((_, i) => (
+            <line
+              key={`v${i}`}
+              x1={i * 25}
+              y1="0"
+              x2={i * 25}
+              y2="320"
+              stroke={`rgba(${PROTOSS_CYAN_RGB}, 0.05)`}
+              strokeWidth="0.5"
+            />
+          ))}
+
+          {/* Terrain */}
+          {CONTINENTS.map((d, i) => (
+            <path
+              key={i}
+              d={d}
+              fill={LAND}
+              stroke={LAND_EDGE}
+              strokeWidth="0.8"
+              opacity={0.95}
+            />
+          ))}
+
+          {/* Camera viewport rect over the base region (minimap idiom) */}
+          <rect
+            x={505}
+            y={130}
+            width={95}
+            height={78}
+            fill="none"
+            stroke="rgba(232, 248, 255, 0.75)"
+            strokeWidth="1.2"
+          />
+
+          {/* Ally blips (psionic cyan) */}
+          {ALLY_BLIPS.map((b, i) => (
+            <circle
+              key={`a${i}`}
+              cx={b.x}
+              cy={b.y}
+              r="2.4"
+              fill={PROTOSS_CYAN}
+              opacity="0.85"
+            />
+          ))}
+          {/* Enemy blips */}
+          {ENEMY_BLIPS.map((b, i) => (
+            <circle
+              key={`e${i}`}
+              cx={b.x}
+              cy={b.y}
+              r="2.4"
+              fill="#ff5544"
+              opacity="0.85"
+            />
+          ))}
+
+          {/* Base — outer pulse ring */}
+          {!reduceMotion && (
+            <motion.circle
+              cx={DANANG.x}
+              cy={DANANG.y}
+              r="12"
+              fill="none"
+              stroke="#00cc55"
+              strokeWidth="1"
+              initial={{ r: 6, opacity: 0.8 }}
+              animate={{ r: 16, opacity: 0 }}
+              transition={{ repeat: Infinity, duration: 2, ease: 'easeOut' }}
+            />
+          )}
+          {/* Base — nexus dot */}
+          <circle cx={DANANG.x} cy={DANANG.y} r="4" fill="#00ff66" />
+          <circle cx={DANANG.x} cy={DANANG.y} r="2" fill="white" />
+          <text
+            x={DANANG.x + 8}
+            y={DANANG.y - 6}
+            fontSize="9"
+            fill={KHALA_GOLD}
+            fontFamily="monospace"
+            letterSpacing="0.5"
+          >
+            NEXUS: DANANG
+          </text>
+
+          {/* Scan sweep — slow vertical pass */}
+          {!reduceMotion && (
+            <motion.line
+              x1="0"
+              x2="700"
+              stroke={`rgba(${PROTOSS_CYAN_RGB}, 0.35)`}
+              strokeWidth="1.5"
+              initial={{ y1: 0, y2: 0, opacity: 0.5 }}
+              animate={{ y1: 320, y2: 320, opacity: 0.15 }}
+              transition={{ repeat: Infinity, duration: 6, ease: 'linear' }}
+            />
+          )}
+        </svg>
+      </Box>
     </Box>
-  </Box>
-)
+  )
+}
 
 export default FfixWorldMap
