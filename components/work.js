@@ -1,7 +1,7 @@
 import NextLink from 'next/link'
 import { Heading, Box, Image, Link, Badge } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { PROTOSS_CYAN_RGB } from '../lib/site-theme-context'
+import { PROTOSS_CYAN_RGB, KHALA_GOLD_RGB } from '../lib/site-theme-context'
 
 export const Title = ({ children }) => (
   <Box>
@@ -27,7 +27,7 @@ export const Title = ({ children }) => (
 export const WorkImage = ({ src, alt }) => (
   <Image
     borderRadius="4px"
-    border={`1px solid rgba(${PROTOSS_CYAN_RGB}, 0.25)`}
+    border={`1px solid rgba(${KHALA_GOLD_RGB}, 0.35)`}
     w="full"
     src={src}
     alt={alt}
@@ -39,9 +39,9 @@ export const WorkImage = ({ src, alt }) => (
 export const Meta = ({ children }) => (
   <Badge
     fontFamily="mono"
-    bg={`rgba(${PROTOSS_CYAN_RGB}, 0.14)`}
-    color="#7dd8ff"
-    border={`1px solid rgba(${PROTOSS_CYAN_RGB}, 0.4)`}
+    bg={`rgba(${KHALA_GOLD_RGB}, 0.14)`}
+    color="#ffe8b0"
+    border={`1px solid rgba(${KHALA_GOLD_RGB}, 0.5)`}
     borderRadius="2px"
     mr={2}
   >

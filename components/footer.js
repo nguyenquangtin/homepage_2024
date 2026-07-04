@@ -24,7 +24,7 @@ const Footer = () => {
               cy="14"
               r="13"
               fill="none"
-              stroke="#00ddff"
+              stroke="#f0c040"
               strokeWidth="0.6"
               opacity="0.4"
             />

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
 import { Global } from '@emotion/react'
 import { Sc2CornerBrackets } from './sc2/sc2-panel'
-import { PROTOSS_CYAN_RGB } from '../lib/site-theme-context'
+import { PROTOSS_CYAN_RGB, KHALA_GOLD_RGB } from '../lib/site-theme-context'
 
 // SC2 command-card slot styling shared by both grid variants:
 // dark navy slot, luminous border, hover = corner brackets + psionic glow
@@ -11,14 +11,14 @@ const cardSlotProps = {
   role: 'group',
   position: 'relative',
   display: 'block',
-  bg: 'rgba(4, 12, 28, 0.85)',
-  border: `1px solid rgba(${PROTOSS_CYAN_RGB}, 0.25)`,
+  bg: 'rgba(10, 8, 24, 0.85)',
+  border: `1px solid rgba(${KHALA_GOLD_RGB}, 0.35)`,
   borderRadius: '4px',
   p: 3,
   cursor: 'pointer',
   transition: 'all 0.2s',
   _hover: {
-    borderColor: `rgba(${PROTOSS_CYAN_RGB}, 0.7)`,
+    borderColor: `rgba(${KHALA_GOLD_RGB}, 0.85)`,
     boxShadow: `0 0 18px rgba(${PROTOSS_CYAN_RGB}, 0.25), inset 0 0 14px rgba(${PROTOSS_CYAN_RGB}, 0.06)`
   }
 }
