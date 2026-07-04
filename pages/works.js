@@ -3,6 +3,7 @@ import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { WorkGridItem } from '../components/grid-item'
 import Sc2SectionHeader from '../components/sc2/sc2-section-header'
+import { PROTOSS_LABELS } from '../lib/protoss-terminology'
 
 import thumbTTM from '../public/images/works/ttm.png'
 import thumbTTMW from '../public/images/works/ttm_w.png'
@@ -14,7 +15,7 @@ const Works = () => (
   <Layout title="Works">
     <Container>
       <Sc2SectionHeader as="h1" mt={0}>
-        Works
+        {PROTOSS_LABELS.works}
       </Sc2SectionHeader>
 
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
@@ -39,7 +40,7 @@ const Works = () => (
       <Section delay={0.2}>
         <Divider my={6} borderColor="rgba(0,221,255,0.2)" />
 
-        <Sc2SectionHeader>Contribute</Sc2SectionHeader>
+        <Sc2SectionHeader>{PROTOSS_LABELS.contribute}</Sc2SectionHeader>
       </Section>
 
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
@@ -64,7 +65,7 @@ const Works = () => (
       <Section delay={0.4}>
         <Divider my={6} borderColor="rgba(0,221,255,0.2)" />
 
-        <Sc2SectionHeader>Old works</Sc2SectionHeader>
+        <Sc2SectionHeader>{PROTOSS_LABELS.oldWorks}</Sc2SectionHeader>
       </Section>
 
       <SimpleGrid columns={[1, 1, 2]} gap={6}>
