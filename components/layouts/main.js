@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import NavBar from '../navbar'
 import ProtossGlobal from '../sc2/protoss-global'
 import ProtossShieldLayer from '../protoss-shield-layer'
+import PlanetHorizon from '../planet-horizon'
 import { Box, Container } from '@chakra-ui/react'
 import Footer from '../footer'
 import VoxelDogLoader from '../voxel-dog-loader'
@@ -116,12 +117,13 @@ const Main = ({ children, router }) => {
       </Head>
 
       {theme === 'sc2' && <ProtossGlobal />}
+      {theme === 'sc2' && <PlanetHorizon />}
       {theme === 'sc2' && <LazyPsionicBackground />}
       {theme === 'sc2' && <ProtossShieldLayer />}
 
       <NavBar path={router.asPath} />
 
-      <Container maxW="container.xl" pt={14}>
+      <Container maxW="container.xl" pt={16}>
         {theme === 'sc2' ? <LazyProtossPylon /> : <LazySword />}
 
         {children}
