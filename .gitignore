@@ -5,3 +5,5 @@ dist
 .env
 .gstack/
 .env*.local
+.omc/
+public/.omc/
