@@ -1,5 +1,6 @@
 import { Box, Text, Flex } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import { KHALA_GOLD } from '../lib/site-theme-context'
 
 const Footer = () => {
   return (
@@ -24,7 +25,7 @@ const Footer = () => {
               cy="14"
               r="13"
               fill="none"
-              stroke="#f0c040"
+              stroke={KHALA_GOLD}
               strokeWidth="0.6"
               opacity="0.4"
             />

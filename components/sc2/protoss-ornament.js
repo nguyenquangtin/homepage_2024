@@ -52,7 +52,7 @@ export const ProtossCrystalGem = ({ size = 10, ...pos }) => (
     <svg width={size} height={size * 1.4} viewBox="0 0 10 14" fill="none">
       <polygon
         points="5,0 10,4 8,13 2,13 0,4"
-        fill="#1a1030"
+        fill="#1a1030" /* one-off gem body tint */
         stroke={PROTOSS_DEEP_GOLD}
         strokeWidth="1"
       />

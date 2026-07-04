@@ -7,7 +7,7 @@ import {
   PROTOSS_PANEL_BG,
   PROTOSS_PANEL_RGB
 } from '../../lib/site-theme-context'
-import { ProtossFrameCorners } from './protoss-ornament'
+import { ProtossFrameCorners, ProtossCrystalGem } from './protoss-ornament'
 
 const sc2 = PALETTES.sc2
 
@@ -87,6 +87,9 @@ const Sc2Panel = ({
   >
     {/* Protoss gold frame ornaments + travelling energy seam (#9) */}
     <ProtossFrameCorners />
+    {/* Khaydarin gems at the lower frame joints */}
+    <ProtossCrystalGem bottom="-7px" left="24px" />
+    <ProtossCrystalGem bottom="-7px" right="24px" />
     <Box
       aria-hidden
       className="protoss-seam"

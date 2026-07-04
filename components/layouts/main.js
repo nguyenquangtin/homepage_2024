@@ -114,7 +114,7 @@ const Main = ({ children, router }) => {
         <title>Tony Tin Nguyen — Building products that scale.</title>
       </Head>
 
-      <ProtossGlobal />
+      {theme === 'sc2' && <ProtossGlobal />}
       {theme === 'sc2' && <LazyPsionicBackground />}
 
       <NavBar path={router.asPath} />
