@@ -57,7 +57,10 @@ const ProtossGlobal = () => (
         0%, 100% { opacity: 0.55; }
         50% { opacity: 1; }
       }
-      .protoss-shield-shimmer { animation: protoss-shield-shimmer 9s ease-in-out infinite; }
+      .protoss-shield-shimmer {
+        animation: protoss-shield-shimmer 9s ease-in-out infinite;
+        will-change: opacity;
+      }
       @keyframes protoss-shield-ripple {
         0% { transform: scale(0.15); opacity: 0.45; }
         100% { transform: scale(1.5); opacity: 0; }

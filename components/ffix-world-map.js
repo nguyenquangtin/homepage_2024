@@ -166,7 +166,7 @@ const FfixWorldMap = () => {
             <motion.circle
               cx={DANANG.x}
               cy={DANANG.y}
-              r="12"
+              r="6" // matches initial — avoids SSR-to-hydration snap
               fill="none"
               stroke="#00cc55"
               strokeWidth="1"
