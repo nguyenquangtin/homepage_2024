@@ -152,7 +152,7 @@ const PsionicBackground = () => {
       style={{
         position: 'fixed',
         inset: 0,
-        zIndex: -1,
+        zIndex: -2, // below the shield layer (-1), explicit stacking
         pointerEvents: 'none'
       }}
     />
