@@ -23,8 +23,9 @@ import {
 // GameThemeToggle + ThemeToggleButton removed while FFIX is hidden (#7) —
 // site is locked to the SC2 dark console look. Components kept for re-enable.
 
-// LotV capsule menu button (#16): rounded capsule, thin blue border,
-// dark gradient fill; active = double-border glow (ref: LotV achievements UI)
+// LotV challenges-style top menu tab (#19): large uppercase text item;
+// active = raised gradient block with a bright top edge (ref: LotV
+// challenges screen — CAMPAGNE tab)
 const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href
   return (
@@ -32,34 +33,29 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
       as={NextLink}
       href={href}
       scroll={false}
-      px={4}
-      py={1.5}
+      px={5}
+      py={2.5}
       fontFamily="mono"
-      fontSize="xs"
+      fontSize="sm"
       fontWeight="bold"
       textTransform="uppercase"
-      letterSpacing="0.12em"
-      borderRadius="6px"
-      border="1px solid"
-      borderColor={
+      letterSpacing="0.16em"
+      bg={
         active
-          ? `rgba(${PROTOSS_CYAN_RGB}, 0.9)`
-          : `rgba(${PROTOSS_CYAN_RGB}, 0.3)`
+          ? 'linear-gradient(180deg, rgba(34, 64, 118, 0.95), rgba(10, 20, 45, 0.95))'
+          : 'transparent'
       }
-      bg="linear-gradient(180deg, rgba(14, 24, 48, 0.9), rgba(5, 10, 24, 0.9))"
-      color={active ? '#eafcff' : '#8fb8cc'}
+      color={active ? '#ffffff' : '#8fb8cc'}
       boxShadow={
         active
-          ? `inset 0 0 0 1px rgba(${PROTOSS_CYAN_RGB}, 0.55), 0 0 12px rgba(${PROTOSS_CYAN_RGB}, 0.35)`
+          ? `inset 0 2px 0 rgba(${PROTOSS_CYAN_RGB}, 0.9), inset 0 0 24px rgba(${PROTOSS_CYAN_RGB}, 0.18), 0 0 14px rgba(${PROTOSS_CYAN_RGB}, 0.25)`
           : 'none'
       }
-      textShadow={active ? `0 0 10px rgba(${PROTOSS_CYAN_RGB}, 0.7)` : 'none'}
+      textShadow={active ? `0 0 12px rgba(${PROTOSS_CYAN_RGB}, 0.8)` : 'none'}
       _hover={{
         textDecoration: 'none',
-        color: '#c0e8ff',
-        borderColor: `rgba(${PROTOSS_CYAN_RGB}, 0.7)`,
-        boxShadow: `0 0 10px rgba(${PROTOSS_CYAN_RGB}, 0.25)`,
-        textShadow: `0 0 8px rgba(${PROTOSS_CYAN_RGB}, 0.6)`
+        color: '#eafcff',
+        textShadow: `0 0 10px rgba(${PROTOSS_CYAN_RGB}, 0.6)`
       }}
       _focusVisible={{
         color: '#c0e8ff',
