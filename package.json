@@ -1,7 +1,7 @@
 {
   "name": "tonynguyen-homepage",
   "version": "1.0.0",
-  "description": "Takuya's website",
+  "description": "Tony Tin Nguyen's personal homepage — StarCraft II Protoss themed",
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
