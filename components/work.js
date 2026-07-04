@@ -1,6 +1,7 @@
 import NextLink from 'next/link'
 import { Heading, Box, Image, Link, Badge } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
+import { PROTOSS_CYAN_RGB } from '../lib/site-theme-context'
 
 export const Title = ({ children }) => (
   <Box>
@@ -11,18 +12,39 @@ export const Title = ({ children }) => (
       {' '}
       <ChevronRightIcon />{' '}
     </span>
-    <Heading display="inline-block" as="h3" fontSize={20} mb={4}>
+    <Heading
+      display="inline-block"
+      as="h3"
+      fontSize={20}
+      mb={4}
+      textShadow={`0 0 12px rgba(${PROTOSS_CYAN_RGB}, 0.4)`}
+    >
       {children}
     </Heading>
   </Box>
 )
 
 export const WorkImage = ({ src, alt }) => (
-  <Image borderRadius="lg" w="full" src={src} alt={alt} mb={4} />
+  <Image
+    borderRadius="4px"
+    border={`1px solid rgba(${PROTOSS_CYAN_RGB}, 0.25)`}
+    w="full"
+    src={src}
+    alt={alt}
+    mb={4}
+  />
 )
 
+// SC2 command tag — cyan console badge for tech/platform meta
 export const Meta = ({ children }) => (
-  <Badge colorScheme="green" mr={2}>
+  <Badge
+    fontFamily="mono"
+    bg={`rgba(${PROTOSS_CYAN_RGB}, 0.14)`}
+    color="#7dd8ff"
+    border={`1px solid rgba(${PROTOSS_CYAN_RGB}, 0.4)`}
+    borderRadius="2px"
+    mr={2}
+  >
     {children}
   </Badge>
 )
