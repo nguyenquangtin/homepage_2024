@@ -1,5 +1,9 @@
 import { Box, Heading } from '@chakra-ui/react'
-import { PROTOSS_CYAN, PROTOSS_CYAN_RGB } from '../../lib/site-theme-context'
+import {
+  PROTOSS_CYAN_RGB,
+  KHALA_GOLD,
+  KHALA_GOLD_RGB
+} from '../../lib/site-theme-context'
 
 // Angular tab-style section heading (SC2 research screen header tab):
 // uppercase mono, cyan glow, clipped top-left corner, luminous underline.
@@ -15,9 +19,9 @@ const Sc2SectionHeader = ({ children, as = 'h2', ...rest }) => (
       letterSpacing="0.18em"
       color="#c0e8ff"
       textShadow={`0 0 10px rgba(${PROTOSS_CYAN_RGB}, 0.5)`}
-      bg={`rgba(${PROTOSS_CYAN_RGB}, 0.08)`}
-      border={`1px solid rgba(${PROTOSS_CYAN_RGB}, 0.3)`}
-      borderBottom={`2px solid ${PROTOSS_CYAN}`}
+      bg={`rgba(${KHALA_GOLD_RGB}, 0.08)`}
+      border={`1px solid rgba(${KHALA_GOLD_RGB}, 0.45)`}
+      borderBottom={`2px solid ${KHALA_GOLD}`}
       px={4}
       py={1.5}
       clipPath="polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px)"

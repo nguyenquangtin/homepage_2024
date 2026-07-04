@@ -35,7 +35,7 @@ const Sc2Button = ({ variant = 'cyan', children, ...rest }) => {
       border="1px solid"
       borderColor={`rgba(${v.rgb}, 0.55)`}
       clipPath="polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)"
-      boxShadow={`inset 0 0 12px rgba(${v.rgb}, 0.18)`}
+      boxShadow={`inset 0 0 12px rgba(${v.rgb}, 0.18), inset 0 1px 0 rgba(${KHALA_GOLD_RGB}, 0.35)`}
       _hover={{
         bg: `rgba(${v.rgb}, 0.24)`,
         color: v.hoverColor,
