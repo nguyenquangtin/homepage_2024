@@ -2,8 +2,12 @@ import { Box, Flex, Text } from '@chakra-ui/react'
 import {
   PALETTES,
   PROTOSS_CYAN,
-  PROTOSS_CYAN_RGB
+  PROTOSS_CYAN_RGB,
+  KHALA_GOLD_RGB,
+  PROTOSS_PANEL_BG,
+  PROTOSS_PANEL_RGB
 } from '../../lib/site-theme-context'
+import { ProtossFrameCorners, ProtossCrystalGem } from './protoss-ornament'
 
 const sc2 = PALETTES.sc2
 
@@ -75,19 +79,34 @@ const Sc2Panel = ({
   <Box
     position="relative"
     role={brackets ? 'group' : undefined}
-    bg={sc2.panelBg}
-    border={`1px solid rgba(${PROTOSS_CYAN_RGB}, 0.35)`}
+    bg={PROTOSS_PANEL_BG}
+    border={`1px solid rgba(${KHALA_GOLD_RGB}, 0.55)`}
     borderRadius="4px"
-    boxShadow={`inset 0 0 24px rgba(${PROTOSS_CYAN_RGB}, 0.07), 0 0 0 3px rgba(4, 12, 28, 0.8), 0 0 0 4px rgba(${PROTOSS_CYAN_RGB}, 0.15)`}
+    boxShadow={`inset 0 0 24px rgba(${PROTOSS_CYAN_RGB}, 0.06), 0 0 0 3px rgba(${PROTOSS_PANEL_RGB}, 0.8), 0 0 0 4px rgba(${KHALA_GOLD_RGB}, 0.25)`}
     {...rest}
   >
+    {/* Protoss gold frame ornaments + travelling energy seam (#9) */}
+    <ProtossFrameCorners />
+    {/* Khaydarin gems at the lower frame joints */}
+    <ProtossCrystalGem bottom="-7px" left="24px" />
+    <ProtossCrystalGem bottom="-7px" right="24px" />
+    <Box
+      aria-hidden
+      className="protoss-seam"
+      position="absolute"
+      top="-1px"
+      left="8%"
+      right="8%"
+      h="2px"
+      pointerEvents="none"
+    />
     {brackets && <Sc2CornerBrackets hoverReveal />}
     {title && (
       <Flex
         px={4}
         py={2}
-        bg={sc2.headerBg}
-        borderBottom={`1px solid ${sc2.headerBorder}`}
+        bg={`rgba(${KHALA_GOLD_RGB}, 0.07)`}
+        borderBottom={`1px solid rgba(${KHALA_GOLD_RGB}, 0.35)`}
         justify="space-between"
         align="center"
       >

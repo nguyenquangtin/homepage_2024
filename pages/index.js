@@ -25,6 +25,7 @@ import FfixTetraCards from '../components/ffix-tetra-card'
 import FfixEncounter from '../components/ffix-encounter'
 import FfixWorldMap from '../components/ffix-world-map'
 import ProtossWarpIn from '../components/protoss-warp-in'
+import { PROTOSS_LABELS } from '../lib/protoss-terminology'
 import {
   useSiteTheme,
   PROTOSS_CYAN,
@@ -301,7 +302,7 @@ const Home = () => {
                   colorScheme="blue"
                   size="sm"
                 >
-                  View portfolio
+                  {PROTOSS_LABELS.viewPortfolio}
                 </Button>
               </Box>
             </Section>
@@ -337,7 +338,7 @@ const Home = () => {
             {/* TETRA MASTER CARDS */}
             <Section delay={0.25}>
               <Heading as="h3" variant="section-title">
-                Featured
+                {PROTOSS_LABELS.featured}
               </Heading>
               <FfixTetraCards />
             </Section>
@@ -346,7 +347,7 @@ const Home = () => {
             <Box display={{ base: 'block', lg: 'none' }}>
               <Section delay={0.2}>
                 <Heading as="h3" variant="section-title">
-                  Career
+                  {PROTOSS_LABELS.career}
                 </Heading>
                 {CareerPanel}
               </Section>
@@ -355,7 +356,7 @@ const Home = () => {
             {/* WORLD MAP */}
             <Section delay={0.3}>
               <Heading as="h3" variant="section-title">
-                Location
+                {PROTOSS_LABELS.location}
               </Heading>
               <FfixWorldMap />
             </Section>
@@ -363,7 +364,7 @@ const Home = () => {
             {/* SOCIAL LINKS */}
             <Section delay={0.35}>
               <Heading as="h3" variant="section-title">
-                On the web
+                {PROTOSS_LABELS.onTheWeb}
               </Heading>
               <Flex gap={3} wrap="wrap" mt={2}>
                 {socialLinks.map(({ icon, label, href }) => (
@@ -423,7 +424,7 @@ const Home = () => {
           >
             <Section delay={0.2}>
               <Heading as="h3" variant="section-title">
-                Career
+                {PROTOSS_LABELS.career}
               </Heading>
               {CareerPanel}
             </Section>

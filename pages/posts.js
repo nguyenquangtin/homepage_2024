@@ -4,6 +4,7 @@ import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import Sc2SectionHeader from '../components/sc2/sc2-section-header'
 import { PROTOSS_CYAN, PALETTES } from '../lib/site-theme-context'
+import { PROTOSS_LABELS } from '../lib/protoss-terminology'
 
 // SC2 console tokens (#7)
 const PANEL_BG = PALETTES.sc2.panelBg
@@ -68,7 +69,7 @@ const Posts = ({ posts, error }) => (
   <Layout title="Posts">
     <Container>
       <Sc2SectionHeader as="h1" mt={0}>
-        Posts
+        {PROTOSS_LABELS.posts}
       </Sc2SectionHeader>
 
       {/* Console panel header */}

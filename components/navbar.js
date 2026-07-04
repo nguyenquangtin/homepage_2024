@@ -15,7 +15,11 @@ import {
   IconButton
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import { PROTOSS_CYAN, PROTOSS_CYAN_RGB } from '../lib/site-theme-context'
+import {
+  PROTOSS_CYAN,
+  PROTOSS_CYAN_RGB,
+  KHALA_GOLD_RGB
+} from '../lib/site-theme-context'
 // GameThemeToggle + ThemeToggleButton removed while FFIX is hidden (#7) —
 // site is locked to the SC2 dark console look. Components kept for re-enable.
 
@@ -70,8 +74,8 @@ const Navbar = props => {
       as="nav"
       w="100%"
       bg="rgba(4, 10, 24, 0.85)"
-      borderBottom={`1px solid rgba(${PROTOSS_CYAN_RGB}, 0.25)`}
-      boxShadow={`0 0 18px rgba(${PROTOSS_CYAN_RGB}, 0.12)`}
+      borderBottom={`1px solid rgba(${KHALA_GOLD_RGB}, 0.35)`}
+      boxShadow={`0 0 18px rgba(${KHALA_GOLD_RGB}, 0.10)`}
       css={{ backdropFilter: 'blur(10px)' }}
       zIndex={2}
       {...props}
@@ -114,14 +118,14 @@ const Navbar = props => {
                 as={IconButton}
                 icon={<HamburgerIcon />}
                 variant="outline"
-                borderColor={`rgba(${PROTOSS_CYAN_RGB}, 0.45)`}
+                borderColor={`rgba(${KHALA_GOLD_RGB}, 0.5)`}
                 color="#c0e8ff"
                 _hover={{ bg: `rgba(${PROTOSS_CYAN_RGB}, 0.12)` }}
                 aria-label="Options"
               />
               <MenuList
                 bg="rgba(4, 12, 28, 0.97)"
-                borderColor={`rgba(${PROTOSS_CYAN_RGB}, 0.35)`}
+                borderColor={`rgba(${KHALA_GOLD_RGB}, 0.45)`}
                 fontFamily="mono"
                 fontSize="sm"
               >
