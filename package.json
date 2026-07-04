@@ -12,6 +12,7 @@
   "keywords": [],
   "author": "Tony Tin Nguyen",
   "license": "MIT",
+  "packageManager": "yarn@1.22.22",
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.1",
