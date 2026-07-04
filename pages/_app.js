@@ -2,7 +2,6 @@ import Layout from '../components/layouts/main'
 import Fonts from '../components/fonts'
 import { AnimatePresence } from 'framer-motion'
 import Chakra from '../components/chakra'
-import Payhip from '../components/payhip'
 import { Analytics } from '@vercel/analytics/react'
 import { SiteThemeProvider } from '../lib/site-theme-context'
 
@@ -15,7 +14,6 @@ function Website({ Component, pageProps, router }) {
     <Chakra cookies={pageProps.cookies}>
       <SiteThemeProvider>
         <Fonts />
-        <Payhip />
         <Layout router={router}>
           <AnimatePresence
             mode="wait"
