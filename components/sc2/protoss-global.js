@@ -52,8 +52,25 @@ const ProtossGlobal = () => (
       }
       .protoss-gem-core { animation: protoss-gem-pulse 2.4s ease-in-out infinite; }
 
+      /* Plasma-shield layer (#16): lattice shimmer + expanding ripples */
+      @keyframes protoss-shield-shimmer {
+        0%, 100% { opacity: 0.55; }
+        50% { opacity: 1; }
+      }
+      .protoss-shield-shimmer { animation: protoss-shield-shimmer 9s ease-in-out infinite; }
+      @keyframes protoss-shield-ripple {
+        0% { transform: scale(0.15); opacity: 0.45; }
+        100% { transform: scale(1.5); opacity: 0; }
+      }
+      .protoss-shield-ripple {
+        animation: protoss-shield-ripple 8s ease-out infinite;
+        will-change: transform, opacity;
+      }
+
       @media (prefers-reduced-motion: reduce) {
-        .protoss-seam, .protoss-gem-core { animation: none; }
+        .protoss-seam, .protoss-gem-core,
+        .protoss-shield-shimmer, .protoss-shield-ripple { animation: none; }
+        .protoss-shield-ripple { opacity: 0; }
       }
     `}
   />
