@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { useSiteTheme } from '../lib/site-theme-context'
+import { useSiteTheme, PROTOSS_CYAN_RGB } from '../lib/site-theme-context'
 
 // Protoss warp-in reveal — unit-summon effect: overbright blur shimmer
 // settling into place, with a psionic glow that fades out.
@@ -36,9 +36,8 @@ const ProtossWarpIn = ({ children, delay = 0 }) => {
           inset: -8,
           borderRadius: 12,
           pointerEvents: 'none',
-          background:
-            'radial-gradient(ellipse at center, rgba(0,221,255,0.20), transparent 70%)',
-          boxShadow: '0 0 42px rgba(0,221,255,0.35)'
+          background: `radial-gradient(ellipse at center, rgba(${PROTOSS_CYAN_RGB}, 0.2), transparent 70%)`,
+          boxShadow: `0 0 42px rgba(${PROTOSS_CYAN_RGB}, 0.35)`
         }}
       />
       {children}

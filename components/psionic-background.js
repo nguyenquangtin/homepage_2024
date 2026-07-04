@@ -7,9 +7,11 @@ import { useEffect, useRef } from 'react'
 // the tab is hidden. Accessibility: prefers-reduced-motion renders a
 // single static frame (no animation loop).
 
-const CYAN = '0, 221, 255'
-const TEAL = '0, 187, 221'
-const GOLD = '240, 192, 64' // khala gold accent
+import {
+  PROTOSS_CYAN_RGB as CYAN,
+  PROTOSS_TEAL_RGB as TEAL,
+  KHALA_GOLD_RGB as GOLD
+} from '../lib/site-theme-context'
 
 function createMotes(w, h) {
   const count = Math.min(80, Math.max(24, Math.floor((w * h) / 26000)))
@@ -37,8 +39,10 @@ const PsionicBackground = () => {
     let motes = []
     let req = null
     let running = false
-    let t = 0
     let resizeTimer = null
+    // Wall-clock time base — animation speed independent of refresh rate
+    const startTime = performance.now()
+    let lastTime = startTime
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
@@ -53,10 +57,14 @@ const PsionicBackground = () => {
     const draw = () => {
       const w = window.innerWidth
       const h = window.innerHeight
+      const now = performance.now()
+      const t = (now - startTime) * 0.001 // seconds
+      const dt = Math.min((now - lastTime) * 0.001, 0.1) // clamp resume jumps
+      lastTime = now
       ctx.clearRect(0, 0, w, h)
 
       // Pylon power glow — breathing radial pool rising from below
-      const pulse = reduceMotion ? 0.5 : 0.5 + Math.sin(t * 0.02) * 0.5
+      const pulse = reduceMotion ? 0.5 : 0.5 + Math.sin(t * 1.2) * 0.5
       const glow = ctx.createRadialGradient(
         w / 2,
         h + 60,
@@ -73,7 +81,7 @@ const PsionicBackground = () => {
       // Rising psionic motes — soft glow via cheap two-pass circles
       // (canvas shadowBlur is CPU-composited and too slow on mobile)
       for (const m of motes) {
-        const x = m.x + Math.sin(t * 0.01 * m.sway + m.phase) * 14
+        const x = m.x + Math.sin(t * 0.6 * m.sway + m.phase) * 14
         ctx.beginPath()
         ctx.arc(x, m.y, m.r * 3, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(${m.color}, ${m.alpha * 0.15})`
@@ -84,14 +92,13 @@ const PsionicBackground = () => {
         ctx.fill()
 
         if (!reduceMotion) {
-          m.y -= m.speed
+          m.y -= m.speed * dt * 60 // speed tuned in px-per-60fps-frame units
           if (m.y < -8) {
             m.y = h + 8
             m.x = Math.random() * w
           }
         }
       }
-      t++
     }
 
     const loop = () => {

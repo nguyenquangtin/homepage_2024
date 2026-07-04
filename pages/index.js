@@ -25,7 +25,13 @@ import FfixTetraCards from '../components/ffix-tetra-card'
 import FfixEncounter from '../components/ffix-encounter'
 import FfixWorldMap from '../components/ffix-world-map'
 import ProtossWarpIn from '../components/protoss-warp-in'
-import { useSiteTheme } from '../lib/site-theme-context'
+import {
+  useSiteTheme,
+  PROTOSS_CYAN,
+  PROTOSS_CYAN_RGB,
+  KHALA_GOLD,
+  KHALA_GOLD_RGB
+} from '../lib/site-theme-context'
 
 // Resume timeline entries — keeps JSX clean
 const career = [
@@ -216,7 +222,7 @@ const Home = () => {
                       fontWeight={700}
                       textShadow={
                         theme === 'sc2'
-                          ? '0 0 18px rgba(0,221,255,0.5)'
+                          ? `0 0 18px rgba(${PROTOSS_CYAN_RGB}, 0.5)`
                           : 'none'
                       }
                     >
@@ -236,8 +242,8 @@ const Home = () => {
                         fontSize="xs"
                         fontFamily="mono"
                         letterSpacing="0.15em"
-                        color="#f0c040"
-                        textShadow="0 0 10px rgba(240,192,64,0.5)"
+                        color={KHALA_GOLD}
+                        textShadow={`0 0 10px rgba(${KHALA_GOLD_RGB}, 0.5)`}
                       >
                         ⟡ EN TARO ADUN — ENGINEER OF THE PROTOSS RACE ⟡
                       </Text>
@@ -379,10 +385,11 @@ const Home = () => {
                       fontSize="sm"
                       fontWeight={500}
                       _hover={{
-                        borderColor: theme === 'sc2' ? '#00ddff' : 'blue.400',
+                        borderColor:
+                          theme === 'sc2' ? PROTOSS_CYAN : 'blue.400',
                         boxShadow:
                           theme === 'sc2'
-                            ? '0 0 14px rgba(0,221,255,0.35)'
+                            ? `0 0 14px rgba(${PROTOSS_CYAN_RGB}, 0.35)`
                             : 'none'
                       }}
                       transition="border-color 0.2s, box-shadow 0.2s"
