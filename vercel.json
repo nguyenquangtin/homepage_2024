@@ -1,15 +1,5 @@
 {
   "github": {
     "silent": true
-  },
-  "rewrites": [
-    {
-      "source": "/ecomdy-careers",
-      "destination": "https://ecomdy-careers.vercel.app/"
-    },
-    {
-      "source": "/ecomdy-careers/:path*",
-      "destination": "https://ecomdy-careers.vercel.app/:path*"
-    }
-  ]
+  }
 }
