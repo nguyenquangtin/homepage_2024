@@ -1,69 +1,20 @@
 import Parser from 'rss-parser'
-import { Box, Container, Text, Link, Flex } from '@chakra-ui/react'
+import { Container, Flex, Text } from '@chakra-ui/react'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import Sc2SectionHeader from '../components/sc2/sc2-section-header'
-import { PROTOSS_CYAN, PALETTES } from '../lib/site-theme-context'
+import Sc2Panel from '../components/sc2/sc2-panel'
+import Sc2Button from '../components/sc2/sc2-button'
+import {
+  SignalMeter,
+  TransmissionRow,
+  formatDate
+} from '../components/sc2/transmission-row'
+import { PALETTES } from '../lib/site-theme-context'
 import { PROTOSS_LABELS } from '../lib/protoss-terminology'
 
-// SC2 console tokens (#7)
-const PANEL_BG = PALETTES.sc2.panelBg
-const ACCENT = PROTOSS_CYAN
-const TEXT = PALETTES.sc2.text
 const MUTED = PALETTES.sc2.muted
-
-// Format ISO date → "Mar 2026"
-const formatDate = iso =>
-  new Date(iso).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-
-// Single console-styled transmission row
-const PostRow = ({ title, link, pubDate, contentSnippet }, i) => (
-  <Box
-    key={link}
-    as={Link}
-    href={link}
-    isExternal
-    display="block"
-    _hover={{ textDecoration: 'none' }}
-    mb={3}
-  >
-    <Flex
-      gap={3}
-      p={3}
-      bg={PANEL_BG}
-      border={`1px solid ${ACCENT}33`}
-      borderRadius="sm"
-      fontFamily="monospace"
-      _hover={{ borderColor: `${ACCENT}88`, bg: 'rgba(0,187,221,0.05)' }}
-      transition="all 0.15s"
-      align="flex-start"
-    >
-      {/* Index */}
-      <Text fontSize="10px" color={ACCENT} mt="2px" flexShrink={0} w="18px">
-        {String(i + 1).padStart(2, '0')}
-      </Text>
-      <Box flex={1} minW={0}>
-        <Text
-          fontSize="sm"
-          color={TEXT}
-          fontWeight={600}
-          lineHeight={1.3}
-          mb={1}
-        >
-          {title}
-        </Text>
-        {contentSnippet && (
-          <Text fontSize="11px" color={MUTED} noOfLines={2} lineHeight={1.5}>
-            {contentSnippet}
-          </Text>
-        )}
-      </Box>
-      <Text fontSize="10px" color={MUTED} flexShrink={0} mt="2px">
-        {pubDate ? formatDate(pubDate) : '—'}
-      </Text>
-    </Flex>
-  </Box>
-)
+const NEW_COUNT = 3
 
 const Posts = ({ posts, error }) => (
   <Layout title="Posts">
@@ -72,64 +23,69 @@ const Posts = ({ posts, error }) => (
         {PROTOSS_LABELS.posts}
       </Sc2SectionHeader>
 
-      {/* Console panel header */}
-      <Box
-        bg={PANEL_BG}
-        border={`2px solid ${ACCENT}`}
-        borderRadius="sm"
-        boxShadow={`0 0 0 3px rgba(4,12,28,0.9), 0 0 0 5px ${ACCENT}33, inset 0 0 24px rgba(0,221,255,0.05)`}
-        overflow="hidden"
+      <Sc2Panel
+        tone="cyan"
+        unpadded
         mb={6}
+        title="KHALAI ARCHIVE — coderhorizon.com"
+        meta={
+          <Flex as="span" display="inline-flex" align="center" gap={2}>
+            <Text as="span">{posts.length} TRANSMISSIONS</Text>
+            <SignalMeter />
+          </Flex>
+        }
       >
+        {/* status strip */}
         <Flex
           px={4}
           py={2}
-          bg="rgba(0,187,221,0.06)"
-          borderBottom={`1px solid ${ACCENT}44`}
-          justify="space-between"
-          align="center"
+          borderBottom="1px solid rgba(240, 192, 64, 0.12)"
         >
           <Text
-            fontFamily="monospace"
+            fontFamily="mono"
             fontSize="10px"
-            color={ACCENT}
-            letterSpacing="0.15em"
+            color={MUTED}
+            letterSpacing="0.1em"
+            textTransform="uppercase"
           >
-            ▸ KHALAI ARCHIVE — coderhorizon.com
-          </Text>
-          <Text fontFamily="monospace" fontSize="10px" color={MUTED}>
-            {posts.length} transmissions
+            &#9656; CHANNEL: SUBSTACK &middot; ENCRYPTION: KHALA &middot; LAST
+            SYNC: {posts[0] ? formatDate(posts[0].pubDate) : '—'}
           </Text>
         </Flex>
 
-        <Box p={4}>
-          {error && (
-            <Text fontFamily="monospace" fontSize="sm" color="#ff6666">
-              ◇ Could not load posts — visit coderhorizon.com directly
-            </Text>
-          )}
-          {!error && posts.length === 0 && (
-            <Text fontFamily="monospace" fontSize="sm" color={MUTED}>
-              ◇ No transmissions yet — check back soon
-            </Text>
-          )}
-          {posts.map((post, i) => PostRow(post, i))}
-        </Box>
-      </Box>
+        {error && (
+          <Text fontFamily="mono" fontSize="sm" color="#ff6666" p={4}>
+            &#9671; Could not load posts — visit coderhorizon.com directly
+          </Text>
+        )}
+        {!error && posts.length === 0 && (
+          <Text fontFamily="mono" fontSize="sm" color={MUTED} p={4}>
+            &#9671; No transmissions yet — check back soon
+          </Text>
+        )}
+        {posts.map((post, i) => (
+          <TransmissionRow
+            key={post.link}
+            post={post}
+            index={i}
+            isNew={i < NEW_COUNT}
+            isLast={i === posts.length - 1}
+          />
+        ))}
+      </Sc2Panel>
 
       <Section delay={0.2}>
         <Flex justify="center">
-          <Link
+          <Sc2Button
+            as="a"
             href="https://coderhorizon.com/"
-            isExternal
-            fontFamily="monospace"
-            fontSize="xs"
-            color={ACCENT}
-            letterSpacing="0.1em"
-            _hover={{ color: TEXT }}
+            target="_blank"
+            rel="noopener"
+            variant="gold"
+            size="sm"
           >
-            ▸ Subscribe on Substack →
-          </Link>
+            OPEN CHANNEL →
+          </Sc2Button>
         </Flex>
       </Section>
     </Container>
