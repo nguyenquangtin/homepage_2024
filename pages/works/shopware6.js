@@ -1,9 +1,8 @@
 import {
   Container,
-  Badge,
   Link,
   List,
-  ListItem,
+  ListItem
   // AspectRatio
 } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -15,26 +14,29 @@ const Work = () => (
   <Layout title="Shopware 6">
     <Container>
       <Title>
-        Shopware 6<Badge>2020-2022</Badge>
+        Shopware 6<Meta>2020-2022</Meta>
       </Title>
       <P>
-        Shopware 6 is an open headless commerce platform powered by Symfony 7 and Vue.js 3 that is used by thousands of shops and supported by a huge, worldwide community of developers, agencies and merchants.
+        Shopware 6 is an open headless commerce platform powered by Symfony 7
+        and Vue.js 3 that is used by thousands of shops and supported by a huge,
+        worldwide community of developers, agencies and merchants.
       </P>
       <P>
-      Tony used to contribute to the Admin Panel and some premium themes for Shopware 6 while working with the Core team in Schöppingen, German.
+        Tony used to contribute to the Admin Panel and some premium themes for
+        Shopware 6 while working with the Core team in Schöppingen, German.
       </P>
       <List ml={4} my={4}>
         <ListItem>
           <Meta>Website</Meta>
           <Link href="https://www.shopware.com/en/">
-          https://www.shopware.com/ <ExternalLinkIcon mx="2px" />
+            https://www.shopware.com/ <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
 
         <ListItem>
           <Meta>Source code</Meta>
           <Link href="https://github.com/shopware/shopware">
-          https://github.com/shopware/shopware <ExternalLinkIcon mx="2px" />
+            https://github.com/shopware/shopware <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
 

@@ -1,9 +1,8 @@
 import {
   Container,
-  Badge,
   Link,
   List,
-  ListItem,
+  ListItem
   // AspectRatio
 } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -15,13 +14,16 @@ const Work = () => (
   <Layout title="Shopware 6">
     <Container>
       <Title>
-        Laravue <Badge>2020-2021</Badge>
+        Laravue <Meta>2020-2021</Meta>
       </Title>
       <P>
-        Laravue (pronounced /&apos;larəvjuː/) is a beautiful dashboard combination of Laravel, Vue.js and the UI toolkit Element.
+        Laravue (pronounced /&apos;larəvjuː/) is a beautiful dashboard
+        combination of Laravel, Vue.js and the UI toolkit Element.
       </P>
       <P>
-        It is inspired by vue-element-admin with our love on top of that. With the the Laravel framework for the backend and Vue.js for the frontend, Laravue aims to be a full-stack solution.
+        It is inspired by vue-element-admin with our love on top of that. With
+        the the Laravel framework for the backend and Vue.js for the frontend,
+        Laravue aims to be a full-stack solution.
       </P>
       <List ml={4} my={4}>
         <ListItem>
@@ -44,9 +46,7 @@ const Work = () => (
         </ListItem>
         <ListItem>
           <Meta>Stack</Meta>
-          <span>
-          Laravel, Vue.js
-          </span>
+          <span>Laravel, Vue.js</span>
         </ListItem>
       </List>
 

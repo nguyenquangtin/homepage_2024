@@ -1,13 +1,12 @@
-import { Box, Text, Flex, SimpleGrid } from '@chakra-ui/react'
+import { Box, Text, SimpleGrid } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import {
   PROTOSS_CYAN,
   PROTOSS_CYAN_RGB,
   KHALA_GOLD,
-  KHALA_GOLD_RGB,
-  PROTOSS_PANEL_BG,
   PALETTES
 } from '../lib/site-theme-context'
+import Sc2Panel from './sc2/sc2-panel'
 
 // Featured projects as an SC2 achievements panel (#19) — icon medallion,
 // tier, gold point count, cyan progress bar (ref: LotV achievements grid).
@@ -130,41 +129,31 @@ const AchievementTile = ({ a }) => (
   </motion.div>
 )
 
+// LotV pass: the service record wears the default gold Sc2Panel frame
 const AchievementsPanel = () => (
-  <Box
-    bg={PROTOSS_PANEL_BG}
-    border={`2px solid rgba(${KHALA_GOLD_RGB}, 0.6)`}
-    borderRadius="sm"
-    boxShadow={`0 0 0 3px rgba(10,8,24,0.9), 0 0 0 5px rgba(${KHALA_GOLD_RGB}, 0.2)`}
-    overflow="hidden"
-    fontFamily="monospace"
-  >
-    <Flex
-      px={3}
-      py={2}
-      bg={`rgba(${KHALA_GOLD_RGB}, 0.07)`}
-      borderBottom={`1px solid rgba(${KHALA_GOLD_RGB}, 0.35)`}
-      justify="space-between"
-      align="center"
-    >
-      <Text fontSize="10px" color={PROTOSS_CYAN} letterSpacing="0.15em">
-        ▸ ACHIEVEMENTS — SERVICE RECORD
-      </Text>
-      <Text fontSize="10px" color={KHALA_GOLD}>
+  <Sc2Panel
+    title="Achievements — Service Record"
+    meta={
+      <Box as="span" color={KHALA_GOLD}>
         ⬢ {ACHIEVEMENTS.reduce((s, a) => s + a.points, 0)}
-      </Text>
-    </Flex>
-    <SimpleGrid columns={{ base: 2, sm: 4 }} gap={3} p={3}>
-      {ACHIEVEMENTS.map(a => (
-        <AchievementTile key={a.name} a={a} />
-      ))}
-    </SimpleGrid>
-    <Box px={3} pb={2}>
-      <Text fontSize="9px" color={MUTED} letterSpacing="0.08em">
-        CAMPAIGN PROGRESS ACROSS ACTIVE OPERATIONS
-      </Text>
+      </Box>
+    }
+    unpadded
+    dense
+  >
+    <Box fontFamily="monospace">
+      <SimpleGrid columns={{ base: 2, sm: 4 }} gap={3} p={3}>
+        {ACHIEVEMENTS.map(a => (
+          <AchievementTile key={a.name} a={a} />
+        ))}
+      </SimpleGrid>
+      <Box px={3} pb={2}>
+        <Text fontSize="9px" color={MUTED} letterSpacing="0.08em">
+          CAMPAIGN PROGRESS ACROSS ACTIVE OPERATIONS
+        </Text>
+      </Box>
     </Box>
-  </Box>
+  </Sc2Panel>
 )
 
 export default AchievementsPanel

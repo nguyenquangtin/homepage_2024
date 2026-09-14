@@ -129,11 +129,13 @@ const Sc2Panel = ({
       {/* gold frame line — drawn as a 1px inlay so the 45° cut keeps its edge */}
       <Box
         position="relative"
+        h="100%"
         clipPath={chamferClip(chamfer)}
         bg={`linear-gradient(150deg, rgba(${KHALA_GOLD_RGB}, 0.85), rgba(${KHALA_GOLD_RGB}, 0.45) 50%, ${PROTOSS_DEEP_GOLD})`}
         p="1px"
       >
         <Box
+          h="100%"
           clipPath={chamferClip(chamfer - 1)}
           bg={PROTOSS_PANEL_BG}
           boxShadow={`${t.innerGlow}, inset 0 1px 0 rgba(${PROTOSS_GOLD_LIGHT_RGB}, 0.35)`}

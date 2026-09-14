@@ -1,13 +1,11 @@
-import { Box, Text, Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   PROTOSS_CYAN,
   PROTOSS_CYAN_RGB,
-  KHALA_GOLD,
-  KHALA_GOLD_RGB,
-  PROTOSS_PANEL_BG,
-  PALETTES
+  KHALA_GOLD
 } from '../lib/site-theme-context'
+import Sc2Panel from './sc2/sc2-panel'
 
 // SC2 tactical minimap (#16): dark terrain, cyan grid, unit blips,
 // camera viewport rect, scan sweep. Base marker at Danang, Vietnam.
@@ -56,36 +54,20 @@ const ENEMY_BLIPS = [
 const FfixWorldMap = () => {
   const reduceMotion = useReducedMotion()
   return (
-    <Box
-      bg={PROTOSS_PANEL_BG}
-      border={`2px solid rgba(${KHALA_GOLD_RGB}, 0.6)`}
-      borderRadius="sm"
-      boxShadow={`0 0 0 3px rgba(10,8,24,0.9), 0 0 0 5px rgba(${KHALA_GOLD_RGB}, 0.2)`}
-      overflow="hidden"
-      fontFamily="monospace"
-    >
-      {/* Command header */}
-      <Flex
-        px={3}
-        py={2}
-        bg={`rgba(${KHALA_GOLD_RGB}, 0.07)`}
-        borderBottom={`1px solid rgba(${KHALA_GOLD_RGB}, 0.35)`}
-        justify="space-between"
-        align="center"
-      >
-        <Text fontSize="10px" color={PROTOSS_CYAN} letterSpacing="0.15em">
-          ▸ TACTICAL MAP — SECTOR: EARTH
-        </Text>
-        <Flex align="center" gap={1}>
-          <Box w={2} h={2} borderRadius="full" bg="green.400" />
-          <Text fontSize="9px" color={PALETTES.sc2.muted}>
-            BASE: DANANG · 16.1°N 108.2°E
-          </Text>
+    // LotV pass: tactical record — default gold Sc2Panel frame
+    <Sc2Panel
+      title="Tactical Map — Sector: Earth"
+      meta={
+        <Flex as="span" display="inline-flex" align="center" gap={1}>
+          <Box as="span" w={2} h={2} borderRadius="full" bg="green.400" />
+          BASE: DANANG · 16.1°N 108.2°E
         </Flex>
-      </Flex>
-
+      }
+      unpadded
+      dense
+    >
       {/* Minimap */}
-      <Box position="relative">
+      <Box position="relative" fontFamily="monospace">
         <svg
           viewBox="0 0 700 320"
           xmlns="http://www.w3.org/2000/svg"
@@ -203,7 +185,7 @@ const FfixWorldMap = () => {
           )}
         </svg>
       </Box>
-    </Box>
+    </Sc2Panel>
   )
 }
 

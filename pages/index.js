@@ -22,6 +22,7 @@ import FfixEncounter from '../components/ffix-encounter'
 import FfixWorldMap from '../components/ffix-world-map'
 import ProtossWarpIn from '../components/protoss-warp-in'
 import CommanderPortrait from '../components/sc2/commander-portrait'
+import Sc2Panel from '../components/sc2/sc2-panel'
 import { PROTOSS_LABELS } from '../lib/protoss-terminology'
 import {
   useSiteTheme,
@@ -119,14 +120,9 @@ const Home = () => {
   const timelineLine = useColorModeValue('blue.400', 'blue.500')
 
   // ── Career sidebar (reused in both mobile stack and desktop sidebar)
+  // LotV pass: framed with the shared Sc2Panel so it matches the hero
   const CareerPanel = (
-    <Box
-      borderRadius="xl"
-      border="1px solid"
-      borderColor={cardBorder}
-      bg={cardBg}
-      p={5}
-    >
+    <Sc2Panel dense>
       <Box borderLeft="2px solid" borderColor={timelineLine} pl={4}>
         {career.map((entry, i) => (
           <Box key={i} mb={i < career.length - 1 ? 4 : 0} position="relative">
@@ -157,13 +153,18 @@ const Home = () => {
           </Box>
         ))}
       </Box>
-    </Box>
+    </Sc2Panel>
   )
 
   return (
     <>
-      <FfixMoogleFlying />
-      <FfixEncounter />
+      {/* FFIX sprites are dormant under the SC2 theme (LotV pass) */}
+      {theme === 'ffix' && (
+        <>
+          <FfixMoogleFlying />
+          <FfixEncounter />
+        </>
+      )}
       <Layout>
         {/* ── TWO-COLUMN DESKTOP LAYOUT ─────────────────── */}
         <Flex

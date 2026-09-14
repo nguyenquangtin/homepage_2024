@@ -1,6 +1,7 @@
 import { Box, Text, Flex } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useSiteTheme } from '../lib/site-theme-context'
+import Sc2Panel from './sc2/sc2-panel'
 
 // Animated stat bar (fills on mount)
 const StatBar = ({ label, value, max = 100, color, accent, text }) => (
@@ -41,7 +42,7 @@ const CyclingBar = ({ label, color, gradient, duration, symbol, times }) => (
 
 const THEME_DATA = {
   ffix: {
-    header: '◆ CHARACTER',
+    header: 'Character',
     job: 'BLACK MAGE',
     hp: { current: 3780, max: 5400, color: '#00cc55', gradient: 'linear-gradient(90deg,#009933,#00ff55)' },
     resource: { label: 'MP', current: 663, max: 720, color: '#bb77ff', gradient: 'linear-gradient(90deg,#7722cc,#bb66ff)' },
@@ -59,7 +60,7 @@ const THEME_DATA = {
     currencyColor: '#ffd700',
   },
   sc2: {
-    header: '◆ COMMANDER',
+    header: 'Commander',
     job: 'HIGH TEMPLAR',
     hp: { current: 4000, max: 4000, color: '#00cc55', gradient: 'linear-gradient(90deg,#009933,#00ff55)' },
     resource: { label: 'NRG', current: 150, max: 200, color: '#00ddff', gradient: 'linear-gradient(90deg,#0088aa,#00ddff)' },
@@ -84,22 +85,13 @@ const THEME_DATA = {
 const FfixCharSheet = () => {
   const { theme, palette } = useSiteTheme()
   const d = THEME_DATA[theme]
-  const { accent, text: textColor, panelBg, muted, jobColor } = palette
+  const { accent, text: textColor, muted, jobColor } = palette
 
+  // LotV pass: the outer cyan double-border is now the shared gold frame;
+  // everything inside still reads from `palette` so FFIX data stays intact.
   return (
-    <Box
-      bg={panelBg}
-      border={`2px solid ${accent}`}
-      borderRadius="sm"
-      boxShadow={`0 0 0 3px rgba(8,14,40,0.9), 0 0 0 5px ${accent}33`}
-      overflow="hidden"
-      fontFamily="monospace"
-    >
-      <Box px={4} py={2} bg={palette.headerBg} borderBottom={`1px solid ${palette.headerBorder}`}>
-        <Text fontSize="10px" color={accent} letterSpacing="0.15em">{d.header}</Text>
-      </Box>
-
-      <Box px={4} py={3}>
+    <Sc2Panel tone="cyan" title={d.header} unpadded>
+      <Box px={4} py={3} fontFamily="monospace">
         {/* Name + Job */}
         <Flex justify="space-between" align="baseline" mb={3} pb={2} borderBottom={`1px solid ${accent}33`}>
           <Box>
@@ -162,7 +154,7 @@ const FfixCharSheet = () => {
           )}
         </Flex>
       </Box>
-    </Box>
+    </Sc2Panel>
   )
 }
 
