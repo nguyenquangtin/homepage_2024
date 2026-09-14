@@ -7,7 +7,12 @@ import {
   Flex,
   useColorModeValue
 } from '@chakra-ui/react'
-import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
+import {
+  IoLogoTwitter,
+  IoLogoInstagram,
+  IoLogoGithub,
+  IoLogoRss
+} from 'react-icons/io5'
 import Paragraph from '../components/paragraph'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
@@ -104,6 +109,11 @@ const socialLinks = [
     icon: <IoLogoInstagram />,
     label: '@tonytinnguyen',
     href: 'https://instagram.com/tonytinnguyen'
+  },
+  {
+    icon: <IoLogoRss />,
+    label: 'Blog · coderhorizon.com',
+    href: 'https://coderhorizon.com/'
   }
 ]
 
