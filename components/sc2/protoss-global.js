@@ -70,10 +70,42 @@ const ProtossGlobal = () => (
         will-change: transform, opacity;
       }
 
+      /* One-shot cyan scan sweep on hover (LotV pass). Put .protoss-scan on
+         an absolutely-positioned overlay inside a hover host: either a Chakra
+         role="group" parent or any element with .protoss-scan-host. */
+      @keyframes protoss-scan {
+        from { background-position: -100% 0; }
+        to { background-position: 200% 0; }
+      }
+      .protoss-scan {
+        background-image: linear-gradient(
+          90deg, transparent, rgba(${PROTOSS_CYAN_RGB}, 0.22), transparent
+        );
+        background-size: 60% 100%;
+        background-repeat: no-repeat;
+        background-position: -100% 0;
+        opacity: 0;
+      }
+      .protoss-scan-host:hover .protoss-scan,
+      [role='group']:hover .protoss-scan {
+        opacity: 1;
+        animation: protoss-scan 600ms ease-out 1;
+      }
+
+      /* Slow breathing ring — hero portrait frame (LotV pass) */
+      @keyframes protoss-ring-pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+      }
+      .protoss-ring-pulse { animation: protoss-ring-pulse 4s ease-in-out infinite; }
+
       @media (prefers-reduced-motion: reduce) {
         .protoss-seam, .protoss-gem-core,
-        .protoss-shield-shimmer, .protoss-shield-ripple { animation: none; }
+        .protoss-shield-shimmer, .protoss-shield-ripple,
+        .protoss-ring-pulse { animation: none; }
         .protoss-shield-ripple { opacity: 0; }
+        .protoss-scan-host:hover .protoss-scan,
+        [role='group']:hover .protoss-scan { animation: none; opacity: 0; }
       }
     `}
   />

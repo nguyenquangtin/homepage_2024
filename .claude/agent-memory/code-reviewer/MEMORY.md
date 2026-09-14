@@ -1,0 +1,1 @@
+- [Review verification gotchas](review-verification-gotchas.md) — headless Chrome 500px clamp, framer useReducedMotion hydration, Chakra Container justify no-op

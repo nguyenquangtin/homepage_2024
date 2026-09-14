@@ -1,10 +1,38 @@
 import { Box, Text, Flex } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
-import { KHALA_GOLD } from '../lib/site-theme-context'
+import {
+  KHALA_GOLD,
+  KHALA_GOLD_RGB,
+  PROTOSS_CYAN,
+  PALETTES,
+  chamferClip
+} from '../lib/site-theme-context'
 
 const Footer = () => {
   return (
     <Box mt={10} mb={4} textAlign="center">
+      {/* Gold hairline with a centre notch — vertical mirror of the
+          command-bar notch in navbar.js (LotV pass). */}
+      <Box
+        aria-hidden
+        position="relative"
+        h="1px"
+        mb={6}
+        bg={`linear-gradient(90deg, transparent, rgba(${KHALA_GOLD_RGB}, 0.45) 18%, rgba(${KHALA_GOLD_RGB}, 0.45) 82%, transparent)`}
+        pointerEvents="none"
+        _after={{
+          content: '""',
+          position: 'absolute',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          top: '-5px',
+          width: '22px',
+          height: '6px',
+          bg: `rgba(${KHALA_GOLD_RGB}, 0.55)`,
+          clipPath: chamferClip(3, 'tr-bl')
+        }}
+      />
+
       {/* SC2 Pylon beacon (#7) */}
       <Flex direction="column" align="center" gap={1.5}>
         {/* Pulsing khaydarin crystal */}
@@ -33,7 +61,7 @@ const Footer = () => {
             <polygon
               points="14,3 22,10 22,18 14,25 6,18 6,10"
               fill="#001a33"
-              stroke="#00ddff"
+              stroke={PROTOSS_CYAN}
               strokeWidth="1.2"
             />
             <polygon points="14,3 22,10 14,14" fill="#004488" opacity="0.8" />
@@ -50,7 +78,7 @@ const Footer = () => {
         <Text
           fontFamily="monospace"
           fontSize="9px"
-          color="#00ddff"
+          color={PROTOSS_CYAN}
           letterSpacing="0.18em"
           opacity={0.8}
         >
@@ -59,7 +87,7 @@ const Footer = () => {
         <Text
           fontFamily="monospace"
           fontSize="9px"
-          color="#4a6080"
+          color={PALETTES.sc2.muted}
           letterSpacing="0.08em"
         >
           &copy; {new Date().getFullYear()} Tony Tin Nguyen — All rights

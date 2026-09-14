@@ -1,9 +1,10 @@
 import { Box, Text, Flex } from '@chakra-ui/react'
 import { useSiteTheme } from '../lib/site-theme-context'
+import Sc2Panel from './sc2/sc2-panel'
 
 const THEME_DATA = {
   ffix: {
-    header: '◆ EQUIPMENT',
+    header: 'Equipment',
     footer: '◇ All abilities mastered',
     items: [
       { slot: 'WPN', name: 'React / Next.js', bonus: '+24 MAG', color: '#bb77ff' },
@@ -14,7 +15,7 @@ const THEME_DATA = {
     ],
   },
   sc2: {
-    header: '◆ LOADOUT',
+    header: 'Loadout',
     footer: '◇ All upgrades researched',
     items: [
       { slot: 'AMP', name: 'React / Next.js', bonus: '+24 PSI', color: '#00ddff' },
@@ -29,23 +30,12 @@ const THEME_DATA = {
 const FfixEquipment = () => {
   const { theme, palette } = useSiteTheme()
   const d = THEME_DATA[theme]
-  const { accent, text, panelBg, muted } = palette
+  const { accent, text, muted } = palette
 
+  // LotV pass: shared gold frame outside, palette-driven slots inside
   return (
-    <Box
-      bg={panelBg}
-      border={`2px solid ${accent}`}
-      borderRadius="sm"
-      boxShadow={`0 0 0 3px rgba(8,14,40,0.9), 0 0 0 5px ${accent}33`}
-      overflow="hidden"
-      fontFamily="monospace"
-      h="100%"
-    >
-      <Box px={3} py={2} bg={palette.headerBg} borderBottom={`1px solid ${palette.headerBorder}`}>
-        <Text fontSize="10px" color={accent} letterSpacing="0.15em">{d.header}</Text>
-      </Box>
-
-      <Box p={3}>
+    <Sc2Panel tone="cyan" title={d.header} unpadded dense h="100%">
+      <Box p={3} fontFamily="monospace">
         {d.items.map(({ slot, name, bonus, color }) => (
           <Flex key={slot} align="center" gap={2} mb={3}>
             <Text fontSize="9px" color={accent} w="32px" letterSpacing="0.1em" flexShrink={0}>
@@ -71,7 +61,7 @@ const FfixEquipment = () => {
           <Text fontSize="9px" color={muted} letterSpacing="0.08em">{d.footer}</Text>
         </Box>
       </Box>
-    </Box>
+    </Sc2Panel>
   )
 }
 

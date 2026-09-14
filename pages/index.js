@@ -1,20 +1,16 @@
-import NextLink from 'next/link'
 import {
   Link,
   Heading,
   Box,
   SimpleGrid,
-  Button,
   Text,
   Flex,
   useColorModeValue
 } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
 import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
 import Paragraph from '../components/paragraph'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import Image from 'next/image'
 import { FfixMoogleFlying } from '../components/ffix-moogle'
 import FfixCharSheet from '../components/ffix-char-sheet'
 import { FfixTechMenu, FfixInterestTags } from '../components/ffix-battle-menu'
@@ -25,13 +21,13 @@ import AchievementsPanel from '../components/achievements-panel'
 import FfixEncounter from '../components/ffix-encounter'
 import FfixWorldMap from '../components/ffix-world-map'
 import ProtossWarpIn from '../components/protoss-warp-in'
+import CommanderPortrait from '../components/sc2/commander-portrait'
+import Sc2Panel from '../components/sc2/sc2-panel'
 import { PROTOSS_LABELS } from '../lib/protoss-terminology'
 import {
   useSiteTheme,
   PROTOSS_CYAN,
-  PROTOSS_CYAN_RGB,
-  KHALA_GOLD,
-  KHALA_GOLD_RGB
+  PROTOSS_CYAN_RGB
 } from '../lib/site-theme-context'
 
 // Resume timeline entries — keeps JSX clean
@@ -111,10 +107,6 @@ const socialLinks = [
   }
 ]
 
-const TAGLINES = {
-  ffix: 'engineer · entrepreneur · black mage',
-  sc2: 'engineer of the protoss · entrepreneur · high templar'
-}
 const SECTION_LABELS = {
   ffix: { charSheet: 'Character Sheet', mognet: 'Mognet' },
   sc2: { charSheet: 'Commander Profile', mognet: 'Khalai Comms' }
@@ -128,14 +120,9 @@ const Home = () => {
   const timelineLine = useColorModeValue('blue.400', 'blue.500')
 
   // ── Career sidebar (reused in both mobile stack and desktop sidebar)
+  // LotV pass: framed with the shared Sc2Panel so it matches the hero
   const CareerPanel = (
-    <Box
-      borderRadius="xl"
-      border="1px solid"
-      borderColor={cardBorder}
-      bg={cardBg}
-      p={5}
-    >
+    <Sc2Panel dense>
       <Box borderLeft="2px solid" borderColor={timelineLine} pl={4}>
         {career.map((entry, i) => (
           <Box key={i} mb={i < career.length - 1 ? 4 : 0} position="relative">
@@ -166,13 +153,18 @@ const Home = () => {
           </Box>
         ))}
       </Box>
-    </Box>
+    </Sc2Panel>
   )
 
   return (
     <>
-      <FfixMoogleFlying />
-      <FfixEncounter />
+      {/* FFIX sprites are dormant under the SC2 theme (LotV pass) */}
+      {theme === 'ffix' && (
+        <>
+          <FfixMoogleFlying />
+          <FfixEncounter />
+        </>
+      )}
       <Layout>
         {/* ── TWO-COLUMN DESKTOP LAYOUT ─────────────────── */}
         <Flex
@@ -185,100 +177,7 @@ const Home = () => {
             {/* HERO — warp-in reveal replays on theme switch via key */}
             <Section delay={0}>
               <ProtossWarpIn key={theme}>
-                <Flex
-                  direction={{ base: 'column', md: 'row' }}
-                  align="center"
-                  gap={6}
-                  py={4}
-                >
-                  <Box flexShrink={0} textAlign="center">
-                    <Box
-                      w="120px"
-                      h="120px"
-                      borderRadius="full"
-                      overflow="hidden"
-                      border="2px solid"
-                      borderColor={timelineLine}
-                      mx="auto"
-                    >
-                      <Image
-                        src="/images/tony.png"
-                        alt="Tony Tin Nguyen"
-                        width={120}
-                        height={120}
-                      />
-                    </Box>
-                    <Flex align="center" justify="center" mt={2} gap={1}>
-                      <Box w={2} h={2} borderRadius="full" bg="green.400" />
-                      <Text fontSize="xs" color={mutedText}>
-                        Danang, Vietnam
-                      </Text>
-                    </Flex>
-                  </Box>
-
-                  <Box flex={1}>
-                    <Heading
-                      as="h2"
-                      fontSize={{ base: '2xl', md: '3xl' }}
-                      fontWeight={700}
-                      textShadow={
-                        theme === 'sc2'
-                          ? `0 0 18px rgba(${PROTOSS_CYAN_RGB}, 0.5)`
-                          : 'none'
-                      }
-                    >
-                      Tony Tin Nguyen
-                    </Heading>
-                    <Text
-                      color={mutedText}
-                      mt={1}
-                      fontSize="sm"
-                      fontFamily="mono"
-                    >
-                      {TAGLINES[theme]}
-                    </Text>
-                    {theme === 'sc2' && (
-                      <Text
-                        mt={1}
-                        fontSize="xs"
-                        fontFamily="mono"
-                        letterSpacing="0.15em"
-                        color={KHALA_GOLD}
-                        textShadow={`0 0 10px rgba(${KHALA_GOLD_RGB}, 0.5)`}
-                      >
-                        ⟡ EN TARO ADUN — ENGINEER OF THE PROTOSS RACE ⟡
-                      </Text>
-                    )}
-                    <Box
-                      mt={3}
-                      p={3}
-                      borderRadius="lg"
-                      bg={cardBg}
-                      border="1px solid"
-                      borderColor={cardBorder}
-                      fontSize="sm"
-                      fontWeight={500}
-                    >
-                      Building products that scale - Head of Tech Partnership at{' '}
-                      <Link
-                        href="https://ecomdymedia.com/"
-                        isExternal
-                        color="blue.400"
-                      >
-                        Ecomdy
-                      </Link>
-                      , TikTok Marketing Partner & co-founder of{' '}
-                      <Link
-                        href="https://gdgmientrung.com/"
-                        isExternal
-                        color="blue.400"
-                      >
-                        GDG Mien Trung
-                      </Link>
-                      .
-                    </Box>
-                  </Box>
-                </Flex>
+                <CommanderPortrait />
               </ProtossWarpIn>
             </Section>
 
@@ -293,18 +192,6 @@ const Home = () => {
                 ecosystems - Node.js, React, Vue, TypeScript - with a focus on
                 e-commerce, TikTok API integrations, and scalable architecture.
               </Paragraph>
-              <Box mt={4} textAlign="center">
-                <Button
-                  as={NextLink}
-                  href="/works"
-                  scroll={false}
-                  rightIcon={<ChevronRightIcon />}
-                  colorScheme="blue"
-                  size="sm"
-                >
-                  {PROTOSS_LABELS.viewPortfolio}
-                </Button>
-              </Box>
             </Section>
 
             {/* FFIX CHARACTER SHEET */}

@@ -1,9 +1,8 @@
 import {
   Container,
-  Badge,
   Link,
   List,
-  ListItem,
+  ListItem
   // AspectRatio
 } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -15,7 +14,8 @@ const Work = () => (
   <Layout title="Tiktok Management White Label System">
     <Container>
       <Title>
-        TikTok Management White Label System (TTM White Label) <Badge>2022-</Badge>
+        TikTok Management White Label System (TTM White Label){' '}
+        <Meta>2022-</Meta>
       </Title>
       <P>
         TikTok Ads Management White label System for other marketing agencies.
@@ -24,13 +24,14 @@ const Work = () => (
         <ListItem>
           <Meta>Product Info Website</Meta>
           <Link href="https://ecomdymedia.com/ecomdy-platform">
-            https://ecomdymedia.com/ecomdy-platform <ExternalLinkIcon mx="2px" />
+            https://ecomdymedia.com/ecomdy-platform{' '}
+            <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
         <ListItem>
           <Meta>Website</Meta>
           <Link href="https://tiktok.ecomdymedia.com/">
-          https://tiktok.ecomdymedia.com <ExternalLinkIcon mx="2px" />
+            https://tiktok.ecomdymedia.com <ExternalLinkIcon mx="2px" />
           </Link>
         </ListItem>
 
@@ -53,7 +54,10 @@ const Work = () => (
         </ListItem>
       </List>
 
-      <WorkImage src="/images/works/ttm.png" alt="TikTok Ads Management by Ecomdy" />
+      <WorkImage
+        src="/images/works/ttm.png"
+        alt="TikTok Ads Management by Ecomdy"
+      />
       {/* <AspectRatio maxW="640px" ratio={1.7} my={4}>
         <iframe
           src="https://www.youtube.com/embed/-qBavwqc_mY"

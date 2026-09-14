@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Box, Text, Flex } from '@chakra-ui/react'
 import { useSiteTheme } from '../lib/site-theme-context'
+import Sc2Panel from './sc2/sc2-panel'
 
 const TECH_ITEMS = [
   { label: 'Node.js',    desc: '10+ yrs' },
@@ -23,8 +24,8 @@ const INTEREST_ITEMS = [
 ]
 
 const TITLES = {
-  ffix: { tech: '◆ TECH ARSENAL', interests: '◆ INTERESTS' },
-  sc2:  { tech: '◆ KHALA PROTOCOLS', interests: '◆ PYLON NETWORK' },
+  ffix: { tech: 'Tech Arsenal', interests: 'Interests' },
+  sc2:  { tech: 'Khala Protocols', interests: 'Pylon Network' },
 }
 
 const MenuItem = ({ label, desc, selected, onClick, accent, text, muted }) => (
@@ -56,22 +57,12 @@ const MenuItem = ({ label, desc, selected, onClick, accent, text, muted }) => (
 const MenuPanel = ({ title, items }) => {
   const [selected, setSelected] = useState(0)
   const { palette } = useSiteTheme()
-  const { accent, text, panelBg, muted } = palette
+  const { accent, text, muted } = palette
 
+  // LotV pass: shared gold frame outside, palette-driven list inside
   return (
-    <Box
-      bg={panelBg}
-      border={`2px solid ${accent}`}
-      borderRadius="sm"
-      boxShadow={`0 0 0 3px rgba(8,14,40,0.9), 0 0 0 5px ${accent}33`}
-      overflow="hidden"
-      fontFamily="monospace"
-      h="100%"
-    >
-      <Box px={3} py={2} bg={palette.headerBg} borderBottom={`1px solid ${palette.headerBorder}`}>
-        <Text fontSize="10px" color={accent} letterSpacing="0.15em">{title}</Text>
-      </Box>
-      <Box p={2}>
+    <Sc2Panel tone="cyan" title={title} unpadded dense h="100%">
+      <Box p={2} fontFamily="monospace">
         {items.map((item, i) => (
           <MenuItem
             key={item.label}
@@ -84,7 +75,7 @@ const MenuPanel = ({ title, items }) => {
           />
         ))}
       </Box>
-    </Box>
+    </Sc2Panel>
   )
 }
 
@@ -101,21 +92,11 @@ export const FfixInterestMenu = () => {
 // Horizontal pill badge variant
 export const FfixInterestTags = () => {
   const { theme, palette } = useSiteTheme()
-  const { accent, text, panelBg } = palette
+  const { accent, text } = palette
 
   return (
-    <Box
-      bg={panelBg}
-      border={`2px solid ${accent}`}
-      borderRadius="sm"
-      boxShadow={`0 0 0 3px rgba(8,14,40,0.9), 0 0 0 5px ${accent}33`}
-      overflow="hidden"
-      fontFamily="monospace"
-    >
-      <Box px={3} py={2} bg={palette.headerBg} borderBottom={`1px solid ${palette.headerBorder}`}>
-        <Text fontSize="10px" color={accent} letterSpacing="0.15em">{TITLES[theme].interests}</Text>
-      </Box>
-      <Flex px={3} py={3} gap={2} wrap="wrap">
+    <Sc2Panel tone="cyan" title={TITLES[theme].interests} unpadded dense>
+      <Flex px={3} py={3} gap={2} wrap="wrap" fontFamily="monospace">
         {INTEREST_ITEMS.map(({ label, desc }) => (
           <Flex
             key={label}
@@ -135,6 +116,6 @@ export const FfixInterestTags = () => {
           </Flex>
         ))}
       </Flex>
-    </Box>
+    </Sc2Panel>
   )
 }
