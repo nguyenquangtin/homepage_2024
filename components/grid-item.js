@@ -3,90 +3,149 @@ import Image from 'next/image'
 import { Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
 import { Global } from '@emotion/react'
 import { Sc2CornerBrackets } from './sc2/sc2-panel'
-import { PROTOSS_CYAN_RGB, KHALA_GOLD_RGB } from '../lib/site-theme-context'
+import { Meta } from './work'
+import {
+  CHAMFER,
+  chamferClip,
+  KHALA_GOLD,
+  KHALA_GOLD_RGB,
+  PROTOSS_CYAN,
+  PROTOSS_CYAN_RGB,
+  PROTOSS_DEEP_GOLD,
+  PROTOSS_PANEL_BG
+} from '../lib/site-theme-context'
 
-// SC2 command-card slot styling shared by both grid variants:
-// dark navy slot, luminous border, hover = corner brackets + psionic glow
-const cardSlotProps = {
-  role: 'group',
-  position: 'relative',
-  display: 'block',
-  bg: 'rgba(10, 8, 24, 0.85)',
-  border: `1px solid rgba(${KHALA_GOLD_RGB}, 0.35)`,
-  borderRadius: '4px',
-  p: 3,
-  cursor: 'pointer',
-  transition: 'all 0.2s',
-  _hover: {
-    borderColor: `rgba(${KHALA_GOLD_RGB}, 0.85)`,
-    boxShadow: `0 0 18px rgba(${PROTOSS_CYAN_RGB}, 0.25), inset 0 0 14px rgba(${PROTOSS_CYAN_RGB}, 0.06)`
-  }
-}
+// Tier accent colors — one-off, not part of the shared token table (LotV pass)
+const TIER_COLORS = { legendary: KHALA_GOLD, epic: '#bb77ff', rare: PROTOSS_CYAN }
 
 const cardTitleProps = {
   mt: 2,
-  fontFamily: 'mono',
+  fontFamily: 'heading',
   fontSize: 'sm',
-  fontWeight: 'bold',
+  fontWeight: 600,
   textTransform: 'uppercase',
   letterSpacing: '0.08em',
   color: '#c0e8ff'
 }
 
-const cardDescProps = {
-  fontSize: '13px',
-  color: '#7090a8',
-  mt: 1
+const cardDescProps = { fontFamily: 'body', fontSize: '13px', color: '#7090a8', mt: 1 }
+
+// SC2 unit-card frame shared by GridItem + WorkGridItem: TL+BR chamfer, gold
+// gradient frame, left tier bar, portrait slot, tags row, hover scan + lift,
+// hover-only footer strip (LotV pass).
+const UnitCardFrame = ({
+  linkBoxProps,
+  tier = 'rare',
+  thumbnail,
+  title,
+  tags = [],
+  titleOverlay,
+  children
+}) => {
+  const accent = TIER_COLORS[tier] || TIER_COLORS.rare
+  const frame = a =>
+    `linear-gradient(150deg, rgba(${KHALA_GOLD_RGB}, ${a}), rgba(${KHALA_GOLD_RGB}, ${a * 0.45}) 55%, ${PROTOSS_DEEP_GOLD})`
+  return (
+    <Box w="100%" textAlign="center">
+      <LinkBox
+        role="group"
+        className="protoss-scan-host"
+        position="relative"
+        display="block"
+        cursor="pointer"
+        clipPath={chamferClip(CHAMFER.md)}
+        bg={frame(0.4)}
+        p="1px"
+        transition="transform 0.2s, background 0.2s"
+        _hover={{ transform: 'translateY(-2px)', bg: frame(0.85) }}
+        _focusWithin={{ boxShadow: `inset 0 0 0 2px rgba(${PROTOSS_CYAN_RGB}, 0.9)` }}
+        {...linkBoxProps}
+      >
+        <Box
+          position="relative"
+          clipPath={chamferClip(CHAMFER.md - 1)}
+          bg={PROTOSS_PANEL_BG}
+          overflow="hidden"
+          pl={4}
+          pr={3}
+          py={3}
+          textAlign="left"
+        >
+          <Box aria-hidden position="absolute" top={0} left={0} bottom={0} w="3px" bg={accent} />
+          <Sc2CornerBrackets hoverReveal />
+          {/* one-shot cyan scan sweep, see protoss-global.js */}
+          <Box aria-hidden className="protoss-scan" position="absolute" inset={0} />
+
+          {/* portrait slot — overflow:hidden lives here, not on the LinkBox,
+              so the corner brackets (at -2px) stay visible */}
+          <Box position="relative" overflow="hidden" borderRadius="2px" border={`1px solid ${PROTOSS_DEEP_GOLD}`}>
+            <Image src={thumbnail} alt={title} className="grid-item-thumbnail" placeholder="blur" loading="lazy" />
+          </Box>
+
+          {titleOverlay}
+          {children}
+
+          {tags.length > 0 && (
+            <Box mt={2}>
+              {tags.map(tag => (
+                <Meta key={tag}>{tag}</Meta>
+              ))}
+            </Box>
+          )}
+
+          <Text
+            aria-hidden
+            mt={2}
+            fontFamily="mono"
+            fontSize="10px"
+            letterSpacing="0.1em"
+            color={PROTOSS_CYAN}
+            textAlign="right"
+            opacity={0}
+            transition="opacity 0.15s"
+            _groupHover={{ opacity: 1 }}
+          >
+            &#9670; VIEW UNIT
+          </Text>
+        </Box>
+      </LinkBox>
+    </Box>
+  )
 }
 
-export const GridItem = ({ children, href, title, thumbnail }) => (
-  <Box w="100%" textAlign="center">
-    <LinkBox {...cardSlotProps}>
-      <Sc2CornerBrackets hoverReveal />
-      <Image
-        src={thumbnail}
-        alt={title}
-        className="grid-item-thumbnail"
-        placeholder="blur"
-        loading="lazy"
-      />
+export const GridItem = ({ children, href, title, thumbnail, tier, tags }) => (
+  <UnitCardFrame
+    tier={tier}
+    thumbnail={thumbnail}
+    title={title}
+    tags={tags}
+    titleOverlay={
       <LinkOverlay href={href} target="_blank">
         <Text {...cardTitleProps}>{title}</Text>
       </LinkOverlay>
-      <Text {...cardDescProps}>{children}</Text>
-    </LinkBox>
-  </Box>
+    }
+  >
+    <Text {...cardDescProps}>{children}</Text>
+  </UnitCardFrame>
 )
 
-export const WorkGridItem = ({
-  children,
-  category = 'works',
-  id,
-  title,
-  thumbnail
-}) => (
-  <Box w="100%" textAlign="center">
-    <LinkBox
-      as={NextLink}
-      href={`/${category}/${id}`}
-      scroll={false}
-      {...cardSlotProps}
-    >
-      <Sc2CornerBrackets hoverReveal />
-      <Image
-        src={thumbnail}
-        alt={title}
-        className="grid-item-thumbnail"
-        placeholder="blur"
-      />
+export const WorkGridItem = ({ children, category = 'works', id, title, thumbnail, tier, tags }) => (
+  <UnitCardFrame
+    linkBoxProps={{ as: NextLink, href: `/${category}/${id}`, scroll: false }}
+    tier={tier}
+    thumbnail={thumbnail}
+    title={title}
+    tags={tags}
+    titleOverlay={
       <LinkOverlay as="div" href={`/${category}/${id}`}>
         <Text {...cardTitleProps} fontSize="md">
           {title}
         </Text>
       </LinkOverlay>
-      <Text {...cardDescProps}>{children}</Text>
-    </LinkBox>
-  </Box>
+    }
+  >
+    <Text {...cardDescProps}>{children}</Text>
+  </UnitCardFrame>
 )
 
 // Thumbnails idle slightly dimmed, brighten when the card slot is hovered
@@ -94,7 +153,6 @@ export const GridItemStyle = () => (
   <Global
     styles={`
       .grid-item-thumbnail {
-        border-radius: 2px;
         filter: brightness(0.88);
         transition: filter 0.2s ease;
       }
