@@ -66,10 +66,11 @@ export const ProtossCrystalGem = ({ size = 10, ...pos }) => (
   </Box>
 )
 
-// Convenience: all four corner wings for a panel
-export const ProtossFrameCorners = ({ size }) => (
+// Convenience: corner wings for a panel. Defaults to all four; pass a subset
+// to skip the chamfered corners of a clipped frame (LotV pass).
+export const ProtossFrameCorners = ({ size, corners }) => (
   <>
-    {Object.keys(CORNERS).map(c => (
+    {(corners || Object.keys(CORNERS)).map(c => (
       <ProtossCornerWing key={c} corner={c} size={size} />
     ))}
   </>

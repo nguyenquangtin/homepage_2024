@@ -1,45 +1,71 @@
 import { Button } from '@chakra-ui/react'
-import { PROTOSS_CYAN_RGB, KHALA_GOLD_RGB } from '../../lib/site-theme-context'
+import {
+  CHAMFER,
+  PALETTES,
+  chamferClip,
+  PROTOSS_CYAN_BRIGHT,
+  PROTOSS_CYAN_RGB,
+  PROTOSS_GOLD_LIGHT,
+  PROTOSS_GOLD_LIGHT_RGB,
+  KHALA_GOLD_RGB
+} from '../../lib/site-theme-context'
 
 // Beveled console button (SC2 lobby style): clipped corners, inner glow.
 // Variants: cyan (default action), gold (primary CTA), green (confirm/active).
+// `gold` carries the heavier fill + bevel top line (LotV pass).
 const VARIANTS = {
   cyan: {
     rgb: PROTOSS_CYAN_RGB,
-    color: '#c0e8ff',
-    hoverColor: '#eafcff'
+    fill: 0.12,
+    color: PALETTES.sc2.text,
+    hoverColor: PROTOSS_CYAN_BRIGHT
   },
   gold: {
     rgb: KHALA_GOLD_RGB,
-    color: '#ffe8b0',
+    fill: 0.18,
+    color: PROTOSS_GOLD_LIGHT,
     hoverColor: '#fff6dd'
   },
   green: {
     rgb: '48, 216, 96',
+    fill: 0.12,
     color: '#c8ffd8',
     hoverColor: '#eaffee'
   }
 }
 
-const Sc2Button = ({ variant = 'cyan', children, ...rest }) => {
+// md = the existing look; sm = compact console chip (LotV pass)
+const SIZES = {
+  md: { h: 10, px: 4, fontSize: 'xs', chamfer: CHAMFER.sm },
+  sm: { h: 7, px: 3, fontSize: '10px', chamfer: 8 }
+}
+
+const Sc2Button = ({ variant = 'cyan', size = 'md', children, ...rest }) => {
   const v = VARIANTS[variant] || VARIANTS.cyan
+  const s = SIZES[size] || SIZES.md
+  const bevel = `inset 0 1px 0 rgba(${PROTOSS_GOLD_LIGHT_RGB}, ${
+    variant === 'gold' ? 0.55 : 0.35
+  })`
   return (
     <Button
       fontFamily="mono"
-      fontSize="xs"
+      fontSize={s.fontSize}
       fontWeight="bold"
       letterSpacing="0.12em"
       textTransform="uppercase"
+      h={s.h}
+      minW={0}
+      px={s.px}
       color={v.color}
-      bg={`rgba(${v.rgb}, 0.12)`}
+      bg={`rgba(${v.rgb}, ${v.fill})`}
       border="1px solid"
       borderColor={`rgba(${v.rgb}, 0.55)`}
-      clipPath="polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)"
-      boxShadow={`inset 0 0 12px rgba(${v.rgb}, 0.18), inset 0 1px 0 rgba(${KHALA_GOLD_RGB}, 0.35)`}
+      clipPath={chamferClip(s.chamfer)}
+      boxShadow={`inset 0 0 12px rgba(${v.rgb}, 0.18), ${bevel}`}
       _hover={{
-        bg: `rgba(${v.rgb}, 0.24)`,
+        bg: `rgba(${v.rgb}, ${v.fill + 0.12})`,
         color: v.hoverColor,
-        boxShadow: `inset 0 0 20px rgba(${v.rgb}, 0.35)`,
+        boxShadow: `inset 0 0 20px rgba(${v.rgb}, 0.35), ${bevel}`,
         textShadow: `0 0 8px rgba(${v.rgb}, 0.8)`
       }}
       _active={{ transform: 'scale(0.97)' }}
