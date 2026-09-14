@@ -34,7 +34,7 @@ export const Title = ({ children }) => (
     </Text>
     <Heading
       display="inline-block"
-      as="h3"
+      as="h1"
       fontFamily="heading"
       fontSize={20}
       textTransform="uppercase"

@@ -4,7 +4,6 @@ import {
   Container,
   Box,
   Stack,
-  Heading,
   Flex,
   Menu,
   MenuList,
@@ -44,9 +43,9 @@ const Navbar = props => {
         px={2}
         pb={0}
         maxW="container.xl"
-        wrap="wrap"
-        align="stretch"
-        justify="space-between"
+        flexWrap="wrap"
+        alignItems="stretch"
+        justifyContent="space-between"
       >
         {/* Wordmark slot doubles as the anchor for the hairline notch:
             centred on the logo itself, so it tracks any width change
@@ -69,9 +68,10 @@ const Navbar = props => {
             pointerEvents: 'none'
           }}
         >
-          <Heading as="h1" size="lg" letterSpacing={'tighter'}>
+          {/* not a heading: each route owns its single <h1> (LotV pass) */}
+          <Box letterSpacing={'tighter'}>
             <Logo />
-          </Heading>
+          </Box>
         </Flex>
 
         <Stack
@@ -92,7 +92,7 @@ const Navbar = props => {
           </LinkItem>
         </Stack>
 
-        <Flex align="center" pb={2} gap={4}>
+        <Flex align="center" ml="auto" pb={2} gap={4}>
           <NavResourceBar />
           <Box display={{ base: 'inline-block', md: 'none' }}>
             <Menu isLazy id="navbar-menu">

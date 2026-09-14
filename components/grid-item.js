@@ -45,10 +45,13 @@ const UnitCardFrame = ({
   const accent = TIER_COLORS[tier] || TIER_COLORS.rare
   const frame = a =>
     `linear-gradient(150deg, rgba(${KHALA_GOLD_RGB}, ${a}), rgba(${KHALA_GOLD_RGB}, ${a * 0.45}) 55%, ${PROTOSS_DEEP_GOLD})`
+  // The outer Box is the unclipped positioning root: it hosts the selection
+  // brackets, which sit at -2px and were being cut away inside the card's
+  // clip-path, and carries role="group" for every hover reveal (LotV pass).
   return (
-    <Box w="100%" textAlign="center">
+    <Box w="100%" position="relative" role="group" textAlign="center">
+      <Sc2CornerBrackets hoverReveal />
       <LinkBox
-        role="group"
         className="protoss-scan-host"
         position="relative"
         display="block"
@@ -58,7 +61,13 @@ const UnitCardFrame = ({
         p="1px"
         transition="transform 0.2s, background 0.2s"
         _hover={{ transform: 'translateY(-2px)', bg: frame(0.85) }}
-        _focusWithin={{ boxShadow: `inset 0 0 0 2px rgba(${PROTOSS_CYAN_RGB}, 0.9)` }}
+        // the focus ring rides an overlay above the body: an inset shadow on
+        // the LinkBox itself is painted over by the opaque panel (LotV pass)
+        sx={{
+          '&:focus-visible .unit-card-focus, &:has(:focus-visible) .unit-card-focus': {
+            boxShadow: `inset 0 0 0 2px rgba(${PROTOSS_CYAN_RGB}, 0.9)`
+          }
+        }}
         {...linkBoxProps}
       >
         <Box
@@ -72,12 +81,10 @@ const UnitCardFrame = ({
           textAlign="left"
         >
           <Box aria-hidden position="absolute" top={0} left={0} bottom={0} w="3px" bg={accent} />
-          <Sc2CornerBrackets hoverReveal />
           {/* one-shot cyan scan sweep, see protoss-global.js */}
           <Box aria-hidden className="protoss-scan" position="absolute" inset={0} />
 
-          {/* portrait slot — overflow:hidden lives here, not on the LinkBox,
-              so the corner brackets (at -2px) stay visible */}
+          {/* portrait slot */}
           <Box position="relative" overflow="hidden" borderRadius="2px" border={`1px solid ${PROTOSS_DEEP_GOLD}`}>
             <Image src={thumbnail} alt={title} className="grid-item-thumbnail" placeholder="blur" loading="lazy" />
           </Box>
@@ -108,6 +115,14 @@ const UnitCardFrame = ({
             &#9670; VIEW UNIT
           </Text>
         </Box>
+        <Box
+          aria-hidden
+          className="unit-card-focus"
+          position="absolute"
+          inset={0}
+          zIndex={2}
+          pointerEvents="none"
+        />
       </LinkBox>
     </Box>
   )

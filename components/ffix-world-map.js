@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Box, Flex } from '@chakra-ui/react'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
@@ -52,7 +53,13 @@ const ENEMY_BLIPS = [
 ]
 
 const FfixWorldMap = () => {
-  const reduceMotion = useReducedMotion()
+  // useReducedMotion() disagrees between SSR and the first client render, so
+  // it is read behind a post-mount flag — the hydrated DOM matches the server
+  // and the loops are dropped a tick later instead (LotV pass).
+  const prefersReduced = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  const reduceMotion = mounted && prefersReduced
   return (
     // LotV pass: tactical record — default gold Sc2Panel frame
     <Sc2Panel

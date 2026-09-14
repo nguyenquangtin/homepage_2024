@@ -7,6 +7,7 @@ import {
   PROTOSS_CYAN_BRIGHT,
   PROTOSS_BRONZE,
   PROTOSS_NAVY_RAISED,
+  PROTOSS_GOLD_LIGHT_RGB,
   CHAMFER,
   chamferClip,
   KHALA_GOLD_RGB
@@ -44,7 +45,9 @@ export const LinkItem = ({ href, path, target, children, ...props }) => {
       letterSpacing="0.16em"
       clipPath={chamferClip(CHAMFER.sm, 'tl')}
       bg={active ? PROTOSS_NAVY_RAISED : 'transparent'}
-      color={active ? '#ffffff' : `rgba(${KHALA_GOLD_RGB}, 0.5)`}
+      // inactive tabs: light gold @0.7 ≈ 8:1 on the navy bar; 0.5 khala gold
+      // measured ~3.5:1, under AA for 14px bold (LotV pass)
+      color={active ? '#ffffff' : `rgba(${PROTOSS_GOLD_LIGHT_RGB}, 0.7)`}
       borderBottom={active ? 'none' : `1px solid ${PROTOSS_BRONZE}`}
       boxShadow={active ? ACTIVE_SHADOW : 'none'}
       textShadow={active ? `0 0 12px rgba(${PROTOSS_CYAN_RGB}, .8)` : 'none'}

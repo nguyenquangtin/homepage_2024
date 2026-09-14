@@ -54,7 +54,7 @@ const IdentityBlock = () => (
       filter={`drop-shadow(0 0 16px rgba(${PROTOSS_CYAN_RGB}, 0.45)) drop-shadow(0 1px 0 rgba(0, 0, 0, 0.6))`}
     >
       <Heading
-        as="h2"
+        as="h1"
         fontSize={{ base: '25px', sm: '30px', md: '38px' }}
         fontWeight={700}
         lineHeight={1.1}

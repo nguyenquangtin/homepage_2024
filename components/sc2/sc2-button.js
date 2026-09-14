@@ -69,11 +69,12 @@ const Sc2Button = ({ variant = 'cyan', size = 'md', children, ...rest }) => {
         textShadow: `0 0 8px rgba(${v.rgb}, 0.8)`
       }}
       _active={{ transform: 'scale(0.97)' }}
-      // inset focus ring — outlines/shadows outside the box get clipped
-      // by clipPath, so keyboard focus must render inside (WCAG 2.4.7)
+      // inset focus ring — Chakra's default outer ring (and any outline) is
+      // cut away by clipPath, so keyboard focus must render inside, in the
+      // same cyan as the nav tabs (WCAG 2.4.7, brief §6) (LotV pass)
       _focusVisible={{
         outline: 'none',
-        boxShadow: `inset 0 0 0 2px rgba(${v.rgb}, 0.9), inset 0 0 16px rgba(${v.rgb}, 0.4)`
+        boxShadow: `inset 0 0 0 2px rgba(${PROTOSS_CYAN_RGB}, 0.9), ${bevel}`
       }}
       transition="all 0.15s"
       {...rest}
