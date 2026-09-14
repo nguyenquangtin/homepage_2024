@@ -6,18 +6,10 @@ import ProtossShieldLayer from '../protoss-shield-layer'
 import PlanetHorizon from '../planet-horizon'
 import { Box, Container } from '@chakra-ui/react'
 import Footer from '../footer'
-import VoxelDogLoader from '../voxel-dog-loader'
 import { useSiteTheme } from '../../lib/site-theme-context'
 
-const LazySword = dynamic(() => import('../voxel-dog'), {
-  ssr: false,
-  loading: () => <VoxelDogLoader />
-})
-
-const LazyProtossPylon = dynamic(() => import('../protoss-pylon'), {
-  ssr: false,
-  loading: () => <VoxelDogLoader />
-})
+// LotV pass: the 3D pylon/sword slot above the fold is retired — the hero
+// commander frame owns it now. Those component files stay on disk.
 
 // SC2-only animated psionic background layer (client-side canvas)
 const LazyPsionicBackground = dynamic(() => import('../psionic-background'), {
@@ -123,9 +115,7 @@ const Main = ({ children, router }) => {
 
       <NavBar path={router.asPath} />
 
-      <Container maxW="container.xl" pt={16}>
-        {theme === 'sc2' ? <LazyProtossPylon /> : <LazySword />}
-
+      <Container maxW="container.xl" pt={{ base: '94px', md: '90px' }}>
         {children}
 
         <Footer />
