@@ -158,7 +158,15 @@ const ProtossPylon = () => {
       const scW = container.clientWidth
       const scH = container.clientHeight
 
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+      // No WebGL (GPU blocklist, locked-down or headless browser): drop the
+      // pylon instead of crashing the whole page with an unhandled error
+      let renderer
+      try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+      } catch (err) {
+        setLoading(false)
+        return undefined
+      }
       renderer.setPixelRatio(window.devicePixelRatio)
       renderer.setSize(scW, scH)
       renderer.outputEncoding = THREE.sRGBEncoding
