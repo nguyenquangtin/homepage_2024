@@ -65,7 +65,7 @@ const Drone = ({ id }) => (
 const Leg = ({ id, path, thigh, knee, shade }) => (
   <g opacity={shade}>
     <path d={path} fill="none" stroke={url(id, 'leg')} strokeWidth="30" strokeLinecap="round" />
-    <Plate id={id} points={thigh} />
+    {thigh && <Plate id={id} points={thigh} />}
     <polygon
       points={`${knee[0] - 9},${knee[1]} ${knee[0] - 4},${knee[1] - 8} ${knee[0] + 4},${knee[1] - 8} ${knee[0] + 9},${knee[1]} ${knee[0] + 4},${knee[1] + 8} ${knee[0] - 4},${knee[1] + 8}`}
       fill={url(id, 'gold')}
@@ -97,7 +97,8 @@ const PhaseSmithFigure = ({ id }) => (
     </g>
 
     <PhaseSmithArm id={id} side="far" />
-    <Leg id={id} path={P.LEG_FAR} thigh={P.THIGH_FAR} knee={P.KNEES[1]} shade="0.8" />
+    {/* far leg has no thigh plate: too small at scene scale, cleaner silhouette */}
+    <Leg id={id} path={P.LEG_FAR} knee={P.KNEES[1]} shade="0.8" />
     <Leg id={id} path={P.LEG_NEAR} thigh={P.THIGH_NEAR} knee={P.KNEES[0]} shade="1" />
 
     {/* tabard: navy apron with gold trim and a cyan rim on the screen side */}
