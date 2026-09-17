@@ -14,11 +14,12 @@ const THEME_CONFIG = {
     mpLabel: 'mp',
   },
   sc2: {
+    // Master Phase-Smith Tony — Khalai engineer, Karax-flavored loadout
     player: { hp: 200, maxHp: 200, mp: 200, maxMp: 200, atk: 8, def: 8, mag: 32, itemUsed: false },
     spells: {
-      psiStorm:    { mp: 75, element: 'psionic',     label: 'Psi Storm' },
-      feedback:    { mp: 50, element: 'feedback',     label: 'Feedback' },
-      hallucinate: { mp: 75, element: 'hallucinate',  label: 'Hallucinate' },
+      phaseBeam:  { mp: 75, element: 'phase', label: 'Phase Beam' },
+      solarLance: { mp: 50, element: 'solar', label: 'Solar Lance' },
+      deployProbe: { mp: 75, element: 'probe', label: 'Deploy Probe' },
     },
     playerName: 'Tony',
     itemName: 'Shield Battery',

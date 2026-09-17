@@ -90,6 +90,9 @@ const Navbar = props => {
           <LinkItem href="/posts" path={path}>
             Blog
           </LinkItem>
+          <LinkItem href="/battle" path={path}>
+            Battle
+          </LinkItem>
         </Stack>
 
         <Flex align="center" ml="auto" pb={2} gap={4}>
@@ -118,6 +121,7 @@ const Navbar = props => {
                 <MobileMenuItem href="/">About</MobileMenuItem>
                 <MobileMenuItem href="/works">Works</MobileMenuItem>
                 <MobileMenuItem href="/posts">Blog</MobileMenuItem>
+                <MobileMenuItem href="/battle">Battle</MobileMenuItem>
               </MenuList>
             </Menu>
           </Box>

@@ -10,7 +10,7 @@ import { useSiteTheme } from '../../lib/site-theme-context'
 const BattleScene = ({ enemy, onClose }) => {
   const { theme, palette } = useSiteTheme()
   const config = THEME_CONFIG[theme] || THEME_CONFIG.ffix
-  const playerSpriteKey = theme === 'sc2' ? 'highTemplar' : 'blackMage'
+  const playerSpriteKey = theme === 'sc2' ? 'phaseSmith' : 'blackMage'
 
   const { state, attack, castSpell, useItem, run, animDone, enemyAttack } = useBattleEngine(enemy, theme)
   const { phase, player, enemy: foe, log, animType, lastDmg } = state
@@ -64,7 +64,7 @@ const BattleScene = ({ enemy, onClose }) => {
       }, 800)
       return () => { clearTimeout(t1); clearTimeout(t2) }
     }
-  }, [phase, lastDmg, animDone])
+  }, [phase, lastDmg, animType, animDone])
 
   const safeAnimDone = useCallback(() => {
     if (!animDoneCalledRef.current) { animDoneCalledRef.current = true; animDone() }

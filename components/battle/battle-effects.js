@@ -318,9 +318,9 @@ export const BattleEffect = ({ animType, onComplete }) => {
     case 'fire':         return <FireEffect onComplete={onComplete} />
     case 'ice':          return <IceEffect onComplete={onComplete} />
     case 'thunder':      return <ThunderEffect onComplete={onComplete} />
-    case 'psiStorm':     return <ThunderEffect onComplete={onComplete} />
-    case 'feedback':     return <FireEffect onComplete={onComplete} />
-    case 'hallucinate':  return <IceEffect onComplete={onComplete} />
+    case 'phaseBeam':    return <ThunderEffect onComplete={onComplete} />
+    case 'solarLance':   return <FireEffect onComplete={onComplete} />
+    case 'deployProbe':  return <IceEffect onComplete={onComplete} />
     case 'enemy_attack': return <EnemyAttackEffect onComplete={onComplete} />
     case 'item':         return <ItemEffect onComplete={onComplete} />
     default:             return null

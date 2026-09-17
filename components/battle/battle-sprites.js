@@ -32,6 +32,8 @@ const P_MERGE = { 1:'#0a1030',2:'#2244cc',3:'#4488ff',4:'#cc2244',5:'#ff4466',6:
 
 // ── SC2 Palettes ──
 const P_TEMPLAR = { 1:'#0a0a2e',2:'#1a3366',3:'#2255aa',4:'#00ddff',5:'#c0e8ff',6:'#112244',7:'#3388cc',8:'#1a4488',9:'#00ffff' }
+// Phase-Smith: navy suit (1-3), khalai gold plating (4-7), cyan energy (8-9), protoss skin (a)
+const P_PHASE_SMITH = { 1:'#0b0a1e',2:'#1b1740',3:'#2f2c6c',4:'#f0c040',5:'#c89a30',6:'#8a6d2f',7:'#ffe8a8',8:'#00ddff',9:'#eafcff',a:'#6b7aa0' }
 const P_ZERGLING = { 1:'#1a0a00',2:'#553300',3:'#886633',4:'#aa8844',5:'#cc6622',6:'#331a00',7:'#dd7733',8:'#ffaa44' }
 const P_HYDRA = { 1:'#0a1a0a',2:'#224422',3:'#338833',4:'#55aa55',5:'#88cc44',6:'#112211',7:'#44bb44',8:'#aaddaa' }
 const P_BANE = { 1:'#0a1a00',2:'#226600',3:'#44aa00',4:'#66dd00',5:'#aaff44',6:'#113300',7:'#55cc00',8:'#ccff88' }
@@ -90,6 +92,17 @@ const TEMPLAR_GRID = [
   '0012233332210000','0001223322100000','0000122221000000','0000011110000000',
 ]
 
+// Master Phase-Smith — open gold helm with a back-swept crest, cyan visor band, plated
+// pauldrons + breastplate with a core crystal over a navy suit, short tabard, tool
+// gauntlet firing a phase beam to the right, and a small probe hovering top-right.
+// Drawn facing right; BattleSprite flips it to face the enemy on the left.
+const PHASE_SMITH_GRID = [
+  '0007400000000000','0047444500000400','0054444450004940','0064888985000500',
+  '0005aaaa50000000','00003aa300000000','0047333333740000','0045344443540000',
+  '0026348943620000','0022354453220000','0045224422548000','0008352253448998',
+  '0000352253008000','0000355553000000','0000330033000000','0000550055000000',
+]
+
 // Zergling — small hunched insect with scythe arms
 const ZERGLING_GRID = [
   '0000000000000000','0050000000000000','0005000000600000','0000511116000000',
@@ -140,6 +153,7 @@ const SPRITE_DATA = {
   mergeConflict: { grid: MERGE_GRID,    palette: P_MERGE },
   // SC2 sprites
   highTemplar:   { grid: TEMPLAR_GRID,  palette: P_TEMPLAR },
+  phaseSmith:    { grid: PHASE_SMITH_GRID, palette: P_PHASE_SMITH },
   zergling:      { grid: ZERGLING_GRID, palette: P_ZERGLING },
   hydralisk:     { grid: HYDRA_GRID,    palette: P_HYDRA },
   baneling:      { grid: BANE_GRID,     palette: P_BANE },
