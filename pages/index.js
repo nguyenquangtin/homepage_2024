@@ -27,6 +27,7 @@ import FfixEncounter from '../components/ffix-encounter'
 import FfixWorldMap from '../components/ffix-world-map'
 import ProtossWarpIn from '../components/protoss-warp-in'
 import CommanderPortrait from '../components/sc2/commander-portrait'
+import TemplarHeroBanner from '../components/sc2/templar-hero-banner'
 import Sc2Panel from '../components/sc2/sc2-panel'
 import { PROTOSS_LABELS } from '../lib/protoss-terminology'
 import {
@@ -187,6 +188,8 @@ const Home = () => {
             {/* HERO — warp-in reveal replays on theme switch via key */}
             <Section delay={0}>
               <ProtossWarpIn key={theme}>
+                {/* High Templar cinematic banner sits above the commander card */}
+                <TemplarHeroBanner />
                 <CommanderPortrait />
               </ProtossWarpIn>
             </Section>
