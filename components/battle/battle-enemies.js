@@ -12,7 +12,7 @@ const SC2_ENEMIES = [
   { name: 'ZERGLING SWARM', hp: 180, atk: 24, def: 10, weakness: 'solar', spriteKey: 'zergling',  desc: 'Fast, cheap, and many.' },
   { name: 'HYDRALISK',      hp: 300, atk: 28, def: 14, weakness: 'phase', spriteKey: 'hydralisk', desc: 'Spines shred shields in seconds.' },
   { name: 'BANELING NEST',  hp: 220, atk: 35, def: 8,  weakness: 'solar', spriteKey: 'baneling',  desc: 'One wrong step and boom.' },
-  { name: 'ULTRALISK',      hp: 400, atk: 30, def: 22, weakness: null,    spriteKey: 'ultralisk', desc: 'The ground shakes as it approaches.' },
+  { name: 'ULTRALISK',      hp: 360, atk: 26, def: 16, weakness: null,    spriteKey: 'ultralisk', desc: 'The ground shakes as it approaches.' },
   { name: 'BROOD LORD',     hp: 340, atk: 26, def: 18, weakness: 'probe', spriteKey: 'broodLord', desc: 'Broodlings rain from the sky.' },
 ]
 

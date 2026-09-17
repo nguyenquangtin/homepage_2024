@@ -24,6 +24,8 @@ const THEME_CONFIG = {
     playerName: 'Tony',
     itemName: 'Shield Battery',
     mpLabel: 'nrg',
+    // +NRG at the start of each player turn — keeps Brood Lord / Ultralisk winnable
+    mpRegen: 15,
   },
 }
 
@@ -85,7 +87,8 @@ function battleReducer(state, action) {
       if (state.enemy.hp <= 0) return { ...state, phase: 'victory', log: [...state.log, `${state.enemy.name} defeated!`].slice(-3) }
       if (state.phase === 'enemy_anim') {
         if (state.player.hp <= 0) return { ...state, phase: 'defeat' }
-        return { ...state, phase: 'player_turn' }
+        const mp = Math.min(state.player.maxMp, state.player.mp + (config.mpRegen || 0))
+        return { ...state, phase: 'player_turn', player: { ...state.player, mp } }
       }
       return { ...state, phase: 'enemy_turn' }
     }
