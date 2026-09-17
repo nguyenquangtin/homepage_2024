@@ -80,7 +80,7 @@ const IdentityBlock = () => (
       letterSpacing="0.1em"
       color={sc2.muted}
     >
-      engineer of the protoss · entrepreneur · high templar
+      software engineer · entrepreneur · master phase-smith
     </Text>
 
     <Text
@@ -92,7 +92,7 @@ const IdentityBlock = () => (
       color={PROTOSS_CYAN}
       textShadow={`0 0 10px rgba(${PROTOSS_CYAN_RGB}, 0.6)`}
     >
-      &#9656; HIGH TEMPLAR · LV 39 · EXP 19 YRS
+      &#9656; MASTER PHASE-SMITH · LV 39 · EXP 19 YRS
     </Text>
 
     <Text mt={3} fontSize={{ base: '13px', md: '14px' }} color={sc2.text}>
@@ -115,7 +115,7 @@ const IdentityBlock = () => (
       color={KHALA_GOLD}
       textShadow={`0 0 10px rgba(${KHALA_GOLD_RGB}, 0.45)`}
     >
-      &#10209; EN TARO ADUN — ENGINEER OF THE PROTOSS RACE &#10209;
+      &#10209; EN TARO ADUN — PHASE-SMITH OF THE KHALAI &#10209;
     </Text>
 
     <Flex

@@ -5,11 +5,11 @@ import {
   PROTOSS_CYAN_BRIGHT,
   PROTOSS_PANEL_RGB
 } from '../../lib/site-theme-context'
-import { SCENE_HEX } from './templar-scene-style'
+import { SCENE_HEX } from './phase-smith-scene-style'
 
 // Gradients, scanline pattern and screen clip for the holo-console.
-// `screen` is the SCREEN rect from templar-console-svg.js.
-const TemplarConsoleDefs = ({ id, screen }) => (
+// `screen` is the SCREEN rect from phase-smith-console-svg.js.
+const PhaseSmithConsoleDefs = ({ id, screen }) => (
   <defs>
     <radialGradient id={id('screen-glow')}>
       <stop offset="0" stopColor={PROTOSS_CYAN} stopOpacity="0.3" />
@@ -55,4 +55,4 @@ const TemplarConsoleDefs = ({ id, screen }) => (
   </defs>
 )
 
-export default TemplarConsoleDefs
+export default PhaseSmithConsoleDefs

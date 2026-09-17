@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { KHALA_GOLD, KHALA_GOLD_RGB, PROTOSS_CYAN, PROTOSS_CYAN_BRIGHT } from '../../lib/site-theme-context'
-import { SCREEN } from './templar-console-svg'
-import TemplarTaskPanelCode from './templar-task-panel-code'
-import TemplarTaskPanelAdSpend from './templar-task-panel-ad-spend'
-import TemplarTaskPanelPipeline from './templar-task-panel-pipeline'
-import TemplarTaskPanelPartnerLink from './templar-task-panel-partner-link'
+import { SCREEN } from './phase-smith-console-svg'
+import PhaseSmithTaskPanelCode from './phase-smith-task-panel-code'
+import PhaseSmithTaskPanelAdSpend from './phase-smith-task-panel-ad-spend'
+import PhaseSmithTaskPanelPipeline from './phase-smith-task-panel-pipeline'
+import PhaseSmithTaskPanelPartnerLink from './phase-smith-task-panel-partner-link'
 
 const MONO = "'Share Tech Mono', monospace"
 const HEADER_H = 34
@@ -15,10 +15,10 @@ const PANEL_MS = 4500
 const SAFE_RIGHT = 430
 
 export const TASKS = [
-  { code: '01', label: 'CODE', Panel: TemplarTaskPanelCode },
-  { code: '02', label: 'AD SPEND', Panel: TemplarTaskPanelAdSpend },
-  { code: '03', label: 'AGENT PIPELINE', Panel: TemplarTaskPanelPipeline },
-  { code: '04', label: 'PARTNER LINK', Panel: TemplarTaskPanelPartnerLink }
+  { code: '01', label: 'CODE', Panel: PhaseSmithTaskPanelCode },
+  { code: '02', label: 'AD SPEND', Panel: PhaseSmithTaskPanelAdSpend },
+  { code: '03', label: 'AGENT PIPELINE', Panel: PhaseSmithTaskPanelPipeline },
+  { code: '04', label: 'PARTNER LINK', Panel: PhaseSmithTaskPanelPartnerLink }
 ]
 
 // Cycles the active task index every ~4.5s. Only ticks while `active` (the
@@ -26,7 +26,7 @@ export const TASKS = [
 // prefers-reduced-motion, so panel 1 stays put as the one complete, static
 // frame. SSR and the first client paint both start at 0, matching
 // ProtossWarpIn's hydration approach for useReducedMotion.
-export const useTemplarTaskCycle = (active = true) => {
+export const usePhaseSmithTaskCycle = (active = true) => {
   const reduceMotion = useReducedMotion()
   const [index, setIndex] = useState(0)
 
@@ -85,8 +85,8 @@ const Pips = ({ active }) => {
 
 // Cycling task screens: a header bar (build-order label + step pips) above
 // one of four panels, crossfaded with framer-motion. `index` is controlled
-// by the banner (useTemplarTaskCycle) so the caption strip can mirror it.
-const TemplarTaskScreens = ({ index }) => {
+// by the banner (usePhaseSmithTaskCycle) so the caption strip can mirror it.
+const PhaseSmithTaskScreens = ({ index }) => {
   const task = TASKS[index]
   const Panel = task.Panel
   return (
@@ -120,4 +120,4 @@ const TemplarTaskScreens = ({ index }) => {
   )
 }
 
-export default TemplarTaskScreens
+export default PhaseSmithTaskScreens

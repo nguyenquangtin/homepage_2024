@@ -6,7 +6,7 @@ import {
   PROTOSS_GOLD_LIGHT,
   PROTOSS_PANEL_RGB
 } from '../../lib/site-theme-context'
-import TemplarConsoleDefs from './templar-console-defs-svg'
+import PhaseSmithConsoleDefs from './phase-smith-console-defs-svg'
 
 // SCREEN CONTRACT — the holographic display, in scene units (viewBox
 // 1200x450). Task panels render inside a nested <svg> whose local
@@ -46,7 +46,7 @@ const Bracket = ({ x, y, sx, sy }) => (
   />
 )
 
-const TemplarConsole = ({ id, children }) => {
+const PhaseSmithConsole = ({ id, children }) => {
   const fx = SCREEN.x - FRAME_PAD
   const fy = SCREEN.y - FRAME_PAD
   const fw = SCREEN.w + FRAME_PAD * 2
@@ -54,7 +54,7 @@ const TemplarConsole = ({ id, children }) => {
   const url = name => `url(#${id(name)})`
   return (
     <g>
-      <TemplarConsoleDefs id={id} screen={SCREEN} />
+      <PhaseSmithConsoleDefs id={id} screen={SCREEN} />
 
       {/* hologram light spill + projection cone from the emitter */}
       <ellipse cx="890" cy="190" rx="360" ry="230" fill={url('screen-glow')} />
@@ -181,4 +181,4 @@ const TemplarConsole = ({ id, children }) => {
   )
 }
 
-export default TemplarConsole
+export default PhaseSmithConsole

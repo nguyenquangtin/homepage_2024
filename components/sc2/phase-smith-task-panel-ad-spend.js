@@ -20,7 +20,7 @@ const barTop = h => BAR_BASE_Y - h * BAR_MAX_H
 // Panel 2/4 — TikTok ad-spend readout: an Orbitron headline, growth bars
 // that scale up from the baseline (.tts-bar) and a trend line drawn in with
 // stroke-dashoffset, normalised via pathLength so it works at any length.
-const TemplarTaskPanelAdSpend = () => {
+const PhaseSmithTaskPanelAdSpend = () => {
   const points = HEIGHTS.map(
     (h, i) => `${barX(i) + BAR_W / 2},${barTop(h) - 10}`
   ).join(' ')
@@ -63,4 +63,4 @@ const TemplarTaskPanelAdSpend = () => {
   )
 }
 
-export default TemplarTaskPanelAdSpend
+export default PhaseSmithTaskPanelAdSpend

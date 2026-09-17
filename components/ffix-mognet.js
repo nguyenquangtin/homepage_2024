@@ -23,8 +23,8 @@ const THEME_DATA = {
   },
   sc2: {
     header: 'Khalai Transmission',
-    greeting: 'Executor,',
-    body: 'A new transmission from the Templar Archives — tech insights, builds, and dispatches from the field.',
+    greeting: 'Commander,',
+    body: 'A new transmission from the Forge Archives — tech insights, builds, and dispatches from the field.',
     sender: 'FROM: TONY · VIA SUBSTACK',
     cta: 'OPEN CHANNEL →',
   },
