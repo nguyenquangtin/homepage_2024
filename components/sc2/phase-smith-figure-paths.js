@@ -61,7 +61,6 @@ export const LEG_NEAR =
 export const LEG_FAR =
   'M 420 332 C 402 352, 394 372, 396 392 C 400 416, 408 438, 410 460'
 export const THIGH_NEAR = '470,336 500,352 510,382 490,388 470,362'
-export const THIGH_FAR = '404,340 428,334 424,370 402,378 394,356'
 export const KNEES = [
   [508, 392],
   [398, 396]
