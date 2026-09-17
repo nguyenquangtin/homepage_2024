@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import { Box, Flex, Text } from '@chakra-ui/react'
+import { useInViewport } from '../../lib/use-in-viewport'
 import CommanderFrame from './commander-portrait-frame'
 import TemplarConsoleScene from './templar-console-scene'
 import TemplarTaskScreens, { TASKS, useTemplarTaskCycle } from './templar-task-screens'
@@ -16,13 +18,16 @@ const sc2 = PALETTES.sc2
 // caption strip. `screen` overrides the cycling task screens (see
 // templar-task-screens.js); the right label mirrors the active task.
 const TemplarHeroBanner = ({ screen, ...rest }) => {
-  const index = useTemplarTaskCycle()
+  const ref = useRef(null)
+  const inView = useInViewport(ref)
+  const index = useTemplarTaskCycle(inView)
   const task = TASKS[index]
 
   return (
-    <Box mb={{ base: 6, md: 7 }} {...rest}>
+    <Box ref={ref} mb={{ base: 6, md: 7 }} {...rest}>
       <CommanderFrame>
         <TemplarConsoleScene
+          paused={!inView}
           screen={screen || <TemplarTaskScreens index={index} />}
         />
 

@@ -133,6 +133,8 @@ export const sceneSx = {
   },
   '.tts-line-draw': { animation: `${lineDraw} 1.2s ease-out both` },
   '.tts-pulse-travel': { animation: `${pulseTravel} 1.8s linear infinite` },
+  // Off-screen: freeze every loop in place (set by TemplarConsoleScene)
+  '&[data-paused] *': { animationPlayState: 'paused !important' },
   '@media (prefers-reduced-motion: reduce)': {
     '&, & *': { animation: 'none !important' }
   }
