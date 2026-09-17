@@ -21,11 +21,12 @@ export const TASKS = [
   { code: '04', label: 'PARTNER LINK', Panel: TemplarTaskPanelPartnerLink }
 ]
 
-// Cycles the active task index every ~4.5s; pauses while the tab is hidden
-// and never advances under prefers-reduced-motion, so panel 1 stays put as
-// the one complete, static frame. SSR and the first client paint both start
-// at 0, matching ProtossWarpIn's hydration approach for useReducedMotion.
-export const useTemplarTaskCycle = () => {
+// Cycles the active task index every ~4.5s. Only ticks while `active` (the
+// banner is on screen) and the tab is visible, and never advances under
+// prefers-reduced-motion, so panel 1 stays put as the one complete, static
+// frame. SSR and the first client paint both start at 0, matching
+// ProtossWarpIn's hydration approach for useReducedMotion.
+export const useTemplarTaskCycle = (active = true) => {
   const reduceMotion = useReducedMotion()
   const [index, setIndex] = useState(0)
 
@@ -34,6 +35,7 @@ export const useTemplarTaskCycle = () => {
       setIndex(0)
       return undefined
     }
+    if (!active) return undefined
     let id = null
     const tick = () => setIndex(i => (i + 1) % TASKS.length)
     const start = () => {
@@ -47,13 +49,13 @@ export const useTemplarTaskCycle = () => {
       if (document.visibilityState === 'hidden') stop()
       else start()
     }
-    start()
+    onVisibility()
     document.addEventListener('visibilitychange', onVisibility)
     return () => {
       stop()
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [reduceMotion])
+  }, [reduceMotion, active])
 
   return index
 }

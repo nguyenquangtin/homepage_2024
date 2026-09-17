@@ -25,7 +25,8 @@ const ARIA_LABEL =
 // The cinematic banner artwork. `screen` is rendered inside the holo-screen
 // slot (see SCREEN in templar-console-svg.js). Gradient ids are prefixed
 // with React's useId so several scenes on one page never collide.
-const TemplarConsoleScene = ({ screen, ...rest }) => {
+// `paused` freezes all CSS loops (e.g. while the banner is off-screen).
+const TemplarConsoleScene = ({ screen, paused = false, ...rest }) => {
   const uid = useId().replace(/:/g, '')
   const id = name => `${uid}-${name}`
   // md fallback keeps SSR and the first client paint identical (see
@@ -48,6 +49,7 @@ const TemplarConsoleScene = ({ screen, ...rest }) => {
         w="100%"
         h="100%"
         display="block"
+        data-paused={paused || undefined}
         sx={sceneSx}
       >
         <TemplarSceneBackdrop id={id} />
