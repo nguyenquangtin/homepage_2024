@@ -18,7 +18,7 @@ const usePanel = () => {
 
 const PLAYER_LABELS = {
   ffix: { name: 'BLACK MAGE TONY', mp: 'MP' },
-  sc2:  { name: 'HIGH TEMPLAR TONY', mp: 'NRG' },
+  sc2:  { name: 'PHASE-SMITH TONY', mp: 'NRG' },
 }
 
 // ── HP / MP Bar ──
@@ -98,7 +98,7 @@ export const CommandMenu = ({ onAttack, onCast, onItem, onRun, player, spells })
   return (
     <Box bg={p.bg} border={p.border} borderRadius="sm" p={2} boxShadow={p.shadow} minW="110px">
       <Btn label="Attack" onClick={onAttack} />
-      <Btn label={theme === 'sc2' ? 'Psionic ▸' : 'Magic ▸'} onClick={() => setSub('magic')} />
+      <Btn label={theme === 'sc2' ? 'Abilities ▸' : 'Magic ▸'} onClick={() => setSub('magic')} />
       <Btn label={theme === 'sc2' ? 'Battery' : 'Item'} onClick={onItem} disabled={player.itemUsed} />
       <Btn label={theme === 'sc2' ? 'Retreat' : 'Run'} onClick={onRun} />
     </Box>
