@@ -19,7 +19,7 @@ const THEME_EFFECTS = {
     { label: 'WARPING IN',    color: '#00cc55' },
     { label: 'ANALYZING',     color: '#ff8844' },
     { label: 'EN TARO ADUN',  color: '#00aaff' },
-    { label: 'PSI STORM',     color: '#aa88ff' },
+    { label: 'PHASE FORGE',   color: '#aa88ff' },
     { label: 'KHALA LINK',    color: '#00bbdd' },
   ],
 }

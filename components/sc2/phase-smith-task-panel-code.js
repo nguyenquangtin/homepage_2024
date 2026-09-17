@@ -15,7 +15,7 @@ const LINES = [
 // cursor. Each line reveals via a clip-path rect scaled in on x (.tts-type,
 // stroke/transform only); under reduced motion the clip carries no
 // transform, so the line is already fully open — a finished frame.
-const TemplarTaskPanelCode = () => {
+const PhaseSmithTaskPanelCode = () => {
   const uid = useId().replace(/:/g, '')
   return (
     <g fontSize="19">
@@ -63,4 +63,4 @@ const TemplarTaskPanelCode = () => {
   )
 }
 
-export default TemplarTaskPanelCode
+export default PhaseSmithTaskPanelCode

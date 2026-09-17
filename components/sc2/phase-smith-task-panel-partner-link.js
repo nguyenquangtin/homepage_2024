@@ -34,7 +34,7 @@ const SPARK_POINTS = '262,255 288,235 314,248 340,215 366,228 392,200'
 // (.tts-line-draw) and packets travelling both ways (.tts-pulse-travel on
 // two paths, one reversed), a status readout, and a two-column telemetry
 // block (label/value rows plus a latency sparkline). Dashoffset/opacity only.
-const TemplarTaskPanelPartnerLink = () => (
+const PhaseSmithTaskPanelPartnerLink = () => (
   <g>
     <polyline
       className="tts-line-draw"
@@ -106,4 +106,4 @@ const TemplarTaskPanelPartnerLink = () => (
   </g>
 )
 
-export default TemplarTaskPanelPartnerLink
+export default PhaseSmithTaskPanelPartnerLink

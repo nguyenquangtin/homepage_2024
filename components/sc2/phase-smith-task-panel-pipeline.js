@@ -32,7 +32,7 @@ const LOG_LINE_H = 24
 // (.tts-pulse-travel), a "STAGE n/5" progress bar and a status log that
 // types in line by line below (.tts-type clip reveal, staggered delays).
 // All motion is transform / stroke-dashoffset / opacity, fill-mode both.
-const TemplarTaskPanelPipeline = () => {
+const PhaseSmithTaskPanelPipeline = () => {
   const uid = useId().replace(/:/g, '')
   return (
     <g>
@@ -118,4 +118,4 @@ const TemplarTaskPanelPipeline = () => {
   )
 }
 
-export default TemplarTaskPanelPipeline
+export default PhaseSmithTaskPanelPipeline

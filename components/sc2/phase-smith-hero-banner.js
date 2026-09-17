@@ -2,8 +2,8 @@ import { useRef } from 'react'
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { useInViewport } from '../../lib/use-in-viewport'
 import CommanderFrame from './commander-portrait-frame'
-import TemplarConsoleScene from './templar-console-scene'
-import TemplarTaskScreens, { TASKS, useTemplarTaskCycle } from './templar-task-screens'
+import PhaseSmithConsoleScene from './phase-smith-console-scene'
+import PhaseSmithTaskScreens, { TASKS, usePhaseSmithTaskCycle } from './phase-smith-task-screens'
 import {
   KHALA_GOLD_RGB,
   PALETTES,
@@ -13,22 +13,22 @@ import {
 
 const sc2 = PALETTES.sc2
 
-// Cinematic hero banner (High Templar pass): the animated templar scene in
+// Cinematic hero banner (Phase-Smith pass): the animated phase-smith scene in
 // the same gold commander frame as the portrait card below it, plus a mono
 // caption strip. `screen` overrides the cycling task screens (see
-// templar-task-screens.js); the right label mirrors the active task.
-const TemplarHeroBanner = ({ screen, ...rest }) => {
+// phase-smith-task-screens.js); the right label mirrors the active task.
+const PhaseSmithHeroBanner = ({ screen, ...rest }) => {
   const ref = useRef(null)
   const inView = useInViewport(ref)
-  const index = useTemplarTaskCycle(inView)
+  const index = usePhaseSmithTaskCycle(inView)
   const task = TASKS[index]
 
   return (
     <Box ref={ref} mb={{ base: 6, md: 7 }} {...rest}>
       <CommanderFrame>
-        <TemplarConsoleScene
+        <PhaseSmithConsoleScene
           paused={!inView}
-          screen={screen || <TemplarTaskScreens index={index} />}
+          screen={screen || <PhaseSmithTaskScreens index={index} />}
         />
 
         <Flex
@@ -49,7 +49,7 @@ const TemplarHeroBanner = ({ screen, ...rest }) => {
             textShadow={`0 0 8px rgba(${PROTOSS_CYAN_RGB}, 0.35)`}
             whiteSpace="nowrap"
           >
-            &#9656; High Templar · On Duty
+            &#9656; Master Phase-Smith · On Duty
           </Text>
           <Text
             fontFamily="mono"
@@ -67,4 +67,4 @@ const TemplarHeroBanner = ({ screen, ...rest }) => {
   )
 }
 
-export default TemplarHeroBanner
+export default PhaseSmithHeroBanner

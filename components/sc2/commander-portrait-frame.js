@@ -131,7 +131,7 @@ export const PortraitSlot = () => (
         letterSpacing="0.18em"
         color={PROTOSS_GOLD_LIGHT}
       >
-        HIGH TEMPLAR
+        PHASE-SMITH
       </Text>
     </Box>
   </Box>

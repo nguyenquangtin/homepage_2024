@@ -61,7 +61,7 @@ const THEME_DATA = {
   },
   sc2: {
     header: 'Commander',
-    job: 'HIGH TEMPLAR',
+    job: 'PHASE-SMITH',
     hp: { current: 4000, max: 4000, color: '#00cc55', gradient: 'linear-gradient(90deg,#009933,#00ff55)' },
     resource: { label: 'NRG', current: 150, max: 200, color: '#00ddff', gradient: 'linear-gradient(90deg,#0088aa,#00ddff)' },
     atb: { label: 'CDN', color: '#00ddff', gradient: '#00ddff', duration: 3.2 },

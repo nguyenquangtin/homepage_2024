@@ -4,7 +4,7 @@ import {
   PROTOSS_CYAN_BRIGHT,
   PROTOSS_TEAL_RGB
 } from '../../lib/site-theme-context'
-import { SCENE_HEX } from './templar-scene-style'
+import { SCENE_HEX } from './phase-smith-scene-style'
 
 // Deterministic scatter so SSR and client render the same starfield
 const seeded = seed => () => {
@@ -29,8 +29,8 @@ const MOTES = Array.from({ length: 14 }, () => ({
 }))
 
 // Deep-space ground, nebulae, starfield, planet horizon and two distant
-// khaydarin crystals — everything behind the templar and the console.
-export const TemplarSceneBackdrop = ({ id }) => (
+// khaydarin crystals — everything behind the phase-smith and the console.
+export const PhaseSmithSceneBackdrop = ({ id }) => (
   <g>
     <defs>
       <linearGradient id={id('space')} x1="0" y1="0" x2="0" y2="1">
@@ -143,7 +143,7 @@ export const TemplarSceneBackdrop = ({ id }) => (
 )
 
 // Drifting psionic motes — rendered last so they float over everything
-export const TemplarSceneMotes = () => (
+export const PhaseSmithSceneMotes = () => (
   <g aria-hidden>
     {MOTES.map((m, i) => (
       <circle
