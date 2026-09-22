@@ -12,6 +12,7 @@ import thumbTTMW from '../public/images/works/ttm_w.png'
 import thumbLaravue from '../public/images/works/laravue.png'
 import thumbVtve from '../public/images/works/vtv_giaitri.png'
 import thumbShopware6 from '../public/images/works/shopware6.png'
+import thumbEcomdyOffice from '../public/images/works/ecomdy-office.png'
 
 // Gold seam with a centered khaydarin gem, replacing the plain Divider
 // between chronicle tiers (LotV pass)
@@ -59,6 +60,27 @@ const Works = () => (
           >
             The Whitelable system for TikTok Management. You want to be a TikTok
             Agency? This is the right choice.
+          </WorkGridItem>
+        </Section>
+      </SimpleGrid>
+
+      <Section delay={0.1}>
+        <SeamDivider />
+
+        <Sc2SectionHeader>{PROTOSS_LABELS.personalWorks}</Sc2SectionHeader>
+      </Section>
+
+      <SimpleGrid columns={[1, 1, 2]} gap={6}>
+        <Section delay={0.15}>
+          <WorkGridItem
+            id="ecomdy-office"
+            title="Ecomdy Office 3D"
+            thumbnail={thumbEcomdyOffice}
+            tier="epic"
+            tags={['Three.js', 'WebGL', '3D', 'Personal']}
+          >
+            An interactive 3D map of the Ecomdy Media office in Da Nang, floor
+            by floor.
           </WorkGridItem>
         </Section>
       </SimpleGrid>
