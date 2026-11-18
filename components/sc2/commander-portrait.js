@@ -96,7 +96,7 @@ const IdentityBlock = () => (
     </Text>
 
     <Text mt={3} fontSize={{ base: '13px', md: '14px' }} color={sc2.text}>
-      Ex-CTO who scaled an ad tech platform to 8-figure annual spend. Now
+      Ex-CTO who scaled an ad tech platform to 8-figure ads annual spend. Now
       designing scalable platforms and building with AI agents (Claude Code,
       LLM systems). Co-founder of{' '}
       <Link href="https://gdgmientrung.com/" isExternal color={KHALA_GOLD}>
