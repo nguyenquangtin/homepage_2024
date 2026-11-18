@@ -39,7 +39,7 @@ import {
 // Resume timeline entries — keeps JSX clean
 const career = [
   {
-    year: 'Jan 2026 to Oct 2026',
+    year: 'Jan 2026 to now',
     role: 'Head of Tech Partnership',
     company: 'Ecomdy Media',
     url: 'https://ecomdymedia.com/'
