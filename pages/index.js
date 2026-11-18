@@ -39,55 +39,55 @@ import {
 // Resume timeline entries — keeps JSX clean
 const career = [
   {
-    year: 'Jan 2026–now',
+    year: 'Jan 2026 to now',
     role: 'Head of Tech Partnership',
     company: 'Ecomdy Media',
     url: 'https://ecomdymedia.com/'
   },
   {
-    year: '2022–2025',
+    year: 'Sep 2022 to Jan 2026',
     role: 'CTO',
     company: 'Ecomdy Media',
     url: 'https://ecomdymedia.com/'
   },
   {
-    year: '2020–2022',
+    year: '2020 to 2022',
     role: 'Technical Leader / Core Dev',
     company: 'NFQ Asia · Shopware',
     url: 'https://nfq.asia/'
   },
   {
-    year: '2019–2020',
+    year: '2019 to 2020',
     role: 'Technical Leader',
     company: 'Ylinkee',
     url: 'https://www.facebook.com/Ylinkee/'
   },
   {
-    year: '2018–2019',
+    year: '2018 to 2019',
     role: 'Tech Lead / Product Manager',
     company: 'Dotmark Connect',
     url: null
   },
   {
-    year: '2014–2017',
+    year: '2014 to 2017',
     role: 'Branch Manager Vietnam',
     company: 'Webpuppies Singapore',
     url: 'https://webpuppies.com.sg/'
   },
   {
-    year: '2010–2014',
+    year: '2010 to 2014',
     role: 'Senior Interactive Developer',
     company: 'Webpuppies Singapore',
     url: 'https://webpuppies.com.sg/'
   },
   {
-    year: '2008–2010',
+    year: '2008 to 2010',
     role: 'Interactive Web Developer',
     company: 'Clearpath Development',
     url: 'https://clearpathdevelopment.com/'
   },
   {
-    year: '2007–2008',
+    year: '2007 to 2008',
     role: 'Frontend Web Developer',
     company: 'Success Software',
     url: 'https://successsoftware.global/'
@@ -201,9 +201,11 @@ const Home = () => {
               </Heading>
               <Paragraph>
                 19+ years shipping web products for global brands (BreadTalk,
-                CooperVision) and fast-growing startups. Expert in JavaScript
-                ecosystems - Node.js, React, Vue, TypeScript - with a focus on
-                e-commerce, TikTok API integrations, and scalable architecture.
+                CooperVision) and fast-growing startups, including 3+ years as
+                CTO of an ad tech platform built on TikTok APIs. These days I
+                design platform architecture and build with AI agents: Claude
+                Code workflows, LLM systems, and the TypeScript, React and
+                Node.js products around them.
               </Paragraph>
             </Section>
 

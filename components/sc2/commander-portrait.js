@@ -80,7 +80,7 @@ const IdentityBlock = () => (
       letterSpacing="0.1em"
       color={sc2.muted}
     >
-      software engineer · entrepreneur · master phase-smith
+      technical architect · AI agent builder · master phase-smith
     </Text>
 
     <Text
@@ -96,11 +96,9 @@ const IdentityBlock = () => (
     </Text>
 
     <Text mt={3} fontSize={{ base: '13px', md: '14px' }} color={sc2.text}>
-      Head of Tech Partnership at{' '}
-      <Link href="https://ecomdymedia.com/" isExternal color={KHALA_GOLD}>
-        Ecomdy Media
-      </Link>
-      , TikTok Marketing Partner &amp; co-founder of{' '}
+      Ex-CTO who scaled an ad tech platform to 8-figure ads annual spend. Now
+      designing scalable platforms and building with AI agents (Claude Code, LLM
+      systems). Co-founder of{' '}
       <Link href="https://gdgmientrung.com/" isExternal color={KHALA_GOLD}>
         GDG Mien Trung
       </Link>
@@ -115,7 +113,7 @@ const IdentityBlock = () => (
       color={KHALA_GOLD}
       textShadow={`0 0 10px rgba(${KHALA_GOLD_RGB}, 0.45)`}
     >
-      &#10209; EN TARO ADUN — PHASE-SMITH OF THE KHALAI &#10209;
+      &#10209; EN TARO ADUN · PHASE-SMITH OF THE KHALAI &#10209;
     </Text>
 
     <Flex
