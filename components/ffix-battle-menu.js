@@ -4,14 +4,14 @@ import { useSiteTheme } from '../lib/site-theme-context'
 import Sc2Panel from './sc2/sc2-panel'
 
 const TECH_ITEMS = [
-  { label: 'Node.js',    desc: '10+ yrs' },
-  { label: 'React',      desc: '8+ yrs'  },
-  { label: 'Vue.js',     desc: '6+ yrs'  },
-  { label: 'TypeScript', desc: '5+ yrs'  },
-  { label: 'PHP',        desc: '15+ yrs' },
-  { label: 'TikTok API', desc: 'expert'  },
-  { label: 'Docker',     desc: 'daily'   },
-  { label: 'WordPress',  desc: '12+ yrs' },
+  { label: 'TypeScript',   desc: '5+ yrs'   },
+  { label: 'React',        desc: '8+ yrs'   },
+  { label: 'Next.js',      desc: 'ships'    },
+  { label: 'Node.js',      desc: '10+ yrs'  },
+  { label: 'Claude Code',  desc: 'daily'    },
+  { label: 'AI agents',    desc: 'building' },
+  { label: 'LLM systems',  desc: 'building' },
+  { label: 'Architecture', desc: 'design'   },
 ]
 
 const INTEREST_ITEMS = [

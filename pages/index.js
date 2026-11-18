@@ -201,9 +201,10 @@ const Home = () => {
               </Heading>
               <Paragraph>
                 19+ years shipping web products for global brands (BreadTalk,
-                CooperVision) and fast-growing startups. Expert in JavaScript
-                ecosystems - Node.js, React, Vue, TypeScript - with a focus on
-                e-commerce, TikTok API integrations, and scalable architecture.
+                CooperVision) and fast growing startups. These days I build with
+                AI agents: Claude Code workflows, LLM systems, and the TypeScript,
+                React and Node.js products around them, with a focus on architecture
+                that scales.
               </Paragraph>
             </Section>
 

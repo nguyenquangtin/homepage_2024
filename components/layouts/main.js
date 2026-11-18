@@ -24,7 +24,7 @@ const Main = ({ children, router }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Building products that scale. Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years in JavaScript & e-commerce. Danang, Vietnam."
+          content="Building products that scale. Senior developer building with AI agents (Claude Code, LLM systems). Co-founder of GDG Mien Trung. Danang, Vietnam."
         />
         <meta name="author" content="Tony Tin Nguyen" />
         <meta name="robots" content="index, follow" />
@@ -42,11 +42,11 @@ const Main = ({ children, router }) => {
         <meta name="twitter:creator" content="@nguyenquangtin" />
         <meta
           name="twitter:title"
-          content="Tony Tin Nguyen — Building products that scale."
+          content="Tony Tin Nguyen · Building products that scale."
         />
         <meta
           name="twitter:description"
-          content="Building products that scale. Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years in JS & e-commerce."
+          content="Building products that scale. Senior developer building with AI agents and LLM systems. Co-founder of GDG Mien Trung."
         />
         <meta
           name="twitter:image"
@@ -57,11 +57,11 @@ const Main = ({ children, router }) => {
         <meta property="og:site_name" content="Tony Tin Nguyen" />
         <meta
           property="og:title"
-          content="Tony Tin Nguyen — Building products that scale."
+          content="Tony Tin Nguyen · Building products that scale."
         />
         <meta
           property="og:description"
-          content="Building products that scale. Head of Tech Partnership at Ecomdy Media, TikTok Marketing Partner. 19+ years in JS & e-commerce."
+          content="Building products that scale. Senior developer building with AI agents and LLM systems. Co-founder of GDG Mien Trung."
         />
         <meta property="og:type" content="website" />
         <meta
@@ -85,12 +85,7 @@ const Main = ({ children, router }) => {
               '@type': 'Person',
               name: 'Tony Tin Nguyen',
               url: 'https://www.nguyenquangtin.com',
-              jobTitle: 'Head of Tech Partnership',
-              worksFor: {
-                '@type': 'Organization',
-                name: 'Ecomdy Media',
-                url: 'https://ecomdymedia.com'
-              },
+              jobTitle: 'Senior Developer',
               address: {
                 '@type': 'PostalAddress',
                 addressLocality: 'Danang',
@@ -105,7 +100,7 @@ const Main = ({ children, router }) => {
           }}
         />
 
-        <title>Tony Tin Nguyen — Building products that scale.</title>
+        <title>Tony Tin Nguyen · Building products that scale.</title>
       </Head>
 
       {theme === 'sc2' && <ProtossGlobal />}
